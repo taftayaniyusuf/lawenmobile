@@ -1,0 +1,105 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.example.demo.model;
+
+import java.io.Serializable;
+import java.sql.Time;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+/**
+ *
+ * @author lutfi
+ */
+@Entity
+public class Pengingat implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String nama_pengingat;
+    private Time waktu_pengingat;
+    private String deskripsi_pengingat;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Pengingat)) {
+            return false;
+        }
+        Pengingat other = (Pengingat) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "model.Pengingat[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the nama_pengingat
+     */
+    public String getNama_pengingat() {
+        return nama_pengingat;
+    }
+
+    /**
+     * @param nama_pengingat the nama_pengingat to set
+     */
+    public void setNama_pengingat(String nama_pengingat) {
+        this.nama_pengingat = nama_pengingat;
+    }
+
+    /**
+     * @return the waktu_pengingat
+     */
+    public Time getWaktu_pengingat() {
+        return waktu_pengingat;
+    }
+
+    /**
+     * @param waktu_pengingat the waktu_pengingat to set
+     */
+    public void setWaktu_pengingat(Time waktu_pengingat) {
+        this.waktu_pengingat = waktu_pengingat;
+    }
+
+    /**
+     * @return the deskripsi_pengingat
+     */
+    public String getDeskripsi_pengingat() {
+        return deskripsi_pengingat;
+    }
+
+    /**
+     * @param deskripsi_pengingat the deskripsi_pengingat to set
+     */
+    public void setDeskripsi_pengingat(String deskripsi_pengingat) {
+        this.deskripsi_pengingat = deskripsi_pengingat;
+    }
+    
+}
