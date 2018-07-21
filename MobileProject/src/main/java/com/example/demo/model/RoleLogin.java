@@ -1,11 +1,8 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import java.util.List;
+import javax.persistence.*;
 
 
 /**
@@ -14,6 +11,8 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class RoleLogin implements Serializable {
+    @OneToMany(mappedBy = "roleLogin")
+    private List<DataLogin> dataLogins;
 
 
     private static final long serialVersionUID = 1L;
@@ -21,8 +20,7 @@ public class RoleLogin implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nama_role;
-    @OneToOne
-    private DataLogin dataLogin;
+
 
     public Long getId() {
         return id;
@@ -78,18 +76,17 @@ public class RoleLogin implements Serializable {
         this.nama_role = nama_role;
     }
 
-    /**
-     * @return the dataLogin
-     */
-    public DataLogin getDataLogin() {
-        return dataLogin;
+    public List<DataLogin> getDataLogins() {
+        return dataLogins;
+    }
+
+    public void setDataLogins(List<DataLogin> dataLogins) {
+        this.dataLogins = dataLogins;
     }
 
     /**
-     * @param dataLogin the dataLogin to set
+     * @return the dataLogin
      */
-    public void setDataLogin(DataLogin dataLogin) {
-        this.dataLogin = dataLogin;
-    }
+
 
 }

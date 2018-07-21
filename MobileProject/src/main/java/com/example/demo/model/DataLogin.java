@@ -27,8 +27,9 @@ public class DataLogin implements Serializable {
     private String password;
     @OneToOne
     private Karyawan karyawan;
-    @OneToOne(mappedBy = "dataLogin")
-    private RoleLogin roleLogin;
+    @ManyToOne
+    private
+    RoleLogin roleLogin;
     @ManyToOne
     private Absen absen;
 
@@ -57,7 +58,7 @@ public class DataLogin implements Serializable {
             return false;
         }
         DataLogin other = (DataLogin) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -131,4 +132,11 @@ public class DataLogin implements Serializable {
         this.roleLogin = roleLogin;
     }
 
+    public Absen getAbsen() {
+        return absen;
+    }
+
+    public void setAbsen(Absen absen) {
+        this.absen = absen;
+    }
 }
