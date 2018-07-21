@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
  * @author rasyid
  */
 @Entity
-public class Karyawan implements Serializable {
+public class Karyawan extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

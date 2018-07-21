@@ -4,10 +4,7 @@ import com.example.demo.model.*;
 import com.example.demo.service.*;
 import org.hibernate.boot.jaxb.hbm.spi.Adapter2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -87,18 +84,18 @@ public class KaryawanController {
     }
     //=====================================================Team============================================
     @RequestMapping(value = "/insertteam",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean insertteam(@RequestParam("id")long id,@RequestParam("nama_teamS") String nama_teamS){
+    public boolean insertteam(@RequestParam("id")long id,@RequestParam("nama_team") String nama_team){
         Team team = new Team();
         team.setId(id);
-        team.setNama_teamS(nama_teamS);
+        team.setNama_team(nama_team);
         teamServices.SaveOrUpdate(team);
         return true;
     }
     @RequestMapping(value = "/updateteam",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean updateteam(@RequestParam("id")long id,@RequestParam("nama_teamS") String nama_teamS){
+    public boolean updateteam(@RequestParam("id")long id,@RequestParam("nama_team") String nama_team){
         Team team = teamServices.getById(id);
         team.setId(id);
-        team.setNama_teamS(nama_teamS);
+        team.setNama_team(nama_team);
         teamServices.SaveOrUpdate(team);
         return true;
     }
@@ -178,4 +175,9 @@ public class KaryawanController {
         return true;
     }
     //=================================================MasterKaryawan==========================================
+    @RequestMapping(value = "/insertkaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
+    public Boolean insertKaryawan(@ModelAttribute("DataLogin") DataLogin dl,@ModelAttribute("Karayawan")Karyawan k,
+                                  @RequestParam("id")long id){
+
+        return true;}
 }

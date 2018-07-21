@@ -23,9 +23,6 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Absen extends Additional implements Serializable {
-	 @OneToMany(mappedBy = "absen")
-	 private List<DataLogin> dataLogins;
-
 
     @OneToMany(mappedBy = "absen")
     private List<MasukTambahan> masukTambahan;
