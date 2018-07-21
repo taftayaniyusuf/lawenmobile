@@ -1,13 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Jabatan;
-import com.example.demo.model.Team;
-import com.example.demo.model.TipeKaryawan;
-import com.example.demo.model.Venue;
-import com.example.demo.service.JabatanService;
-import com.example.demo.service.TeamServices;
-import com.example.demo.service.TipeKaryawanService;
-import com.example.demo.service.VenueService;
+import com.example.demo.model.*;
+import com.example.demo.service.*;
+import org.hibernate.boot.jaxb.hbm.spi.Adapter2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +21,10 @@ public class KaryawanController {
     TeamServices teamServices;
     @Autowired
     TipeKaryawanService tipeKaryawanService;
+    @Autowired
+    AkunBankService akunBankService;
+    @Autowired
+    RoleLoginService roleLoginService;
     //===================================================Venue======================================================
     @RequestMapping(value = "/insertvenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean insertVenue(@RequestParam("id")long id,@RequestParam("nama_venue") String nama_venue, @RequestParam("deskripsi_venue")String deskripsi_venue,
@@ -60,7 +59,6 @@ public class KaryawanController {
     @RequestMapping(value = "/deletevenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean updateVenue(@RequestParam("id")long id){
         Venue venue= venueService.getById(id);
-        venue.setId(id);
         venueService.deleteVenue(venue);
         return true;
     }
@@ -84,8 +82,6 @@ public class KaryawanController {
     @RequestMapping(value = "/deletejabatan",method = RequestMethod.POST,headers = "Accept=application/json")
     public  boolean deleteJabatan(@RequestParam("id")long id,@RequestParam("nama_jabatan") String nama_jabatan){
         Jabatan jabatan = jabatanService.getById(id);
-        jabatan.setId(id);
-        jabatan.setNama_jabatan(nama_jabatan);
         jabatanService.deleteJabatan(id);
         return true;
     }
@@ -132,9 +128,54 @@ public class KaryawanController {
     @RequestMapping(value = "/deletetipekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean deleteTipeKayawan(@RequestParam("id")long id,@RequestParam("nama_typekaryawan")String nama_typekaryawan){
         TipeKaryawan tipeKaryawan =tipeKaryawanService.getById(id);
-        tipeKaryawan.setId(id);
         tipeKaryawanService.deleteTipeKaryawan(tipeKaryawan);
         return true;
     }
-    //================================================
+    //================================================AkunBank================================================
+    @RequestMapping(value = "/insertakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean insertAkunBank(@RequestParam("id")long id,@RequestParam("nama_bank")String nama_bank){
+        AkunBank akunBank =  new AkunBank();
+        akunBank.setId(id);
+        akunBank.setNama_bank(nama_bank);
+        akunBankService.SaveOrUpdate(akunBank);
+        return true;
+    }
+    @RequestMapping(value = "/updateakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean updateAkunBank(@RequestParam("id")long id,@RequestParam("nama_bank")String nama_bank){
+        AkunBank akunBank =akunBankService.getById(id);
+        akunBank.setId(id);
+        akunBank.setNama_bank(nama_bank);
+        akunBankService.SaveOrUpdate(akunBank);
+        return true;
+    }
+    @RequestMapping(value = "/deleteakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean deleteAkunBank(@RequestParam("id")long id){
+        AkunBank akunBank =akunBankService.getById(id);
+        akunBankService.deleteAkunBank(akunBank);
+        return true;
+    }
+    //===============================================RoleLogin======================================================
+    @RequestMapping(value = "/insertrolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean insertRoleLogin(@RequestParam("id")long id,@RequestParam("nama_role")String nama_role){
+        RoleLogin roleLogin =new RoleLogin();
+        roleLogin.setId(id);
+        roleLogin.setNama_role(nama_role);
+        roleLoginService.SaveOrUpdate(roleLogin);
+        return true;
+    }
+    @RequestMapping(value = "/updatetrolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean updateRoleLogin(@RequestParam("id")long id,@RequestParam("nama_role")String nama_role){
+        RoleLogin roleLogin =roleLoginService.getById(id);
+        roleLogin.setId(id);
+        roleLogin.setNama_role(nama_role);
+        roleLoginService.SaveOrUpdate(roleLogin);
+        return true;
+    }
+    @RequestMapping(value = "/deleterolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean updateRoleLogin(@RequestParam("id")long id){
+        RoleLogin roleLogin =roleLoginService.getById(id);
+        roleLoginService.deleteRoleLogin(roleLogin);
+        return true;
+    }
+    //=================================================MasterKaryawan==========================================
 }

@@ -29,7 +29,7 @@ public class Karyawan implements Serializable {
     private Venue venue;
     @OneToOne(mappedBy = "karyawan")
     private DataLogin dataLogin;
-    @OneToOne(mappedBy = "karyawan")
+    @ManyToOne
     private AkunBank akunBank;
     @ManyToOne
     private Jabatan jabatan;
