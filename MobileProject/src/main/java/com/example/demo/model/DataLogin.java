@@ -17,7 +17,7 @@ public class DataLogin implements Serializable {
     private List<Absen> absens;
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String password;

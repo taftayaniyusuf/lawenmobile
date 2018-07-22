@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.DataLoginDao;
 import com.example.demo.model.DataLogin;
+import com.example.demo.model.Karyawan;
 import com.example.demo.repository.DataLoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,9 @@ public class DataLoginService implements DataLoginDao {
     @Override
     public void deleteDataLogin(DataLogin a) {
         dataLoginRepository.delete(a);
+    }
+    public void getByKaryawan(Karyawan karyawan){
+        dataLoginRepository.getByKaryawan(karyawan);
     }
 }
 
