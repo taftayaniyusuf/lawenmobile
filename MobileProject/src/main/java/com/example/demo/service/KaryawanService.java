@@ -27,8 +27,9 @@ public class KaryawanService implements KaryawanDao {
     }
 
     @Override
-    public void SaveOrUpdate(Karyawan a) {
-        karyawanRepository.save(a);
+    public Karyawan SaveOrUpdate(Karyawan k) {
+        karyawanRepository.save(k);
+        return k;
     }
 
     @Override
