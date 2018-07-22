@@ -27,10 +27,10 @@ public class CheckinController {
 	 
 	 //Insert Masuk
 	 @RequestMapping(value = "/insertmasuk/",method = RequestMethod.POST,headers="Accept=application/json")
-	    public List<Masuk> insertMasuk(@RequestParam(value = "jam_masuk;",required = false) Time jam_masuk,
-	                                      @RequestParam (value = "lattitude_masuk;", required = false) Float lattitude_masuk,
-	                                     @RequestParam(value = "longitude_masuk;", required = false) Float longitude_masuk,
-	                                     @RequestParam(value = "status;", required = false) Boolean status
+	    public List<Masuk> insertMasuk(@RequestParam(value = "jam_masuk",required = false) Time jam_masuk,
+	                                      @RequestParam (value = "lattitude_masuk", required = false) Float lattitude_masuk,
+	                                     @RequestParam(value = "longitude_masuk", required = false) Float longitude_masuk,
+	                                     @RequestParam(value = "status", required = false) Boolean status
 	                                    
 	    ){
 		 	Masuk masuk = new Masuk();
@@ -44,11 +44,11 @@ public class CheckinController {
 	    }
 	 //Update Masuk
 	 @RequestMapping(value = "/updatemasuk/",method = RequestMethod.POST,headers="Accept=application/json")
-	    public List<Masuk> updatePengingat(@RequestParam(value = "id;",required = false)  Long id,
-									    		@RequestParam(value = "jam_masuk;",required = false) Time jam_masuk,
-								                @RequestParam (value = "lattitude_masuk;", required = false) Float lattitude_masuk,
-								               @RequestParam(value = "longitude_masuk;", required = false) Float longitude_masuk,
-								               @RequestParam(value = "status;", required = false) Boolean status
+	    public List<Masuk> updatePengingat(@RequestParam(value = "id",required = false)  Long id,
+									    		@RequestParam(value = "jam_masuk",required = false) Time jam_masuk,
+								                @RequestParam (value = "lattitude_masuk", required = false) Float lattitude_masuk,
+								               @RequestParam(value = "longitude_masuk", required = false) Float longitude_masuk,
+								               @RequestParam(value = "status", required = false) Boolean status
 	    )throws ParseException {
 		 	Masuk masuk = masukService.getById(id);
 		 	
@@ -62,7 +62,7 @@ public class CheckinController {
 	 
 	 //Delete Masuk
 	 @RequestMapping(value = "/deletemasuk/{id}",method = RequestMethod.POST,headers="Accept=application/json")
-	    public List<Masuk> deleteMasuk(@RequestParam(value = "id;",required = false)  Long id)throws ParseException {
+	    public List<Masuk> deleteMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		 Masuk masuk = masukService.getById(id);
 
 		 	masukService.deleteMasuk(masuk);
