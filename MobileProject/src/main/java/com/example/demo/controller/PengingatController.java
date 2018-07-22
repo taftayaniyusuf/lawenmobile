@@ -26,9 +26,9 @@ public class PengingatController {
 	 
 	 //Insert Pengingat
 	 @RequestMapping(value = "/insertpengingat/",method = RequestMethod.POST,headers="Accept=application/json")
-	    public List<Pengingat> insertPengingat(@RequestParam(value = "nama_pengingat;",required = false) String nama_pengingat,
-	                                      @RequestParam (value = "waktu_pengingat;", required = false) Time waktu_pengingat,
-	                                     @RequestParam(value = "deskripsi_pengingat;", required = false) String deskripsi_pengingat
+	    public List<Pengingat> insertPengingat(@RequestParam(value = "nama_pengingat",required = false) String nama_pengingat,
+	                                      @RequestParam (value = "waktu_pengingat", required = false) Time waktu_pengingat,
+	                                     @RequestParam(value = "deskripsi_pengingat", required = false) String deskripsi_pengingat
 	                                    
 	    ){
 	        Pengingat pengingat = new Pengingat();
@@ -42,10 +42,10 @@ public class PengingatController {
 	 
 	 //Update Pengingat
 	 @RequestMapping(value = "/updatepengingat/",method = RequestMethod.POST,headers="Accept=application/json")
-	    public List<Pengingat> updatePengingat(@RequestParam(value = "id;",required = false)  Long id,
-							    		@RequestParam(value = "nama_pengingat;",required = false) String nama_pengingat,
-						                @RequestParam (value = "waktu_pengingat;", required = false) Time waktu_pengingat,
-						               @RequestParam(value = "deskripsi_pengingat;", required = false) String deskripsi_pengingat
+	    public List<Pengingat> updatePengingat(@RequestParam(value = "id",required = false)  Long id,
+							    		@RequestParam(value = "nama_pengingat",required = false) String nama_pengingat,
+						                @RequestParam (value = "waktu_pengingat", required = false) Time waktu_pengingat,
+						               @RequestParam(value = "deskripsi_pengingat", required = false) String deskripsi_pengingat
 	    )throws ParseException {
 		 	Pengingat pengingat = pengingatService.getById(id);
 		 	
@@ -58,7 +58,7 @@ public class PengingatController {
 	 
 	 //Delete Pengingat
 	 @RequestMapping(value = "/deletepengingat/{id}",method = RequestMethod.POST,headers="Accept=application/json")
-	    public List<Pengingat> deletePengingat(@RequestParam(value = "id;",required = false)  Long id)throws ParseException {
+	    public List<Pengingat> deletePengingat(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		 Pengingat pengingat = pengingatService.getById(id);
 
 		 	pengingatService.deletePengingat(pengingat);
