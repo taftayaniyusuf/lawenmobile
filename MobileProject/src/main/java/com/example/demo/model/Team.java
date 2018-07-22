@@ -23,7 +23,7 @@ public class Team implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nama_teamS;
+    private String nama_team;
 
     public Long getId() {
         return id;
@@ -79,18 +79,16 @@ public class Team implements Serializable {
         return serialVersionUID;
     }
 
-    /**
-     * @return the nama_teamS
-     */
-    public String getNama_teamS() {
-        return nama_teamS;
+    public String getNama_team() {
+        return nama_team;
+    }
+
+    public void setNama_team(String nama_team) {
+        this.nama_team = nama_team;
     }
 
     /**
-     * @param nama_teamS the nama_teamS to set
+     * @return the nama_teamS
      */
-    public void setNama_teamS(String nama_teamS) {
-        this.nama_teamS = nama_teamS;
-    }
 
 }

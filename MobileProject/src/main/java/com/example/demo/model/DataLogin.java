@@ -2,15 +2,10 @@ package com.example.demo.model;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  *
@@ -18,7 +13,8 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class DataLogin implements Serializable {
-
+    @OneToMany(mappedBy = "dataLogin")
+    private List<Absen> absens;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,10 +23,9 @@ public class DataLogin implements Serializable {
     private String password;
     @OneToOne
     private Karyawan karyawan;
-    @OneToOne(mappedBy = "dataLogin")
-    private RoleLogin roleLogin;
     @ManyToOne
-    private Absen absen;
+    private RoleLogin roleLogin;
+
 
     public DataLogin() {
     }
@@ -57,7 +52,7 @@ public class DataLogin implements Serializable {
             return false;
         }
         DataLogin other = (DataLogin) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -131,4 +126,12 @@ public class DataLogin implements Serializable {
         this.roleLogin = roleLogin;
     }
 
+
+    public List<Absen> getAbsens() {
+        return absens;
+    }
+
+    public void setAbsens(List<Absen> absens) {
+        this.absens = absens;
+    }
 }

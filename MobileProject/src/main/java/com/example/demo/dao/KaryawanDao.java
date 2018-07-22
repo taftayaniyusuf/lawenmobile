@@ -8,7 +8,7 @@ import java.util.List;
 public interface KaryawanDao  {
     public List<Karyawan> getAllKaryawan();
     public Karyawan getById(long id);
-    public void SaveOrUpdate(Karyawan a);
+    public Karyawan SaveOrUpdate(Karyawan a);
     public void deleteKaryawan(long id);
     public void deleteKaryawan(Karyawan a);
 }

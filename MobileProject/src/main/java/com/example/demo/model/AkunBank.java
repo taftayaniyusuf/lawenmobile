@@ -1,11 +1,8 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import java.util.List;
+import javax.persistence.*;
 
 /**
  *
@@ -19,8 +16,8 @@ public class AkunBank implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nama_bank;
-    @OneToOne
-    private Karyawan karyawan;
+    @OneToMany(mappedBy = "akunBank")
+    private List<Karyawan> karyawans;
 
     public Long getId() {
         return id;
@@ -76,18 +73,17 @@ public class AkunBank implements Serializable {
         this.nama_bank = nama_bank;
     }
 
-    /**
-     * @return the karyawan
-     */
-    public Karyawan getKaryawan() {
-        return karyawan;
+    public List<Karyawan> getKaryawans() {
+        return karyawans;
+    }
+
+    public void setKaryawans(List<Karyawan> karyawans) {
+        this.karyawans = karyawans;
     }
 
     /**
-     * @param karyawan the karyawan to set
+     * @return the karyawan
      */
-    public void setKaryawan(Karyawan karyawan) {
-        this.karyawan = karyawan;
-    }
+
 
 }
