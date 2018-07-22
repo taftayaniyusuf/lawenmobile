@@ -204,7 +204,7 @@ public class KaryawanController {
         dl.setRoleLogin(roleLoginService.getById(idrolelogin));
         dataLoginService.SaveOrUpdate(dl);
     }
-    @RequestMapping(value = "/insertkaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
+    @RequestMapping(value = "/updatekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public void updatetKaryawan(@ModelAttribute("DataLogin") DataLogin dl,@ModelAttribute("Karayawan")Karyawan k,
                                @RequestParam("first_name")String first_name,@RequestParam("last_name")String last_name,
                                @RequestParam("kode_karyawan")String kode_karyawan,@RequestParam("no_rekening")String no_rekening,
