@@ -26,7 +26,7 @@ public class KaryawanController {
     KaryawanService karyawanService;
     @Autowired
     DataLoginService dataLoginService;
- 
+
     @RequestMapping(value = "/insertkaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public void insertKaryawan(@ModelAttribute("DataLogin") DataLogin dl,@ModelAttribute("Karayawan")Karyawan k,
                                   @RequestParam("first_name")String first_name,@RequestParam("last_name")String last_name,
