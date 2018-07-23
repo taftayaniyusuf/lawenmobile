@@ -13,9 +13,8 @@ public class AkunBankController {
     @Autowired
     AkunBankService akunBankService;
     @RequestMapping(value = "/insertakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean insertAkunBank(@RequestParam("id")long id, @RequestParam("nama_bank")String nama_bank){
+    public boolean insertAkunBank(@RequestParam("nama_bank")String nama_bank){
         AkunBank akunBank =  new AkunBank();
-        akunBank.setId(id);
         akunBank.setNama_bank(nama_bank);
         akunBankService.SaveOrUpdate(akunBank);
         return true;

@@ -75,11 +75,22 @@ public class KaryawanController {
         karyawan.setTipeKaryawan(tipeKaryawanService.getById(idtipekarya));
         karyawan.setVenue(venueService.getById(idvenue));
         k = karyawanService.SaveOrUpdate(karyawan);
+        dataLoginService.getByKaryawan(k);
         dl.setKaryawan(k);
         dl.setEmail(email);
         dl.setPassword(password);
         dl.setRoleLogin(roleLoginService.getById(idrolelogin));
         dataLoginService.SaveOrUpdate(dl);
     }
+    @RequestMapping(value = "/deletekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean deleteKaryawan(@RequestParam("id")long id,@ModelAttribute("Karyawan") Karyawan k){
+        k = karyawanService.getById(id);
+        DataLogin dl = dataLoginService.getByKaryawan(k);
+        dataLoginService.deleteDataLogin(dl);
+        karyawanService.deleteKaryawan(id);
+    return true;
+    }
 
 }
+
+

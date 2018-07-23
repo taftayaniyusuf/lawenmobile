@@ -24,8 +24,8 @@ public class MasukTambahan implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true, nullable = false)
-    private Long id;
+    @Column(name = "id_masuk_tambahan", unique = true, nullable = false)
+    private Long id_masuk_tambahan;
     @Column(name = "idabsen")
     private Long idabsen;
     @Column(name = "jam_masuk_tambahan")
@@ -38,17 +38,17 @@ public class MasukTambahan implements Serializable {
     private Absen absen;
 
     public Long getId() {
-        return id;
+        return id_masuk_tambahan;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long id_masuk_tambahan) {
+        this.id_masuk_tambahan = id_masuk_tambahan;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (id_masuk_tambahan != null ? id_masuk_tambahan.hashCode() : 0);
         return hash;
     }
 
@@ -59,7 +59,7 @@ public class MasukTambahan implements Serializable {
             return false;
         }
         MasukTambahan other = (MasukTambahan) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id_masuk_tambahan == null && other.id_masuk_tambahan != null) || (this.id_masuk_tambahan != null && !this.id_masuk_tambahan.equals(other.id_masuk_tambahan))) {
             return false;
         }
         return true;
@@ -67,7 +67,7 @@ public class MasukTambahan implements Serializable {
 
     @Override
     public String toString() {
-        return "model.MasukTambahan[ id=" + id + " ]";
+        return "model.MasukTambahan[ id=" + id_masuk_tambahan + " ]";
     }
 
     /**

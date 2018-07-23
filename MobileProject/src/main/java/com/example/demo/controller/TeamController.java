@@ -13,9 +13,8 @@ public class TeamController {
     @Autowired
     TeamServices teamServices;
     @RequestMapping(value = "/insertteam",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean insertteam(@RequestParam("id")long id, @RequestParam("nama_team") String nama_team){
+    public boolean insertteam(@RequestParam("nama_team") String nama_team){
         Team team = new Team();
-        team.setId(id);
         team.setNama_team(nama_team);
         teamServices.SaveOrUpdate(team);
         return true;
