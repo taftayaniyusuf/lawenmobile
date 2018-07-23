@@ -16,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -31,8 +30,8 @@ public class Absen extends Additional implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_absen", unique = true, nullable = false)
-    private Long id_absen;
+    @Column(name = "id", unique = true, nullable = false)
+    private Long id;
     @Column(name = "tanggal")
     private Date tanggal;
     @Column(name = "keterlambatan")
@@ -41,25 +40,25 @@ public class Absen extends Additional implements Serializable {
     private Time total_jam_kerja;
     @Column(name = "foto_path")
     private String foto_path;
-    @OneToOne
+    @ManyToOne
     private Masuk masuk;
-    @OneToOne
+    @ManyToOne
     private Pulang pulang;
-    @OneToOne
+	@ManyToOne
 	private DataLogin dataLogin;
-
+    
     public Long getId() {
-        return id_absen;
+        return id;
     }
 
-    public void setId(Long id_absen) {
-        this.id_absen = id_absen;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id_absen != null ? id_absen.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -70,7 +69,7 @@ public class Absen extends Additional implements Serializable {
             return false;
         }
         Absen other = (Absen) object;
-        if ((this.id_absen == null && other.id_absen != null) || (this.id_absen != null && !this.id_absen.equals(other.id_absen))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -78,7 +77,7 @@ public class Absen extends Additional implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Absen[ id_absen=" + id_absen + " ]";
+        return "model.Absen[ id=" + id + " ]";
     }
 
     /**

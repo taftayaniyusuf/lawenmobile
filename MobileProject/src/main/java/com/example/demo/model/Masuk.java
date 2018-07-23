@@ -22,8 +22,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Masuk implements Serializable {
 
-//    @OneToMany(mappedBy = "masuk")
-//    private List<Absen> absen;
+    @OneToMany(mappedBy = "masuk")
+    private List<Absen> absen;
 
     private static final long serialVersionUID = 1L;
     @Id

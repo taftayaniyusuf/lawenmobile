@@ -26,8 +26,6 @@ public class MasukTambahan implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_masuk_tambahan", unique = true, nullable = false)
     private Long id_masuk_tambahan;
-    @Column(name = "idabsen")
-    private Long idabsen;
     @Column(name = "jam_masuk_tambahan")
     private Time jam_masuk_tambahan;
     @Column(name = "latitude_masuk_tambahan")
@@ -68,20 +66,6 @@ public class MasukTambahan implements Serializable {
     @Override
     public String toString() {
         return "model.MasukTambahan[ id=" + id_masuk_tambahan + " ]";
-    }
-
-    /**
-     * @return the idabsen
-     */
-    public Long getIdabsen() {
-        return idabsen;
-    }
-
-    /**
-     * @param idabsen the idabsen to set
-     */
-    public void setIdabsen(Long idabsen) {
-        this.idabsen = idabsen;
     }
 
     /**
