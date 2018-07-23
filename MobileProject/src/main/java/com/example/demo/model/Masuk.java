@@ -22,8 +22,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Masuk implements Serializable {
 
-    @OneToMany(mappedBy = "masuk")
-    private List<Absen> absen;
+//    @OneToMany(mappedBy = "masuk")
+//    private List<Absen> absen;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -72,19 +72,19 @@ public class Masuk implements Serializable {
         return "model.Masuk[ id=" + id + " ]";
     }
 
-    /**
-     * @return the absen
-     */
-    public List<Absen> getAbsen() {
-        return absen;
-    }
-
-    /**
-     * @param absen the absen to set
-     */
-    public void setAbsen(List<Absen> absen) {
-        this.absen = absen;
-    }
+//    /**
+//     * @return the absen
+//     */
+//    public List<Absen> getAbsen() {
+//        return absen;
+//    }
+//
+//    /**
+//     * @param absen the absen to set
+//     */
+//    public void setAbsen(List<Absen> absen) {
+//        this.absen = absen;
+//    }
 
     /**
      * @return the lattitude_masuk

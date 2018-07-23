@@ -1,0 +1,71 @@
+package com.example.demo.controller;
+
+import java.sql.Time;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Pulang;
+import com.example.demo.service.PulangService;
+
+import de.odysseus.el.tree.impl.Parser.ParseException;
+@RestController
+public class CheckoutController {
+	@Autowired
+	 PulangService pulangService;
+	
+	 //Select All Pulang
+	 @RequestMapping(value = "/pulang",method = RequestMethod.POST)
+	 public List<Pulang> pulangList(){
+	     return pulangService.getAllPulang();
+	 }
+	 
+	 //Insert Pulang
+	 @RequestMapping(value = "/insertpulang/",method = RequestMethod.POST,headers="Accept=application/json")
+	    public boolean insertPulang(@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Time jam_pulang,
+	                                      @RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
+	                                     @RequestParam(value = "longitude_pulang", required = false) Float longitude_pulang,
+	                                     @RequestParam(value = "status", required = false) Boolean status
+	                                    
+	    ){
+		 	Pulang pulang = new Pulang();
+
+		 	pulang.setJam_pulang(jam_pulang);
+		 	pulang.setLatitude_pulang(lattitude_pulang);
+		 	pulang.setLongitude_pulang(longitude_pulang);
+		 	pulang.setStatus(status);
+		 	pulangService.SaveOrUpdate(pulang);
+	        return true;
+	    }
+	 //Update Pulang
+	 @RequestMapping(value = "/updatepulang/",method = RequestMethod.POST,headers="Accept=application/json")
+	    public boolean updatePulang(@RequestParam(value = "id",required = false)  Long id,
+									    		@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Time jam_pulang,
+								                @RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
+								               @RequestParam(value = "longitude_pulang", required = false) Float longitude_pulang,
+								               @RequestParam(value = "status", required = false) Boolean status
+	    )throws ParseException {
+		 	Pulang pulang = pulangService.getById(id);
+
+		 	pulang.setJam_pulang(jam_pulang);
+		 	pulang.setLatitude_pulang(lattitude_pulang);
+		 	pulang.setLongitude_pulang(longitude_pulang);
+		 	pulang.setStatus(status);
+		 	pulangService.SaveOrUpdate(pulang);
+		 	return true;
+	    }
+	 
+	 //Delete Pulang
+	 @RequestMapping(value = "/deletepulang/",method = RequestMethod.POST,headers="Accept=application/json")
+	    public boolean deletePulang(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
+		 Pulang pulang = pulangService.getById(id);
+
+		 	pulangService.deletePulang(id);
+		 	 return true;
+	    }
+}

@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -30,18 +31,8 @@ public class Absen extends Additional implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true, nullable = false)
-    private Long id;
-    @Column(name = "idmasuk")
-    private Long idmasuk;
-    @Column(name = "idpulang")
-    private Long idpulang;
-    @Column(name = "idkaryawan")
-    private Long idkaryawan;
-    @Column(name = "idrole")
-    private Long idrole;
-    @Column(name = "idlogin")
-    private Long idlogin;
+    @Column(name = "id_absen", unique = true, nullable = false)
+    private Long id_absen;
     @Column(name = "tanggal")
     private Date tanggal;
     @Column(name = "keterlambatan")
@@ -50,25 +41,25 @@ public class Absen extends Additional implements Serializable {
     private Time total_jam_kerja;
     @Column(name = "foto_path")
     private String foto_path;
-    @ManyToOne
+    @OneToOne
     private Masuk masuk;
-    @ManyToOne
+    @OneToOne
     private Pulang pulang;
-	@ManyToOne
+    @OneToOne
 	private DataLogin dataLogin;
 
     public Long getId() {
-        return id;
+        return id_absen;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long id_absen) {
+        this.id_absen = id_absen;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (id_absen != null ? id_absen.hashCode() : 0);
         return hash;
     }
 
@@ -79,7 +70,7 @@ public class Absen extends Additional implements Serializable {
             return false;
         }
         Absen other = (Absen) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id_absen == null && other.id_absen != null) || (this.id_absen != null && !this.id_absen.equals(other.id_absen))) {
             return false;
         }
         return true;
@@ -87,7 +78,7 @@ public class Absen extends Additional implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Absen[ id=" + id + " ]";
+        return "model.Absen[ id_absen=" + id_absen + " ]";
     }
 
     /**
@@ -102,76 +93,6 @@ public class Absen extends Additional implements Serializable {
      */
     public void setMasukTambahan(List<MasukTambahan> masukTambahan) {
         this.masukTambahan = masukTambahan;
-    }
-
-    /**
-     * @return the idmasuk
-     */
-    public Long getIdmasuk() {
-        return idmasuk;
-    }
-
-    /**
-     * @param idmasuk the idmasuk to set
-     */
-    public void setIdmasuk(Long idmasuk) {
-        this.idmasuk = idmasuk;
-    }
-
-    /**
-     * @return the idpulang
-     */
-    public Long getIdpulang() {
-        return idpulang;
-    }
-
-    /**
-     * @param idpulang the idpulang to set
-     */
-    public void setIdpulang(Long idpulang) {
-        this.idpulang = idpulang;
-    }
-
-    /**
-     * @return the idkaryawan
-     */
-    public Long getIdkaryawan() {
-        return idkaryawan;
-    }
-
-    /**
-     * @param idkaryawan the idkaryawan to set
-     */
-    public void setIdkaryawan(Long idkaryawan) {
-        this.idkaryawan = idkaryawan;
-    }
-
-    /**
-     * @return the idrole
-     */
-    public Long getIdrole() {
-        return idrole;
-    }
-
-    /**
-     * @param idrole the idrole to set
-     */
-    public void setIdrole(Long idrole) {
-        this.idrole = idrole;
-    }
-
-    /**
-     * @return the idlogin
-     */
-    public Long getIdlogin() {
-        return idlogin;
-    }
-
-    /**
-     * @param idlogin the idlogin to set
-     */
-    public void setIdlogin(Long idlogin) {
-        this.idlogin = idlogin;
     }
 
     /**
