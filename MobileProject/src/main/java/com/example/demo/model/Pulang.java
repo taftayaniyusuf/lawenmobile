@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  * @author lutfi
  */
 @Entity
-public class Pulang implements Serializable {
+public class Pulang extends Additional implements Serializable {
 
     @OneToMany(mappedBy = "pulang")
     private List<Absen> absen;
@@ -39,9 +39,16 @@ public class Pulang implements Serializable {
     private Float latitude_pulang;
     @Column(name = "longitude_pulang")
     private Float longitude_pulang;
-    @Column(name = "status")
-    private Boolean status;
-    
+    @Column(name = "status_fraud")
+    private Boolean status_fraud;
+    public Pulang(){
+        this.setStatus("Active");
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public Long getId() {
         return id;
     }
@@ -53,7 +60,7 @@ public class Pulang implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -64,7 +71,7 @@ public class Pulang implements Serializable {
             return false;
         }
         Pulang other = (Pulang) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -72,7 +79,7 @@ public class Pulang implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Pulang[ id=" + id + " ]";
+        return "model.Pulang[ id=" + getId() + " ]";
     }
 
     /**
@@ -117,19 +124,6 @@ public class Pulang implements Serializable {
         this.longitude_pulang = longitude_pulang;
     }
 
-    /**
-     * @return the status
-     */
-    public Boolean getStatus() {
-        return status;
-    }
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
 
     /**
      * @return the jam_pulang
@@ -144,5 +138,12 @@ public class Pulang implements Serializable {
     public void setJam_pulang(Date jam_pulang) {
         this.jam_pulang = jam_pulang;
     }
-    
+
+    public Boolean getStatus_fraud() {
+        return status_fraud;
+    }
+
+    public void setStatus_fraud(Boolean status_fraud) {
+        this.status_fraud = status_fraud;
+    }
 }

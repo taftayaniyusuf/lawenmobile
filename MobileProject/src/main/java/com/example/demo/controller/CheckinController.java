@@ -39,7 +39,7 @@ public class CheckinController {
 		 	masuk.setJam_masuk(jam_masuk);
 		 	masuk.setLattitude_masuk(lattitude_masuk);
 		 	masuk.setLongitude_masuk(longitude_masuk);
-		 	masuk.setStatus(status);
+		 	masuk.setStatus_fraud(status);
 		 	masukService.SaveOrUpdate(masuk);
 	        return true;
 	    }
@@ -56,7 +56,7 @@ public class CheckinController {
 		 	masuk.setJam_masuk(jam_masuk);
 		 	masuk.setLattitude_masuk(lattitude_masuk);
 		 	masuk.setLongitude_masuk(longitude_masuk);
-		 	masuk.setStatus(status);
+		 	masuk.setStatus_fraud(status);
 		 	masukService.SaveOrUpdate(masuk);
 		 	return true;
 	    }

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
  * @author lutfi
  */
 @Entity
-public class Pengingat implements Serializable {
+public class Pengingat extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,7 +34,11 @@ public class Pengingat implements Serializable {
     private Date waktu_pengingat;
     @Column(name = "deskripsi_pengingat")
     private String deskripsi_pengingat;
-    
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public Long getId() {
         return id;
     }
@@ -42,11 +46,13 @@ public class Pengingat implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    public Pengingat(){
+        this.setStatus("Active");
+    }
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -57,7 +63,7 @@ public class Pengingat implements Serializable {
             return false;
         }
         Pengingat other = (Pengingat) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -65,7 +71,7 @@ public class Pengingat implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Pengingat[ id=" + id + " ]";
+        return "model.Pengingat[ id=" + getId() + " ]";
     }
 
     /**

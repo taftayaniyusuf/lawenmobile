@@ -35,7 +35,7 @@ public class Venue extends Additional implements Serializable {
         this.setNama_venue(nama_venue);
         this.setDeskripsi_venue(deskripsi_venue);
         this.setAlamat_venue(alamat_venue);
-
+        this.setStatus("Active");
     }
 
     public Venue(Long id, String nama_venue, String deskripsi_venue, String alamat_venue) {

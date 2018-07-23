@@ -9,21 +9,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ExpenseKategori implements Serializable{
+public class ExpenseKategori extends Additional implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idexpense")
+	private
 	Long id;
 	@Column(name = "nama_expense", length = 35, insertable = true, updatable = true)
+	private
 	String namaExpense;
 	@Column(name = "budget_maks", insertable = true, updatable = true)
+	private
 	Integer budgetMaks;
 	@Column(name = "maks_transaksi", insertable = true, updatable = true)
+	private
 	Integer maksTransaksi;
-	
+	public ExpenseKategori(){
+		this.setStatus("Active");
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -49,6 +60,6 @@ public class ExpenseKategori implements Serializable{
 		this.maksTransaksi = maksTransaksi;
 	}
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+		return getSerialVersionUID();
 	}
 }

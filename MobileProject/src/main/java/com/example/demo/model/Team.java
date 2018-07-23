@@ -24,7 +24,9 @@ public class Team extends Additional implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nama_team;
-
+    public Team(){
+        this.setStatus("Active");
+    }
     public Long getId() {
         return id;
     }
@@ -47,7 +49,7 @@ public class Team extends Additional implements Serializable {
             return false;
         }
         Team other = (Team) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;

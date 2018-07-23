@@ -21,6 +21,9 @@ public class RoleLogin extends Additional implements Serializable {
     private Long id;
     private String nama_role;
 
+    public RoleLogin(){
+        this.setStatus("Active");
+    }
 
     public Long getId() {
         return id;
@@ -44,7 +47,7 @@ public class RoleLogin extends Additional implements Serializable {
             return false;
         }
         RoleLogin other = (RoleLogin) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;

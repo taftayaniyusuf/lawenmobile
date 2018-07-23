@@ -38,7 +38,7 @@ public class CheckoutController {
 		 	pulang.setJam_pulang(jam_pulang);
 		 	pulang.setLatitude_pulang(lattitude_pulang);
 		 	pulang.setLongitude_pulang(longitude_pulang);
-		 	pulang.setStatus(status);
+		 	pulang.setStatus_fraud(status);
 		 	pulangService.SaveOrUpdate(pulang);
 	        return true;
 	    }
@@ -55,7 +55,7 @@ public class CheckoutController {
 		 	pulang.setJam_pulang(jam_pulang);
 		 	pulang.setLatitude_pulang(lattitude_pulang);
 		 	pulang.setLongitude_pulang(longitude_pulang);
-		 	pulang.setStatus(status);
+		 	pulang.setStatus_fraud(status);
 		 	pulangService.SaveOrUpdate(pulang);
 		 	return true;
 	    }

@@ -17,55 +17,80 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PengajuanDana")
-public class PengajuanDana implements Serializable{
+public class PengajuanDana extends Additional implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idpengajuan")
+	private
 	Long id;
 	@Column(name = "title_pengajuan", length = 35, insertable = true, updatable = true)
+	private
 	String titlePengajuan;
 	@Column(name = "amount", insertable = true, updatable = true)
+	private
 	Integer amount;
 	@Column(name = "date_from", insertable = true, updatable = true)
+	private
 	Date dateFrom;
 	@Column(name = "date_to", insertable = true, updatable = true)
+	private
 	Date dateTo;
 	@Column(name = "lattitide", insertable = true, updatable = false)
+	private
 	Float lattitude;
 	@Column(name = "longitude", insertable = true, updatable = false)
+	private
 	Float longitude;
 	@Column(name = "foto", length = 100, insertable = true, updatable = true)
+	private
 	String foto;
 	@Column(name = "deskripsi_pengajuan", length = 200, insertable = true, updatable = false)
+	private
 	String deskripsiPengajuan;
 	@Column(name = "tipe_pembayaran", length = 15, insertable = true, updatable = true)
+	private
 	String tipePembayaran;
 	@Column(name = "update_by", length = 35, insertable = true, updatable = true)
+	private
 	String updateBy;
 	@Column(name = "update_date_pengajuan", insertable = true, updatable = true)
+	private
 	Date updateDatePengajuan;
 	@OneToMany(mappedBy="pengajuanDana")
+	private
 	List<Log> logs;
 	@OneToOne
 	@JoinColumn(name = "idtag", referencedColumnName = "idtag")
+	private
 	Tag tag;
 	@ManyToOne
 	@JoinColumn(name = "idkaryawan", referencedColumnName = "id")
+	private
 	Karyawan karyawan;
 	@OneToOne
 	@JoinColumn(name = "idexpense", referencedColumnName = "idexpense")
+	private
 	ExpenseKategori expense;
 	@ManyToOne
 	@JoinColumn(name = "idstatus", referencedColumnName = "idstatus")
-	Status status;
+	private
+	Status status_pengajuan;
 	@OneToOne
 	@JoinColumn(name = "idtipepengajuan", referencedColumnName = "idtipepengajuan")
+	private
 	TipePengajuan tipePengajuan;
 	
-	
+	public PengajuanDana(){
+		this.setStatus("Active");
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public Tag getTag() {
 		return tag;
 	}
@@ -84,12 +109,8 @@ public class PengajuanDana implements Serializable{
 	public void setExpense(ExpenseKategori expense) {
 		this.expense = expense;
 	}
-	public Status getStatus() {
-		return status;
-	}
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+
+
 	public TipePengajuan getTipePengajuan() {
 		return tipePengajuan;
 	}
@@ -169,9 +190,25 @@ public class PengajuanDana implements Serializable{
 		this.updateBy = updateBy;
 	}
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+		return getSerialVersionUID();
 	}
-	
-	
-	
+
+
+	public Date getUpdateDatePengajuan() {
+		return updateDatePengajuan;
+	}
+
+	public void setUpdateDatePengajuan(Date updateDatePengajuan) {
+		this.updateDatePengajuan = updateDatePengajuan;
+	}
+
+
+
+	public Status getStatus_pengajuan() {
+		return status_pengajuan;
+	}
+
+	public void setStatus_pengajuan(Status status_pengajuan) {
+		this.status_pengajuan = status_pengajuan;
+	}
 }

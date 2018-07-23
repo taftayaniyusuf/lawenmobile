@@ -5,19 +5,26 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Rule {
+public class Rule extends Additional {
 	
 	@Id
+	private
 	Long id;
 	@ManyToOne
+	private
 	TipePengajuan tipePengajuan;
 	@ManyToOne
-	Status status;
+	private
+	Status status_now;
 	@ManyToOne
+	private
 	Status nextStatus;
 	@ManyToOne
+	private
 	Karyawan nextBy;
-	
+	public Rule(){
+		this.setStatus("Active");
+	}
 	public Long getId() {
 		return id;
 	}
@@ -36,12 +43,6 @@ public class Rule {
 	public void setTipePengajuan(TipePengajuan tipePengajuan) {
 		this.tipePengajuan = tipePengajuan;
 	}
-	public Status getStatus() {
-		return status;
-	}
-	public void setStatus(Status status) {
-		this.status = status;
-	}
 	public Status getNextStatus() {
 		return nextStatus;
 	}
@@ -49,4 +50,11 @@ public class Rule {
 		this.nextStatus = nextStatus;
 	}
 
+	public Status getStatus_now() {
+		return status_now;
+	}
+
+	public void setStatus_now(Status status_now) {
+		this.status_now = status_now;
+	}
 }

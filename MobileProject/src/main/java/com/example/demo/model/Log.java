@@ -12,23 +12,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Log {
+public class Log extends Additional {
 
 	
 	@Id
 	@Column(name = "timestamp")
+	private
 	Date timestamp;
 	@Column(name = "update_by_histori", length = 35, insertable = true, updatable = false)
+	private
 	String updateByHistori;
 	@Column(name = "next_by", length = 35, insertable = true, updatable = false)
+	private
 	String nextBy;
 	@ManyToOne
 	@JoinColumn(name = "next_status", referencedColumnName = "idstatus")
+	private
 	Status nextStatus;
 	@ManyToOne
 	@JoinColumn(name = "idpengajuan", referencedColumnName = "idpengajuan")
+	private
 	PengajuanDana pengajuanDana;
-	
+	public Log(){
+		this.setStatus("Active");
+	}
 	public Date getTimestamp() {
 		return timestamp;
 	}

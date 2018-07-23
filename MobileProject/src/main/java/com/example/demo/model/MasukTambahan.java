@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  * @author lutfi
  */
 @Entity
-public class MasukTambahan implements Serializable {
+public class MasukTambahan extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,19 +38,26 @@ public class MasukTambahan implements Serializable {
     private Float longitude_masuk_tambahan;
     @ManyToOne
     private Absen absen;
+    public MasukTambahan(){
+        this.setStatus("Active");
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Long getId() {
-        return id_masuk_tambahan;
+        return getId_masuk_tambahan();
     }
 
     public void setId(Long id_masuk_tambahan) {
-        this.id_masuk_tambahan = id_masuk_tambahan;
+        this.setId_masuk_tambahan(id_masuk_tambahan);
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id_masuk_tambahan != null ? id_masuk_tambahan.hashCode() : 0);
+        hash += (getId_masuk_tambahan() != null ? getId_masuk_tambahan().hashCode() : 0);
         return hash;
     }
 
@@ -61,7 +68,7 @@ public class MasukTambahan implements Serializable {
             return false;
         }
         MasukTambahan other = (MasukTambahan) object;
-        if ((this.id_masuk_tambahan == null && other.id_masuk_tambahan != null) || (this.id_masuk_tambahan != null && !this.id_masuk_tambahan.equals(other.id_masuk_tambahan))) {
+        if ((this.getId_masuk_tambahan() == null && other.getId_masuk_tambahan() != null) || (this.getId_masuk_tambahan() != null && !this.getId_masuk_tambahan().equals(other.getId_masuk_tambahan()))) {
             return false;
         }
         return true;
@@ -69,7 +76,7 @@ public class MasukTambahan implements Serializable {
 
     @Override
     public String toString() {
-        return "model.MasukTambahan[ id=" + id_masuk_tambahan + " ]";
+        return "model.MasukTambahan[ id=" + getId_masuk_tambahan() + " ]";
     }
 
     /**
@@ -127,5 +134,12 @@ public class MasukTambahan implements Serializable {
     public void setAbsen(Absen absen) {
         this.absen = absen;
     }
-    
+
+    public Long getId_masuk_tambahan() {
+        return id_masuk_tambahan;
+    }
+
+    public void setId_masuk_tambahan(Long id_masuk_tambahan) {
+        this.id_masuk_tambahan = id_masuk_tambahan;
+    }
 }

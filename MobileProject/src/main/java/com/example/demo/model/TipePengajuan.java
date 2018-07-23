@@ -9,17 +9,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class TipePengajuan implements Serializable{
+public class TipePengajuan extends Additional implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idtipepengajuan")
+	private
 	Long id;
 	@Column(name = "jenis_pengajuan", length = 25, insertable = true, updatable = false)
+	private
 	String jenisPengajuan;
-	
+	public TipePengajuan(){
+		this.setStatus("Active");
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -33,6 +42,6 @@ public class TipePengajuan implements Serializable{
 		this.jenisPengajuan = jenisPengajuan;
 	}
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+		return getSerialVersionUID();
 	}
 }

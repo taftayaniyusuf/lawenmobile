@@ -11,13 +11,17 @@ import javax.persistence.Id;
  * @author lutfi
  */
 @Entity
-public class Approval implements Serializable {
+public class Approval extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String tipe_approval;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Long getId() {
         return id;
@@ -26,11 +30,13 @@ public class Approval implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    public Approval(){
+        this.setStatus("Active");
+    }
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -41,7 +47,7 @@ public class Approval implements Serializable {
             return false;
         }
         Approval other = (Approval) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -49,7 +55,7 @@ public class Approval implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Approval[ id=" + id + " ]";
+        return "model.Approval[ id=" + getId() + " ]";
     }
 
     /**

@@ -45,7 +45,7 @@ public class PengajuanDanaController {
 	// Buat pengajuan dana sebagai draft
 	@PostMapping(value="/draftpengajuan")
 	public boolean draftPengajuan(@ModelAttribute("pengajuandana") PengajuanDana pd) {
-		pd.setStatus(ss.getDraft());
+		pd.setStatus_pengajuan(ss.getDraft());
 		pds.savePengajuan(pd);
 		return true;
 	}
@@ -53,7 +53,7 @@ public class PengajuanDanaController {
 	// Buat pengajuan dana sebagai terkirim
 	@PostMapping(value="/sendpengajuan")
 	public boolean sendPengajuan(@ModelAttribute("pengajuandana") PengajuanDana pd, @ModelAttribute("log") Log l) {
-		pd.setStatus(ss.getSent());
+		pd.setStatus_pengajuan(ss.getSent());
 		pds.savePengajuan(pd);
 		ls.saveLog(l,pd);
 		return true;

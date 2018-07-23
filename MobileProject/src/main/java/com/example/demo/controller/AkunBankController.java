@@ -33,9 +33,9 @@ public class AkunBankController {
         akunBankService.deleteAkunBank(akunBank);
         return true;
     }
-    @RequestMapping(value = "/deleteakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
-    public String deleteakunbankdes(@RequestParam("id")long id){
-        AkunBank akunBank =akunBankService.getById(id);
-        akunBank.setStatus("Disable");
-    }
+//    @RequestMapping(value = "/deleteakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
+//    public String deleteakunbankdes(@RequestParam("id")long id){
+//        AkunBank akunBank =akunBankService.getById(id);
+//        akunBank.setStatus("Disable");
+//    }
 }

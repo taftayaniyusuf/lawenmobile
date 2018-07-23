@@ -18,7 +18,7 @@ import javax.persistence.Id;
  * @author lutfi
  */
 @Entity
-public class Libur implements Serializable {
+public class Libur extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,6 +32,14 @@ public class Libur implements Serializable {
     @Column(name = "deskripsi_libur")
     private String deskripsi_libur;
 
+    public  Libur(){
+        this.setStatus("Active");
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public Long getId() {
         return id;
     }
@@ -43,7 +51,7 @@ public class Libur implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -54,7 +62,7 @@ public class Libur implements Serializable {
             return false;
         }
         Libur other = (Libur) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -62,7 +70,7 @@ public class Libur implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Libur[ id=" + id + " ]";
+        return "model.Libur[ id=" + getId() + " ]";
     }
 
     /**
