@@ -2,11 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.model.*;
 import com.example.demo.service.*;
-import org.hibernate.boot.jaxb.hbm.spi.Adapter2;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
 public class KaryawanController {
