@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author rasyid
  */
 @Entity
-public class RoleLogin implements Serializable {
+public class RoleLogin extends Additional implements Serializable {
     @OneToMany(mappedBy = "roleLogin")
     private List<DataLogin> dataLogins;
 

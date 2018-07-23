@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,7 +13,7 @@ import javax.persistence.*;
  * @author rasyid
  */
 @Entity
-public class DataLogin implements Serializable {
+public class DataLogin extends Additional implements Serializable {
     @OneToMany(mappedBy = "dataLogin")
     private List<Absen> absens;
     private static final long serialVersionUID = 1L;
@@ -21,6 +22,7 @@ public class DataLogin implements Serializable {
     private Long id;
     private String email;
     private String password;
+    private Date lastLogin;
     @OneToOne
     private Karyawan karyawan;
     @ManyToOne
@@ -28,6 +30,7 @@ public class DataLogin implements Serializable {
 
 
     public DataLogin() {
+        this.setStatus("Active");
     }
 
     public Long getId() {
@@ -133,5 +136,13 @@ public class DataLogin implements Serializable {
 
     public void setAbsens(List<Absen> absens) {
         this.absens = absens;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 }

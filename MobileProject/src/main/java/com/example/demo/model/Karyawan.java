@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class Karyawan extends Additional implements Serializable {
     private String kode_karyawan;
     private String no_rekening;
     private String nama_rekening;
+    private Date join_date;
     @ManyToOne
     private Venue venue;
     @OneToOne(mappedBy = "karyawan")
@@ -39,19 +41,20 @@ public class Karyawan extends Additional implements Serializable {
     private TipeKaryawan tipeKaryawan;
 
     public Karyawan(Long id, String last_name, String first_name, String kode_karyawan, String no_rekening, String nama_rekening) {
-        this.id = id;
-        this.last_name = last_name;
-        this.first_name = first_name;
-        this.kode_karyawan = kode_karyawan;
-        this.no_rekening = no_rekening;
-        this.nama_rekening = nama_rekening;
+        this.setId(id);
+        this.setLast_name(last_name);
+        this.setFirst_name(first_name);
+        this.setKode_karyawan(kode_karyawan);
+        this.setNo_rekening(no_rekening);
+        this.setNama_rekening(nama_rekening);
+        this.setStatus("Active");
     }
 
     public Karyawan(Long id, String last_name, String first_name, String kode_karyawan) {
-        this.id = id;
-        this.last_name = last_name;
-        this.first_name = first_name;
-        this.kode_karyawan = kode_karyawan;
+        this.setId(id);
+        this.setLast_name(last_name);
+        this.setFirst_name(first_name);
+        this.setKode_karyawan(kode_karyawan);
     }
 
     @Override
@@ -60,8 +63,8 @@ public class Karyawan extends Additional implements Serializable {
     }
 
     public Karyawan(Long id, String last_name) {
-        this.id = id;
-        this.last_name = last_name;
+        this.setId(id);
+        this.setLast_name(last_name);
     }
 
     public Karyawan() {
@@ -93,7 +96,7 @@ public class Karyawan extends Additional implements Serializable {
             return false;
         }
         Karyawan other = (Karyawan) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -265,4 +268,11 @@ public class Karyawan extends Additional implements Serializable {
         this.tipeKaryawan = tipeKaryawan;
     }
 
+    public Date getJoin_date() {
+        return join_date;
+    }
+
+    public void setJoin_date(Date join_date) {
+        this.join_date = join_date;
+    }
 }
