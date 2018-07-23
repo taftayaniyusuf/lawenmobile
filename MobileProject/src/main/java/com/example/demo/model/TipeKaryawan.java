@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
  * @author rasyid
  */
 @Entity
-public class TipeKaryawan implements Serializable {
+public class TipeKaryawan extends Additional implements Serializable {
 
     @OneToMany(mappedBy = "tipeKaryawan")
     private List<Karyawan> karyawans;

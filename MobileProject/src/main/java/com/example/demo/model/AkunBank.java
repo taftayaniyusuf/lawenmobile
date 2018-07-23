@@ -9,7 +9,7 @@ import javax.persistence.*;
  * @author rasyid
  */
 @Entity
-public class AkunBank implements Serializable {
+public class AkunBank extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -18,6 +18,10 @@ public class AkunBank implements Serializable {
     private String nama_bank;
     @OneToMany(mappedBy = "akunBank")
     private List<Karyawan> karyawans;
+
+    public AkunBank(){
+        this.setStatus("Active");
+    }
 
     public Long getId() {
         return id;

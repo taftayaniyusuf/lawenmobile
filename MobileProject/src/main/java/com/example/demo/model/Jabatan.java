@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
  * @author rasyid
  */
 @Entity
-public class Jabatan implements Serializable {
+public class Jabatan extends Additional implements Serializable {
 
     @OneToMany(mappedBy = "jabatan")
     private List<Karyawan> karyawans;
@@ -32,7 +32,9 @@ public class Jabatan implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    public Jabatan(){
+        this.setStatus("Active");
+    }
     @Override
     public int hashCode() {
         int hash = 0;

@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
  * @author rasyid
  */
 @Entity
-public class Venue implements Serializable {
+public class Venue extends Additional implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
