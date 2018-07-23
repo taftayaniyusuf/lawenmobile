@@ -13,14 +13,12 @@ import com.example.demo.service.*;
 import de.odysseus.el.tree.impl.Parser.ParseException;
 
 import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 @RestController
 public class PengingatController {
 	 @Autowired
 	 PengingatService pengingatService;
-	 @Autowired
-	 LiburService liburService;
+
 	 
 //========================================== CRUD PENGINGAT=================================================
 	

@@ -6,7 +6,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -30,8 +32,9 @@ public class Masuk implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
+    @Temporal(TemporalType.TIME)
     @Column(name = "jam_masuk")
-    private Time jam_masuk;
+    private Date jam_masuk;
     @Column(name = "lattitude_masuk")
     private Float lattitude_masuk;
     @Column(name = "longitude_masuk")
@@ -131,14 +134,14 @@ public class Masuk implements Serializable {
     /**
      * @return the jam_masuk
      */
-    public Time getJam_masuk() {
+    public Date getJam_masuk() {
         return jam_masuk;
     }
 
     /**
      * @param jam_masuk the jam_masuk to set
      */
-    public void setJam_masuk(Time jam_masuk) {
+    public void setJam_masuk(Date jam_masuk) {
         this.jam_masuk = jam_masuk;
     }
     

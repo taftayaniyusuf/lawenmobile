@@ -6,7 +6,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -30,8 +32,9 @@ public class Pulang implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
+    @Temporal(TemporalType.TIME)
     @Column(name = "jam_pulang")
-    private Time jam_pulang;
+    private Date jam_pulang;
     @Column(name = "latitude_pulang")
     private Float latitude_pulang;
     @Column(name = "longitude_pulang")
@@ -131,14 +134,14 @@ public class Pulang implements Serializable {
     /**
      * @return the jam_pulang
      */
-    public Time getJam_pulang() {
+    public Date getJam_pulang() {
         return jam_pulang;
     }
 
     /**
      * @param jam_pulang the jam_pulang to set
      */
-    public void setJam_pulang(Time jam_pulang) {
+    public void setJam_pulang(Date jam_pulang) {
         this.jam_pulang = jam_pulang;
     }
     

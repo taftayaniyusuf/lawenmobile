@@ -6,13 +6,16 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -26,8 +29,9 @@ public class MasukTambahan implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_masuk_tambahan", unique = true, nullable = false)
     private Long id_masuk_tambahan;
+    @Temporal(TemporalType.TIME)
     @Column(name = "jam_masuk_tambahan")
-    private Time jam_masuk_tambahan;
+    private Date jam_masuk_tambahan;
     @Column(name = "latitude_masuk_tambahan")
     private Float latitude_masuk_tambahan;
     @Column(name = "longitude_masuk_tambahan")
@@ -71,14 +75,14 @@ public class MasukTambahan implements Serializable {
     /**
      * @return the jam_masuk_tambahan
      */
-    public Time getJam_masuk_tambahan() {
+    public Date getJam_masuk_tambahan() {
         return jam_masuk_tambahan;
     }
 
     /**
      * @param jam_masuk_tambahan the jam_masuk_tambahan to set
      */
-    public void setJam_masuk_tambahan(Time jam_masuk_tambahan) {
+    public void setJam_masuk_tambahan(Date jam_masuk_tambahan) {
         this.jam_masuk_tambahan = jam_masuk_tambahan;
     }
 

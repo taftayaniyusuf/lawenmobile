@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class CheckoutController {
 	 
 	 //Insert Pulang
 	 @RequestMapping(value = "/insertpulang/",method = RequestMethod.POST,headers="Accept=application/json")
-	    public boolean insertPulang(@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Time jam_pulang,
+	    public boolean insertPulang(@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Date jam_pulang,
 	                                      @RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
 	                                     @RequestParam(value = "longitude_pulang", required = false) Float longitude_pulang,
 	                                     @RequestParam(value = "status", required = false) Boolean status
@@ -45,7 +45,7 @@ public class CheckoutController {
 	 //Update Pulang
 	 @RequestMapping(value = "/updatepulang/",method = RequestMethod.POST,headers="Accept=application/json")
 	    public boolean updatePulang(@RequestParam(value = "id",required = false)  Long id,
-									    		@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Time jam_pulang,
+									    		@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Date jam_pulang,
 								                @RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
 								               @RequestParam(value = "longitude_pulang", required = false) Float longitude_pulang,
 								               @RequestParam(value = "status", required = false) Boolean status

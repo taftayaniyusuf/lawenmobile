@@ -6,11 +6,15 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -23,8 +27,12 @@ public class Pengingat implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "nama_pengingat")
     private String nama_pengingat;
-    private Time waktu_pengingat;
+    @Temporal(TemporalType.TIME)
+    @Column(name = "waktu_pengingat")
+    private Date waktu_pengingat;
+    @Column(name = "deskripsi_pengingat")
     private String deskripsi_pengingat;
     
     public Long getId() {
@@ -77,14 +85,14 @@ public class Pengingat implements Serializable {
     /**
      * @return the waktu_pengingat
      */
-    public Time getWaktu_pengingat() {
+    public Date getWaktu_pengingat() {
         return waktu_pengingat;
     }
 
     /**
      * @param waktu_pengingat the waktu_pengingat to set
      */
-    public void setWaktu_pengingat(Time waktu_pengingat) {
+    public void setWaktu_pengingat(Date waktu_pengingat) {
         this.waktu_pengingat = waktu_pengingat;
     }
 

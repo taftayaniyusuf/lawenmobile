@@ -6,7 +6,6 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -16,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -34,10 +35,12 @@ public class Absen extends Additional implements Serializable {
     private Long id;
     @Column(name = "tanggal")
     private Date tanggal;
+    @Temporal(TemporalType.TIME)
     @Column(name = "keterlambatan")
-    private Time keterlambatan;
+    private Date keterlambatan;
+    @Temporal(TemporalType.TIME)
     @Column(name = "total_jam_kerja")
-    private Time total_jam_kerja;
+    private Date total_jam_kerja;
     @Column(name = "foto_path")
     private String foto_path;
     @ManyToOne
@@ -111,28 +114,28 @@ public class Absen extends Additional implements Serializable {
     /**
      * @return the keterlambatan
      */
-    public Time getKeterlambatan() {
+    public Date getKeterlambatan() {
         return keterlambatan;
     }
 
     /**
      * @param keterlambatan the keterlambatan to set
      */
-    public void setKeterlambatan(Time keterlambatan) {
+    public void setKeterlambatan(Date keterlambatan) {
         this.keterlambatan = keterlambatan;
     }
 
     /**
      * @return the total_jam_kerja
      */
-    public Time getTotal_jam_kerja() {
+    public Date getTotal_jam_kerja() {
         return total_jam_kerja;
     }
 
     /**
      * @param total_jam_kerja the total_jam_kerja to set
      */
-    public void setTotal_jam_kerja(Time total_jam_kerja) {
+    public void setTotal_jam_kerja(Date total_jam_kerja) {
         this.total_jam_kerja = total_jam_kerja;
     }
 
