@@ -19,7 +19,7 @@ import com.example.demo.service.MasukTambahanService;
 import de.odysseus.el.tree.impl.Parser.ParseException;
 
 @RestController
-public class AbsenTambahanContoller {
+public class MasukTambahanContoller {
 	@Autowired
 	 MasukTambahanService masukTambahanService;
 	
