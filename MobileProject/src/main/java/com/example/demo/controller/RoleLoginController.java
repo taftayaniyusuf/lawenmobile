@@ -14,9 +14,8 @@ public class RoleLoginController {
     RoleLoginService roleLoginService;
 
     @RequestMapping(value = "/insertrolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean insertRoleLogin(@RequestParam("id")long id, @RequestParam("nama_role")String nama_role){
+    public boolean insertRoleLogin( @RequestParam("nama_role")String nama_role){
         RoleLogin roleLogin =new RoleLogin();
-        roleLogin.setId(id);
         roleLogin.setNama_role(nama_role);
         roleLoginService.SaveOrUpdate(roleLogin);
         return true;

@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +21,8 @@ import com.example.demo.service.TagService;
 
 @RestController
 public class TagController {
+
+   
 
 	@Autowired
 	TagService ts;
@@ -30,7 +36,7 @@ public class TagController {
 	// Mengambil semua tag
 	@GetMapping(value = "/tag")
 	public List<Tag> getAllTag(){
-		return ts.getAll();
+		return ts.getAllTag();
 	}
 	
 	// Update tag
@@ -49,4 +55,5 @@ public class TagController {
 		ts.deleteTag(t);
 		return true;
 	}
+
 }

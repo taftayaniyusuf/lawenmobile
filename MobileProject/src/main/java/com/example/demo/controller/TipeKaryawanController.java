@@ -14,9 +14,8 @@ public class TipeKaryawanController {
     @Autowired
     TipeKaryawanService tipeKaryawanService;
     @RequestMapping(value = "/inserttipekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean insertTipeKayawan(@RequestParam("id")long id, @RequestParam("nama_typekaryawan")String nama_typekaryawan){
+    public boolean insertTipeKayawan(@RequestParam("nama_typekaryawan")String nama_typekaryawan){
         TipeKaryawan tipeKaryawan = new TipeKaryawan();
-        tipeKaryawan.setId(id);
         tipeKaryawan.setNama_typekaryawan(nama_typekaryawan);
         tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
         return true;

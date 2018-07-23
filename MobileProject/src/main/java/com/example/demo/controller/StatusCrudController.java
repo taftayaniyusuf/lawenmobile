@@ -1,0 +1,38 @@
+package com.example.demo.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Status;
+import com.example.demo.service.StatusService;
+
+@RestController
+public class StatusCrudController {
+    @Autowired
+    StatusService statusService;
+    @RequestMapping(value = "/insertstatus",method = RequestMethod.POST,headers="Accept=application/json")
+    public boolean insertStatus(@RequestParam("nama_status") String nama_status){
+        Status status= new Status();
+        status.setNamaStatus(nama_status);
+        statusService.SaveOrUpdate(status);
+        return true;
+    }
+    @RequestMapping(value = "/updatestatus",method = RequestMethod.POST,headers="Accept=application/json")
+    public boolean updateStatus(@RequestParam("id")long id,@RequestParam("nama_status") String nama_status){
+        Status status= statusService.getById(id);
+        status.setId(id);
+        status.setNamaStatus(nama_status);
+        statusService.SaveOrUpdate(status);
+        return true;
+    }
+    @RequestMapping(value = "/deletestatus",method = RequestMethod.POST,headers="Accept=application/json")
+    public boolean updateStatus(@RequestParam("id")long id){
+        Status status= statusService.getById(id);
+        statusService.deleteStatus(status);
+        return true;
+    }
+}

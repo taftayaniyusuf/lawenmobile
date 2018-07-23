@@ -18,17 +18,27 @@ public class TagService implements TagDao{
 	@Autowired
 	TagRepository tr;
 	
+
+
 	@Override
+	public List<Tag> getAllTag() {
+		List<Tag> lt =new ArrayList<>();
+		tr.findAll().forEach(lt::add);
+		return lt;
+	}
+
+	@Override
+
+	public Tag getById(long id) {
+		// TODO Auto-generated method stub
+		return tr.findById(id).get();
+	}
+
 	public Tag getTag(Long id) {
 		return tr.getById(id);
 	}
 
-	@Override
-	public List<Tag> getAll() {
-		List<Tag> lt = new ArrayList<>();
-		tr.findAll().forEach(lt::add);
-		return lt;
-	}
+	
 	
 	public Tag saveTag(Tag t) {
 		return tr.save(t);
@@ -40,4 +50,17 @@ public class TagService implements TagDao{
 
 	
 
+	@Override
+	public void SaveOrUpdate(Tag a) {
+		// TODO Auto-generated method stub
+		tr.save(a);
+	}
+
+	@Override
+	public void deleteTag(long id) {
+		// TODO Auto-generated method stub
+		tr.deleteById(id);
+	}
+
+	
 }

@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DecimalFormat;
+
 @RestController
 public class VenueController {
     @Autowired
     VenueService venueService;
     @RequestMapping(value = "/insertvenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean insertVenue(@RequestParam("nama_venue") String nama_venue, @RequestParam("deskripsi_venue")String deskripsi_venue,
-                               @RequestParam("alamat_venue")String alamat_venue, @RequestParam("latitude_venue")Float latitude_venue,
-                               @RequestParam("longitude_venue")Float longitude_venue, @RequestParam("radius_venue")Float radius_venue){
+                               @RequestParam("alamat_venue")String alamat_venue, @RequestParam("latitude_venue")Double latitude_venue,
+                               @RequestParam("longitude_venue")Double longitude_venue, @RequestParam("radius_venue")Double radius_venue){
         Venue venue= new Venue();
         venue.setNama_venue(nama_venue);
         venue.setDeskripsi_venue(deskripsi_venue);
@@ -28,8 +30,8 @@ public class VenueController {
     }
     @RequestMapping(value = "/updatevenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean updateVenue(@RequestParam("id")long id,@RequestParam("nama_venue") String nama_venue, @RequestParam("deskripsi_venue")String deskripsi_venue,
-                               @RequestParam("alamat_venue")String alamat_venue,@RequestParam("latitude_venue")Float latitude_venue,
-                               @RequestParam("longitude_venue")Float longitude_venue,@RequestParam("radius_venue")Float radius_venue){
+                               @RequestParam("alamat_venue")String alamat_venue, @RequestParam("latitude_venue")Double latitude_venue,
+                               @RequestParam("longitude_venue")Double longitude_venue, @RequestParam("radius_venue")Double radius_venue){
         Venue venue= venueService.getById(id);
         venue.setId(id);
         venue.setNama_venue(nama_venue);
