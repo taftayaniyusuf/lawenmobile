@@ -41,8 +41,8 @@ public class DataLoginService implements DataLoginDao {
     public void deleteDataLogin(DataLogin a) {
         dataLoginRepository.delete(a);
     }
-    public void getByKaryawan(Karyawan karyawan){
-        dataLoginRepository.getByKaryawan(karyawan);
+    public DataLogin getByKaryawan(Karyawan karyawan){
+        return dataLoginRepository.getByKaryawan(karyawan);
     }
 }
 

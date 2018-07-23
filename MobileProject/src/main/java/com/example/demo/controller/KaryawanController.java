@@ -83,9 +83,13 @@ public class KaryawanController {
         dataLoginService.SaveOrUpdate(dl);
     }
     @RequestMapping(value = "/deletekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean deleteKaryawan(@RequestParam("id")long id){
+    public boolean deleteKaryawan(@RequestParam("id")long id,@ModelAttribute("Karyawan") Karyawan k){
+        k = karyawanService.getById(id);
+        DataLogin dl = dataLoginService.getByKaryawan(k);
+        dataLoginService.deleteDataLogin(dl);
+        karyawanService.deleteKaryawan(id);
     return true;
-       }
+    }
 
 }
 
