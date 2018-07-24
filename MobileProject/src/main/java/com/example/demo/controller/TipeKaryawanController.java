@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Team;
 import com.example.demo.model.TipeKaryawan;
 import com.example.demo.service.TipeKaryawanService;
 
