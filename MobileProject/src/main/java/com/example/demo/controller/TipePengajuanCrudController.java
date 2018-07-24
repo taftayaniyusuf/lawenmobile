@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.TipePengajuan;
 import com.example.demo.service.TipePengajuanService;
 
+import java.util.List;
+
 @RestController
 public class TipePengajuanCrudController {
 	@Autowired
@@ -40,5 +42,18 @@ public class TipePengajuanCrudController {
         tipePengajuan.setStatus("disable");
         tipePengajuanService.SaveOrUpdate(tipePengajuan);
         return true;
+    }
+    //==================================================Read=========================================
+    @RequestMapping(value = "/tipepengajuanall",method = RequestMethod.GET)
+    public List<TipePengajuan> tipePengajuanList(){
+        return tipePengajuanService.getAllTipePengajuan();
+    }
+    @RequestMapping(value = "/tipepengajuanbyid",method = RequestMethod.GET)
+    public TipePengajuan tipePengajuanbyid(@RequestParam("id")long id){
+        return tipePengajuanService.getById(id);
+    }
+    @RequestMapping(value = "/tipepengajuanactive",method = RequestMethod.GET)
+    public List<TipePengajuan> tipePengajuanactive(){
+        return tipePengajuanService.gettipePengajuanactive();
     }
 }

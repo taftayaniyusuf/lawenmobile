@@ -53,4 +53,8 @@ public class TipePengajuanService implements TipePengajuanDao{
 		tpr.delete(a);
 	}
 
+	public List<TipePengajuan>gettipePengajuanactive(){
+		return tpr.gettipePengajuanactive();
+	}
+
 }

@@ -51,9 +51,17 @@ public class ApprovalController {
 		 approvalService.deleteApproval(approval);
 		 return true;
 	    }
-	    //=============================Read=============================================
-		@RequestMapping(value = "/approval",method = RequestMethod.POST)
-		public List<Approval> approvalList(){
-			return approvalService.getAllApproval();
-		}
+	 //=============================Read=============================================
+	@RequestMapping(value = "/approvalall",method = RequestMethod.GET)
+	public List<Approval> approvalList(){
+	return approvalService.getAllApproval();
+	}
+	@RequestMapping(value = "/approvalbyid",method = RequestMethod.GET)
+	public Approval approvalbyid(@RequestParam("id")long id){
+		return approvalService.getById(id);
+	}
+	@RequestMapping(value = "/approvalactive",method = RequestMethod.GET)
+	public List<Approval> approvalactive(){
+		return approvalService.getapprovalactive();
+	}
 }

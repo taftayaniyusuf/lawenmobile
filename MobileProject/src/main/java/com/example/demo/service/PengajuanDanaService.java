@@ -54,4 +54,7 @@ public class PengajuanDanaService implements PengajuanDanaDao{
 		pdr.findByTipePengajuan(tpr.getById(2L));
 		return lpd;
 	}
+	public List<PengajuanDana>getpengajuandanaactive(){
+		return pdr.getpengajuandanaactive();
+	}
 }
