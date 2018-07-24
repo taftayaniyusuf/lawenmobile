@@ -40,4 +40,8 @@ public class AkunBankService implements AkunBankDao {
     public void deleteAkunBank(AkunBank a) {
         akunBankRepository.delete(a);
     }
+
+    public List<AkunBank> getAkunBankActive(){
+        return akunBankRepository.findAkunBankActive();
+    }
 }
