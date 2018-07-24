@@ -49,4 +49,11 @@ public class VenueController {
         venueService.deleteVenue(venue);
         return true;
     }
+    @RequestMapping(value = "/disablevenue",method = RequestMethod.POST,headers="Accept=application/json")
+    public boolean disableVenue(@RequestParam("id")long id){
+        Venue venue= venueService.getById(id);
+        venue.setStatus("Disable");
+        venueService.SaveOrUpdate(venue);
+        return true;
+    }
 }

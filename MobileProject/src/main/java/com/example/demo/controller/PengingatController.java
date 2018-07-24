@@ -64,8 +64,14 @@ public class PengingatController {
 	 @RequestMapping(value = "/deletepengingat/",method = RequestMethod.POST,headers="Accept=application/json")
 	    public boolean deletePengingat(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		 Pengingat pengingat = pengingatService.getById(id);
-
-		 	pengingatService.deletePengingat(id);
-		 	 return true;
+		 pengingatService.deletePengingat(pengingat);
+		 return true;
 	    }
+	@RequestMapping(value = "/disablepengingat/",method = RequestMethod.POST,headers="Accept=application/json")
+	public boolean disablePengingat(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
+		Pengingat pengingat = pengingatService.getById(id);
+		pengingat.setStatus("Disable");
+		pengingatService.SaveOrUpdate(pengingat);
+		return true;
+	}
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class AkunBankController {
     @Autowired
@@ -33,9 +35,17 @@ public class AkunBankController {
         akunBankService.deleteAkunBank(akunBank);
         return true;
     }
-//    @RequestMapping(value = "/deleteakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
-//    public String deleteakunbankdes(@RequestParam("id")long id){
-//        AkunBank akunBank =akunBankService.getById(id);
-//        akunBank.setStatus("Disable");
-//    }
+    @RequestMapping(value = "/disableakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean disableakunbank(@RequestParam("id")long id){
+        AkunBank akunBank =akunBankService.getById(id);
+        akunBank.setStatus("Disable");
+        akunBankService.SaveOrUpdate(akunBank);
+        return true;
+    }
+    //================================================Get===============================================
+    @RequestMapping(value = "/akunbankall",method = RequestMethod.POST)
+    public List<AkunBank> masukList(){
+        return akunBankService.getAllAkunBank();
+    }
+
 }
