@@ -30,7 +30,14 @@ public class JabatanController {
     @RequestMapping(value = "/deletejabatan",method = RequestMethod.POST,headers = "Accept=application/json")
     public  boolean deleteJabatan(@RequestParam("id")long id,@RequestParam("nama_jabatan") String nama_jabatan){
         Jabatan jabatan = jabatanService.getById(id);
-        jabatanService.deleteJabatan(id);
+        jabatanService.deleteJabatan(jabatan);
+        return true;
+    }
+    @RequestMapping(value = "/disablejabatan",method = RequestMethod.POST,headers = "Accept=application/json")
+    public  boolean disableJabatan(@RequestParam("id")long id){
+        Jabatan jabatan = jabatanService.getById(id);
+        jabatan.setStatus("Disable");
+        jabatanService.SaveOrUpdate(jabatan);
         return true;
     }
 }

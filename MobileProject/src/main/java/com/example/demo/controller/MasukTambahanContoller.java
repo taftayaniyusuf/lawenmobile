@@ -70,8 +70,14 @@ public class MasukTambahanContoller {
 	 @RequestMapping(value = "/deletemasuktambahan/",method = RequestMethod.POST,headers="Accept=application/json")
 	    public boolean deleteMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		 MasukTambahan masukTambahan = masukTambahanService.getById(id);
-
-		 	masukTambahanService.deleteMasukTambahan(id);
-		 	 return true;
+		 masukTambahanService.deleteMasukTambahan(masukTambahan);
+		 return true;
 	    }
+	@RequestMapping(value = "/disablemasuktambahan/",method = RequestMethod.POST,headers="Accept=application/json")
+	public boolean disableMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
+		MasukTambahan masukTambahan = masukTambahanService.getById(id);
+		masukTambahan.setStatus("Disable");
+		masukTambahanService.SaveOrUpdate(masukTambahan);
+		return true;
+	}
 }

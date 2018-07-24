@@ -29,9 +29,16 @@ public class RoleLoginController {
         return true;
     }
     @RequestMapping(value = "/deleterolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
-    public boolean updateRoleLogin(@RequestParam("id")long id){
+    public boolean deleteRoleLogin(@RequestParam("id")long id){
         RoleLogin roleLogin =roleLoginService.getById(id);
         roleLoginService.deleteRoleLogin(roleLogin);
+        return true;
+    }
+    @RequestMapping(value = "/disablerolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean disableRoleLogin(@RequestParam("id")long id){
+        RoleLogin roleLogin =roleLoginService.getById(id);
+        roleLogin.setStatus("Disable");
+        roleLoginService.SaveOrUpdate(roleLogin);
         return true;
     }
 }
