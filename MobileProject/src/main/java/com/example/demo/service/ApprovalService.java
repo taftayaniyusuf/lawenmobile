@@ -44,5 +44,8 @@ public class ApprovalService implements ApprovalDao{
 		approvalRepository.delete(a);
 		
 	}
+	public List<Approval>getapprovalactive(){
+		return approvalRepository.getapprovalactive();
+	}
 
 }
