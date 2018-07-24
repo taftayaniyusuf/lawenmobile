@@ -44,17 +44,17 @@ public class AkunBankController {
     }
     //================================================Get===============================================
     @RequestMapping(value = "/akunbankall",method = RequestMethod.GET)
-    public List<AkunBank> masukList(){
+    public List<AkunBank> akunbankList(){
         return akunBankService.getAllAkunBank();
     }
 
-    @RequestMapping(value = "/akunbankbyid",method = RequestMethod.POST)
-    public AkunBank masukbyid(@RequestParam("id")long id){
+    @RequestMapping(value = "/akunbankbyid",method = RequestMethod.GET)
+    public AkunBank akunbankbyid(@RequestParam("id")long id){
         return akunBankService.getById(id);
     }
 
     @RequestMapping(value = "/akunbankaktif",method = RequestMethod.GET)
-    public List<AkunBank> masukbyid(){
+    public List<AkunBank> akunbankbyid(){
         return akunBankService.getAkunBankActive();
     }
 }

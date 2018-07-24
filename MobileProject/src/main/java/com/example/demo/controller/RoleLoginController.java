@@ -15,21 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoleLoginController {
     @Autowired
     RoleLoginService roleLoginService;
-
-    @RequestMapping(value = "/roleloginall",method = RequestMethod.GET,headers="Accept=application/json")
-	 public List<RoleLogin> roleloginList(){
-	     return roleLoginService.getAllAdmin();
-	 }
-    
-    @RequestMapping(value = "/roleloginbyid",method = RequestMethod.GET)
-    public RoleLogin roleLoginbyid(@RequestParam("id")long id){
-        return roleLoginService.getById(id);
-    }
-    
-    @RequestMapping(value = "/roleloginaktif",method = RequestMethod.GET)
-    public List<RoleLogin> roleLoginbystatus(){
-        return roleLoginService.getRoleLoginActive();
-    }
     
     @RequestMapping(value = "/insertrolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertRoleLogin( @RequestParam("nama_role")String nama_role){
@@ -59,4 +44,20 @@ public class RoleLoginController {
         roleLoginService.SaveOrUpdate(roleLogin);
         return true;
     }
+    
+//===========================================GET======================================================
+    @RequestMapping(value = "/roleloginall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<RoleLogin> roleloginList(){
+	     return roleLoginService.getAllAdmin();
+	 }
+   
+   @RequestMapping(value = "/roleloginbyid",method = RequestMethod.GET)
+   public RoleLogin roleLoginbyid(@RequestParam("id")long id){
+       return roleLoginService.getById(id);
+   }
+   
+   @RequestMapping(value = "/roleloginaktif",method = RequestMethod.GET)
+   public List<RoleLogin> roleLoginbystatus(){
+       return roleLoginService.getRoleLoginActive();
+   }
 }

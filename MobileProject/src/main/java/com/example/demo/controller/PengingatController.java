@@ -21,12 +21,6 @@ public class PengingatController {
 
 	 
 //========================================== CRUD PENGINGAT=================================================
-	
-	 //Select All Pengingat
-	 @RequestMapping(value = "/pengingatall",method = RequestMethod.GET)
-	 public List<Pengingat> pengingatList(){
-	     return pengingatService.getAllPengingat();
-	 }
 	 
 	 //Insert Pengingat
 	 @RequestMapping(value = "/insertpengingat/",method = RequestMethod.POST,headers="Accept=application/json")
@@ -72,6 +66,14 @@ public class PengingatController {
 		pengingat.setStatus("Disable");
 		pengingatService.SaveOrUpdate(pengingat);
 		return true;
+	 }
+	 
+//==================================================GET==========================================
+	 
+	 //Select All Pengingat
+	 @RequestMapping(value = "/pengingatall",method = RequestMethod.GET)
+	 public List<Pengingat> pengingatList(){
+	     return pengingatService.getAllPengingat();
 	 }
 	 
      @RequestMapping(value = "/pengingatbyid",method = RequestMethod.GET)

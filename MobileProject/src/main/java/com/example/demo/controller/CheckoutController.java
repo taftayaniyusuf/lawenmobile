@@ -70,6 +70,8 @@ public class CheckoutController {
 		 return true;
 	 
 	 }
+	 
+//=============================================GET==============================================
 	 @RequestMapping(value = "/pulangall",method = RequestMethod.GET)
 	 public List<Pulang> pulangList(){
 	     return pulangService.getAllPulang();

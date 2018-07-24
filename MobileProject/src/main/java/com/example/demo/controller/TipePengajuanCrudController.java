@@ -43,7 +43,7 @@ public class TipePengajuanCrudController {
         tipePengajuanService.SaveOrUpdate(tipePengajuan);
         return true;
     }
-    //==================================================Read=========================================
+    //==================================================GET=========================================
     @RequestMapping(value = "/tipepengajuanall",method = RequestMethod.GET)
     public List<TipePengajuan> tipePengajuanList(){
         return tipePengajuanService.getAllTipePengajuan();

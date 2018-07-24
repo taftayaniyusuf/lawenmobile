@@ -19,12 +19,6 @@ import de.odysseus.el.tree.impl.Parser.ParseException;
 public class CheckinController {
 	@Autowired
 	MasukService masukService;
-	
-	 //Select All Masuk
-	@RequestMapping(value = "/masukall",method = RequestMethod.GET)
-	public List<Masuk> masukList(){
-		return masukService.getAllMasuk();
-	}
 	 
 	 //Insert Masuk
 	@RequestMapping(value = "/insertmasuk/",method = RequestMethod.POST,headers="Accept=application/json")
@@ -71,10 +65,18 @@ public class CheckinController {
 		masukService.SaveOrUpdate(masuk);
 		return true;
 	 }	    
+	 
+//================================================================GET===================================
+		@RequestMapping(value = "/masukall",method = RequestMethod.GET)
+		public List<Masuk> masukList(){
+			return masukService.getAllMasuk();
+		}
+		
 	 @RequestMapping(value = "/masukbyid",method = RequestMethod.GET)
 	 public Masuk masukbyid(@RequestParam("id")long id){
 	 return masukService.getById(id);
 	 }
+	 
 	 @RequestMapping(value = "/masukaktif",method = RequestMethod.GET)
 	 public List<Masuk> getMasukActive(){
 	 return masukService.getMasukActive();

@@ -16,21 +16,6 @@ public class TipeKaryawanController {
     @Autowired
     TipeKaryawanService tipeKaryawanService;
     
-    @RequestMapping(value = "/tipekaryawanall",method = RequestMethod.GET,headers="Accept=application/json")
-	 public List<TipeKaryawan> tipekaryawanList(){
-	     return tipeKaryawanService.getAllTipeKaryawan();
-	 }
-    
-    @RequestMapping(value = "/tipekaryawbyid",method = RequestMethod.GET)
-    public TipeKaryawan tipekaryawbyid(@RequestParam("id")long id){
-        return tipeKaryawanService.getById(id);
-    }
-    
-    @RequestMapping(value = "/tipekaryawaktif",method = RequestMethod.GET)
-    public List<TipeKaryawan> tipekaryawbystatus(){
-        return tipeKaryawanService.getTipeKaryawanActive();
-    }
-    
     @RequestMapping(value = "/inserttipekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertTipeKayawan(@RequestParam("nama_typekaryawan")String nama_typekaryawan){
         TipeKaryawan tipeKaryawan = new TipeKaryawan();
@@ -59,4 +44,21 @@ public class TipeKaryawanController {
         tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
         return true;
     }
+    
+//==============================================GET===========================================
+    
+    @RequestMapping(value = "/tipekaryawanall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<TipeKaryawan> tipekaryawanList(){
+	     return tipeKaryawanService.getAllTipeKaryawan();
+	 }
+   
+   @RequestMapping(value = "/tipekaryawbyid",method = RequestMethod.GET)
+   public TipeKaryawan tipekaryawbyid(@RequestParam("id")long id){
+       return tipeKaryawanService.getById(id);
+   }
+   
+   @RequestMapping(value = "/tipekaryawaktif",method = RequestMethod.GET)
+   public List<TipeKaryawan> tipekaryawbystatus(){
+       return tipeKaryawanService.getTipeKaryawanActive();
+   }
 }

@@ -16,21 +16,6 @@ public class TeamController {
     @Autowired
     TeamServices teamServices;
     
-    @RequestMapping(value = "/teamall",method = RequestMethod.GET)
-	 public List<Team> teamList(){
-	     return teamServices.getAllTeam();
-	 }
-    
-    @RequestMapping(value = "/teambyid",method = RequestMethod.GET)
-    public Team teambyid(@RequestParam("id")long id){
-        return teamServices.getById(id);
-    }
-    
-    @RequestMapping(value = "/teamaktif",method = RequestMethod.GET)
-    public List<Team> teambystatus(){
-        return teamServices.getTeamActive();
-    }
-    
     @RequestMapping(value = "/insertteam",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertteam(@RequestParam("nama_team") String nama_team){
         Team team = new Team();
@@ -59,4 +44,21 @@ public class TeamController {
         teamServices.SaveOrUpdate(team);
         return true;
     }
+    
+    //==============================================GET========================================
+    
+    @RequestMapping(value = "/teamall",method = RequestMethod.GET)
+	 public List<Team> teamList(){
+	     return teamServices.getAllTeam();
+	 }
+   
+   @RequestMapping(value = "/teambyid",method = RequestMethod.GET)
+   public Team teambyid(@RequestParam("id")long id){
+       return teamServices.getById(id);
+   }
+   
+   @RequestMapping(value = "/teamaktif",method = RequestMethod.GET)
+   public List<Team> teambystatus(){
+       return teamServices.getTeamActive();
+   }
 }

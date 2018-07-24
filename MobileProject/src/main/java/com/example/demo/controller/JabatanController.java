@@ -43,7 +43,8 @@ public class JabatanController {
         jabatanService.SaveOrUpdate(jabatan);
         return true;
     }
-    ////////////////////////////////////////
+
+//===================================================GET==================================================
     @RequestMapping(value = "/jabatanall",method = RequestMethod.GET,headers = "Accept=application/json")
     public  List<Jabatan> getAllJabatan(){
         return jabatanService.getAllJabatan();

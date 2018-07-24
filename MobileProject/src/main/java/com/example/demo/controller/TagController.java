@@ -61,6 +61,9 @@ public class TagController {
 		ts.SaveOrUpdate(t);
 		return true;
 	}
+	
+	//===========================================GET======================================================	
+
 	 @RequestMapping(value = "/tagall",method = RequestMethod.GET)
      public List<Tag> tagList(){
          return ts.getAllTag();
