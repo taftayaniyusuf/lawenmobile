@@ -3,7 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.TipeKaryawanDao;
 import com.example.demo.model.TipeKaryawan;
-import com.example.demo.model.Venue;
+
 import com.example.demo.repository.TipeKaryawanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
