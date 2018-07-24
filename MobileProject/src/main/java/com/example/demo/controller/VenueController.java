@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Team;
 import com.example.demo.model.Venue;
 import com.example.demo.service.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,16 @@ public class VenueController {
 	 public List<Venue> venueList(){
 	     return venueService.getAllVenue();
 	 }
+    
+    @RequestMapping(value = "/venuebyid",method = RequestMethod.GET)
+    public Venue venuebyid(@RequestParam("id")long id){
+        return venueService.getById(id);
+    }
+    
+    @RequestMapping(value = "/venueaktif",method = RequestMethod.GET)
+    public List<Venue> venuebystatus(){
+        return venueService.getVenueActive();
+    }
     
     @RequestMapping(value = "/insertvenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean insertVenue(@RequestParam("nama_venue") String nama_venue, @RequestParam("deskripsi_venue")String deskripsi_venue,

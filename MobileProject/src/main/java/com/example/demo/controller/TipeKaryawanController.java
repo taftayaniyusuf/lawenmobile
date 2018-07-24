@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Team;
 import com.example.demo.model.TipeKaryawan;
 import com.example.demo.service.TipeKaryawanService;
 
@@ -20,6 +21,16 @@ public class TipeKaryawanController {
 	 public List<TipeKaryawan> tipekaryawanList(){
 	     return tipeKaryawanService.getAllTipeKaryawan();
 	 }
+    
+    @RequestMapping(value = "/tipekaryawbyid",method = RequestMethod.GET)
+    public TipeKaryawan tipekaryawbyid(@RequestParam("id")long id){
+        return tipeKaryawanService.getById(id);
+    }
+    
+    @RequestMapping(value = "/tipekaryawaktif",method = RequestMethod.GET)
+    public List<TipeKaryawan> tipekaryawbystatus(){
+        return tipeKaryawanService.getTipeKaryawanActive();
+    }
     
     @RequestMapping(value = "/inserttipekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertTipeKayawan(@RequestParam("nama_typekaryawan")String nama_typekaryawan){

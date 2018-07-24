@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.TipeKaryawanDao;
 import com.example.demo.model.TipeKaryawan;
+import com.example.demo.model.Venue;
 import com.example.demo.repository.TipeKaryawanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,10 @@ public class TipeKaryawanService implements TipeKaryawanDao {
     public TipeKaryawan getById(long id) {
         TipeKaryawan tk = tipeKaryawanRepository.findById(id).get();
         return tk;
+    }
+    
+    public List<TipeKaryawan> getTipeKaryawanActive(){
+        return tipeKaryawanRepository.findTipeKaryawanActive();
     }
 
     @Override

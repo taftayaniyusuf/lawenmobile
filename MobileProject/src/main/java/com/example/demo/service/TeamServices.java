@@ -26,6 +26,10 @@ public class TeamServices implements TeamDao {
         Team t = teamRepository.findById(id).get();
         return t;
     }
+    
+    public List<Team> getTeamActive(){
+        return teamRepository.findTeamActive();
+    }
 
     @Override
     public void SaveOrUpdate(Team a) {

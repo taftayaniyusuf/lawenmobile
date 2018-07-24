@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.RoleLogin;
+import com.example.demo.model.Team;
 import com.example.demo.service.RoleLoginService;
 
 import java.util.List;
@@ -20,6 +21,16 @@ public class RoleLoginController {
 	 public List<RoleLogin> roleloginList(){
 	     return roleLoginService.getAllAdmin();
 	 }
+    
+    @RequestMapping(value = "/roleloginbyid",method = RequestMethod.GET)
+    public RoleLogin roleLoginbyid(@RequestParam("id")long id){
+        return roleLoginService.getById(id);
+    }
+    
+    @RequestMapping(value = "/roleloginaktif",method = RequestMethod.GET)
+    public List<RoleLogin> roleLoginbystatus(){
+        return roleLoginService.getRoleLoginActive();
+    }
     
     @RequestMapping(value = "/insertrolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertRoleLogin( @RequestParam("nama_role")String nama_role){

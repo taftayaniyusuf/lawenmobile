@@ -25,6 +25,10 @@ public class VenueService implements VenueDao {
         Venue v = venueRepository.findById(id).get();
         return v;
     }
+    
+    public List<Venue> getVenueActive(){
+        return venueRepository.findVenueActive();
+    }
 
     @Override
     public void SaveOrUpdate(Venue a) {

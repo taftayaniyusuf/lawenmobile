@@ -25,6 +25,10 @@ public class RoleLoginService implements RoleLoginDao {
         RoleLogin lg = roleLoginRepository.findById(id).get();
         return lg;
     }
+    
+    public List<RoleLogin> getRoleLoginActive(){
+        return roleLoginRepository.findRoleLoginActive();
+    }
 
     @Override
     public void SaveOrUpdate(RoleLogin a) {

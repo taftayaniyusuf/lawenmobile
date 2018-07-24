@@ -25,6 +25,10 @@ public class KaryawanService implements KaryawanDao {
         Karyawan k = karyawanRepository.findById(id).get();
         return k;
     }
+    
+    public List<Karyawan> getKaryawanActive(){
+        return karyawanRepository.findKaryawanActive();
+    }
 
     @Override
     public Karyawan SaveOrUpdate(Karyawan k) {
