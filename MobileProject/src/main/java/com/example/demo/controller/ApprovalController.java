@@ -19,10 +19,7 @@ public class ApprovalController {
 	 ApprovalService approvalService;
 	 
 	 //Select All Approval
-	 @RequestMapping(value = "/approval",method = RequestMethod.POST)
-	 public List<Approval> approvalList(){
-	     return approvalService.getAllApproval();
-	 }
+
 	 
 	 //Insert Approval
 	 @RequestMapping(value = "/insertapproval/",method = RequestMethod.POST,headers="Accept=application/json")
@@ -54,4 +51,9 @@ public class ApprovalController {
 		 approvalService.deleteApproval(approval);
 		 return true;
 	    }
+	    //=============================Read=============================================
+		@RequestMapping(value = "/approval",method = RequestMethod.POST)
+		public List<Approval> approvalList(){
+			return approvalService.getAllApproval();
+		}
 }
