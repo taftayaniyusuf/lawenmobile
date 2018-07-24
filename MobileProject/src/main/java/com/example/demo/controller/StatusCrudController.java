@@ -35,4 +35,11 @@ public class StatusCrudController {
         statusService.deleteStatus(status);
         return true;
     }
+    @RequestMapping(value = "/disablestatus",method = RequestMethod.POST,headers="Accept=application/json")
+    public boolean disableStatus(@RequestParam("id")long id){
+        Status status= statusService.getById(id);
+        status.setStatus("disable");
+        statusService.SaveOrUpdate(status);
+        return true;
+    }
 }

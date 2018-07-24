@@ -55,5 +55,12 @@ public class TagController {
 		ts.deleteTag(t);
 		return true;
 	}
+	@RequestMapping(value = "/disabletag")
+	public boolean disableTag(@RequestParam("id") Long id) {
+		Tag t = ts.getTag(id);
+		t.setStatus("disable");
+		ts.SaveOrUpdate(t);
+		return true;
+	}
 
 }

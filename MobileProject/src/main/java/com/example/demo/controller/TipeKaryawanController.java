@@ -34,4 +34,11 @@ public class TipeKaryawanController {
         tipeKaryawanService.deleteTipeKaryawan(tipeKaryawan);
         return true;
     }
+    @RequestMapping(value = "/disabletipekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean disableTipeKayawan(@RequestParam("id")long id,@RequestParam("nama_typekaryawan")String nama_typekaryawan){
+        TipeKaryawan tipeKaryawan =tipeKaryawanService.getById(id);
+        tipeKaryawan.setStatus("disable");
+        tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
+        return true;
+    }
 }

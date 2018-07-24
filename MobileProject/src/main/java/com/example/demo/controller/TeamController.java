@@ -33,4 +33,11 @@ public class TeamController {
         teamServices.deleteTeam(team);
         return true;
     }
+    @RequestMapping(value = "/disableteam",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean disableteam(@RequestParam("id")long id){
+        Team team = teamServices.getById(id);
+        team.setStatus("disable");
+        teamServices.SaveOrUpdate(team);
+        return true;
+    }
 }

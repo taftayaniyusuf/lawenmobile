@@ -29,9 +29,16 @@ public class TipePengajuanCrudController {
         return true;
     }
     @RequestMapping(value = "/deletetipePengajuan",method = RequestMethod.POST,headers="Accept=application/json")
-    public boolean updateTipePengajuan(@RequestParam("id")long id){
+    public boolean deleteTipePengajuan(@RequestParam("id")long id){
         TipePengajuan tipePengajuan= tipePengajuanService.getById(id);
         tipePengajuanService.deleteTipePengajuan(tipePengajuan);
+        return true;
+    }
+    @RequestMapping(value = "/disabletipePengajuan",method = RequestMethod.POST,headers="Accept=application/json")
+    public boolean disableTipePengajuan(@RequestParam("id")long id){
+        TipePengajuan tipePengajuan= tipePengajuanService.getById(id);
+        tipePengajuan.setStatus("disable");
+        tipePengajuanService.SaveOrUpdate(tipePengajuan);
         return true;
     }
 }
