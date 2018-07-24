@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,4 +44,20 @@ public class StatusCrudController {
         statusService.SaveOrUpdate(status);
         return true;
     }
+    
+//====================================GET================================================================
+    @RequestMapping(value = "/statusall",method = RequestMethod.GET)
+	 public List<Status> statusList(){
+	     return statusService.getAllStatus();
+	 }
+   
+   @RequestMapping(value = "/statusbyid",method = RequestMethod.GET)
+   public Status statusbyid(@RequestParam("id")long id){
+       return statusService.getById(id);
+   }
+   
+   @RequestMapping(value = "/statusaktif",method = RequestMethod.GET)
+   public List<Status> statusbystatus(){
+       return statusService.getStatusActive();
+   }
 }

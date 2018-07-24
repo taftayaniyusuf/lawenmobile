@@ -48,6 +48,10 @@ public class StatusService implements StatusDao{
 		// TODO Auto-generated method stub
 		return sr.getById(id);
 	}
+	
+	public List<Status> getStatusActive(){
+        return sr.findStatusActive();
+    }
 
 	@Override
 	public void SaveOrUpdate(Status a) {

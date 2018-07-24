@@ -36,6 +36,10 @@ public class LiburService implements LiburDao{
     	Libur libur = liburRepository.findById(id).get();
         return libur;
     }
+    
+    public List<Libur> getLiburActive(){
+        return liburRepository.findLiburActive();
+    }
 
     @Override
     public void SaveOrUpdate(Libur a) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Absen;
+import com.example.demo.model.Libur;
 import com.example.demo.model.MasukTambahan;
 import com.example.demo.service.AbsenService;
 import com.example.demo.service.DataLoginService;
@@ -25,12 +26,6 @@ public class MasukTambahanContoller {
 	
 	@Autowired
 	AbsenService absenService;
-	
-	 //Select All Masuk Tambahan
-	 @RequestMapping(value = "/masuktambahan",method = RequestMethod.POST)
-	 public List<MasukTambahan> masuktambahanList(){
-	     return masukTambahanService.getAllMasukTambahan();
-	 }
 	 
 	 //Insert Masuk Tambahan
 	 @RequestMapping(value = "/insertmasuktambahan/",method = RequestMethod.POST,headers="Accept=application/json")
@@ -80,4 +75,22 @@ public class MasukTambahanContoller {
 		masukTambahanService.SaveOrUpdate(masukTambahan);
 		return true;
 	}
+	
+//=========================================GET=======================================================
+	
+	 //Select All Masuk Tambahan
+	 @RequestMapping(value = "/masuktambahanall",method = RequestMethod.POST)
+	 public List<MasukTambahan> masuktambahanList(){
+	     return masukTambahanService.getAllMasukTambahan();
+	 }
+	 
+	 @RequestMapping(value = "/masuktambahanbyid",method = RequestMethod.GET)
+	 public MasukTambahan masuktambahanbyid(@RequestParam("id")long id){
+	      return masukTambahanService.getById(id);
+	 }
+	    
+	 @RequestMapping(value = "/masuktambahanaktif",method = RequestMethod.GET)
+	 public List<MasukTambahan> masuktambahanbystatus(){
+	      return masukTambahanService.getMasukTambahanActive();
+	 }
 }

@@ -36,6 +36,10 @@ public class MasukTambahanService implements MasukTambahanDao{
     	MasukTambahan masuktambahan = masuktambahanRepository.findById(id).get();
         return masuktambahan;
     }
+    
+    public List<MasukTambahan> getMasukTambahanActive(){
+        return masuktambahanRepository.findMasukTambahanActive();
+    }
 
     @Override
     public void SaveOrUpdate(MasukTambahan a) {
