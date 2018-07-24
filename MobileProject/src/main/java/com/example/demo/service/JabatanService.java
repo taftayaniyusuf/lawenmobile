@@ -13,7 +13,7 @@ public class JabatanService implements JabatanDao {
     @Autowired
     JabatanRepository jabatanRepository;
     @Override
-    public List<Jabatan> getAllAdmin() {
+    public List<Jabatan> getAllJabatan() {
         List<Jabatan> al = new ArrayList<>();
        jabatanRepository.findAll().forEach(al::add);
         return al;
@@ -39,4 +39,8 @@ public class JabatanService implements JabatanDao {
     public void deleteJabatan(Jabatan a) {
         jabatanRepository.delete(a);
     }
+    public List<Jabatan> getJabatanActive(){
+    	return jabatanRepository.findJabatanActive();
+    }
+    
 }

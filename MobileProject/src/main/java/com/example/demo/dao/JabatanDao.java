@@ -5,7 +5,7 @@ import com.example.demo.model.Jabatan;
 import java.util.List;
 
 public interface JabatanDao {
-    public List<Jabatan> getAllAdmin();
+    public List<Jabatan> getAllJabatan();
     public Jabatan getById(long id);
     public void SaveOrUpdate(Jabatan a);
     public void deleteJabatan(long id);
