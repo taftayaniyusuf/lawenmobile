@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class StatusCrudController {
     @RequestMapping(value = "/insertstatus",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean insertStatus(@RequestParam("nama_status") String nama_status){
         Status status= new Status();
+        status.setCreateDate(new Date());
         status.setNamaStatus(nama_status);
         statusService.SaveOrUpdate(status);
         return true;
@@ -27,6 +29,7 @@ public class StatusCrudController {
     public boolean updateStatus(@RequestParam("id")long id,@RequestParam("nama_status") String nama_status){
         Status status= statusService.getById(id);
         status.setId(id);
+        status.setUpdateDate(new Date());
         status.setNamaStatus(nama_status);
         statusService.SaveOrUpdate(status);
         return true;

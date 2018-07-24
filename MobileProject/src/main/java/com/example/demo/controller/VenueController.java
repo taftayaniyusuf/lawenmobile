@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,6 +25,7 @@ public class VenueController {
         venue.setNama_venue(nama_venue);
         venue.setDeskripsi_venue(deskripsi_venue);
         venue.setAlamat_venue(alamat_venue);
+        venue.setCreateDate(new Date());
         venue.setLatitude_venue(latitude_venue);
         venue.setLongitude_venue(longitude_venue);
         venue.setRadius_venue(radius_venue);
@@ -42,6 +44,7 @@ public class VenueController {
         venue.setLatitude_venue(latitude_venue);
         venue.setLongitude_venue(longitude_venue);
         venue.setRadius_venue(radius_venue);
+        venue.setUpdateDate(new Date());
         venueService.SaveOrUpdate(venue);
         return true;
     }
