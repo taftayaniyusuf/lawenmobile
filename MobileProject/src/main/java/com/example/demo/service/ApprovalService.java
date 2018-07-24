@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ApprovalDao;
 import com.example.demo.model.Approval;
 import com.example.demo.repository.ApprovalRepository;
 
+@Service
 public class ApprovalService implements ApprovalDao{
 	@Autowired
 	ApprovalRepository approvalRepository;
 	@Override
-	public List<Approval> getAllAkunBank() {
+	public List<Approval> getAllApproval() {
 		  List<Approval> al = new ArrayList<>();
 		  approvalRepository.findAll().forEach(al::add);
 	      return al;
