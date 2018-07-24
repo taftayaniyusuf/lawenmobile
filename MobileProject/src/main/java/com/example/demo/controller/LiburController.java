@@ -20,12 +20,6 @@ public class LiburController {
 	 @Autowired
 	 LiburService liburService;
 	//============================================= CRUD LIBUR ==================================================
-	 
-		 //Select All Libur
-		 @RequestMapping(value = "/libur")
-		 public List<Libur> liburList(){
-		     return liburService.getAllLibur();
-		 }
 		 
 		 //Insert Libur
 		@RequestMapping(value = "/insertlibur/",method = RequestMethod.POST,headers="Accept=application/json")
@@ -73,4 +67,20 @@ public class LiburController {
 		liburService.SaveOrUpdate(libur);
 		return true;
 	}
+//=============================================GET=====================================================
+	//Select All Libur
+	 @RequestMapping(value = "/liburall")
+	 public List<Libur> liburList(){
+	     return liburService.getAllLibur();
+	 }
+	 
+	 @RequestMapping(value = "/liburbyid",method = RequestMethod.GET)
+	 public Libur liburbyid(@RequestParam("id")long id){
+	      return liburService.getById(id);
+	 }
+	    
+	 @RequestMapping(value = "/liburaktif",method = RequestMethod.GET)
+	 public List<Libur> liburbystatus(){
+	      return liburService.getLiburActive();
+	 }
 }
