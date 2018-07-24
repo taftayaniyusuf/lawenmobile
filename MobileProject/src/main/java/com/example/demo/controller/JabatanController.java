@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Jabatan;
 import com.example.demo.service.JabatanService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,5 +42,20 @@ public class JabatanController {
         jabatan.setStatus("Disable");
         jabatanService.SaveOrUpdate(jabatan);
         return true;
+    }
+    ////////////////////////////////////////
+    @RequestMapping(value = "/jabatanall",method = RequestMethod.GET,headers = "Accept=application/json")
+    public  List<Jabatan> getAllJabatan(){
+        return jabatanService.getAllJabatan();
+    }
+    @RequestMapping(value = "/jabatanbyid",method = RequestMethod.GET,headers = "Accept=application/json")
+    public  Jabatan byIdJabatan(@RequestParam("id")long id){
+        
+        return jabatanService.getById(id);
+        
+    }
+    @RequestMapping(value = "/jabatanaktif",method = RequestMethod.GET)
+    public List<Jabatan> getJabatanActive(){
+        return jabatanService.getJabatanActive();
     }
 }
