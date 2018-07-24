@@ -55,12 +55,24 @@ public class TagController {
 		ts.deleteTag(t);
 		return true;
 	}
-	@RequestMapping(value = "/disabletag")
+	@RequestMapping(value = "/disabletag", method = RequestMethod.POST)
 	public boolean disableTag(@RequestParam("id") Long id) {
 		Tag t = ts.getTag(id);
 		t.setStatus("disable");
 		ts.SaveOrUpdate(t);
 		return true;
 	}
-
+	 @RequestMapping(value = "/tagall",method = RequestMethod.GET)
+     public List<Tag> tagList(){
+         return ts.getAllTag();
+     }
+     @RequestMapping(value = "/tagbyid",method = RequestMethod.GET)
+     public Tag tagbyid(@RequestParam("id")long id){
+     return ts.getById(id);
+     }
+     
+     @RequestMapping(value = "/tagaktif",method = RequestMethod.GET)
+     public List<Tag> getTagActive(){
+         return ts.getTagActive();
+     }
 }

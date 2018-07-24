@@ -51,5 +51,8 @@ public class PengingatService implements PengingatDao{
     public void deletePengingat(Pengingat a) {
     	pengingatRepository.delete(a);
     }
-    
+    public List<Pengingat> getPengingatActive() {
+        return pengingatRepository.findPengingatActive();
+    }
+
 }

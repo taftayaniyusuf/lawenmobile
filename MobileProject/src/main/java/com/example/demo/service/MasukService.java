@@ -51,5 +51,7 @@ public class MasukService implements MasukDao{
     public void deleteMasuk(Masuk a) {
     	masukRepository.delete(a);
     }
-    
+    public List<Masuk> getMasukActive() {
+    	return masukRepository.findMasukActive();
+    }
 }

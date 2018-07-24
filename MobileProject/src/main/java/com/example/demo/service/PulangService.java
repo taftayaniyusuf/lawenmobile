@@ -51,5 +51,8 @@ public class PulangService implements PulangDao{
     public void deletePulang(Pulang a) {
     	pulangRepository.delete(a);
     }
-    
+    public List<Pulang> getPulangActive() {
+        return pulangRepository.findPulangActive();
+    }
+
 }

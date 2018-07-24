@@ -61,6 +61,9 @@ public class TagService implements TagDao{
 		// TODO Auto-generated method stub
 		tr.deleteById(id);
 	}
+	public List<Tag> getTagActive() {
+        return tr.findTagActive();
+    }
 
 	
 }

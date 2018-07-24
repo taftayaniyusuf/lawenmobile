@@ -21,7 +21,7 @@ public class CheckinController {
 	MasukService masukService;
 	
 	 //Select All Masuk
-	@RequestMapping(value = "/masuk",method = RequestMethod.POST)
+	@RequestMapping(value = "/masukall",method = RequestMethod.GET)
 	public List<Masuk> masukList(){
 		return masukService.getAllMasuk();
 	}
@@ -70,5 +70,13 @@ public class CheckinController {
 		masuk.setStatus("status");
 		masukService.SaveOrUpdate(masuk);
 		return true;
+	 }	    
+	 @RequestMapping(value = "/masukbyid",method = RequestMethod.GET)
+	 public Masuk masukbyid(@RequestParam("id")long id){
+	 return masukService.getById(id);
+	 }
+	 @RequestMapping(value = "/masukaktif",method = RequestMethod.GET)
+	 public List<Masuk> getMasukActive(){
+	 return masukService.getMasukActive();
 	 }
 }

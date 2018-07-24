@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.Masuk;
 import com.example.demo.model.Pulang;
 import com.example.demo.service.PulangService;
 
@@ -19,11 +20,6 @@ public class CheckoutController {
 	@Autowired
 	 PulangService pulangService;
 	
-	 //Select All Pulang
-	 @RequestMapping(value = "/pulang",method = RequestMethod.POST)
-	 public List<Pulang> pulangList(){
-	     return pulangService.getAllPulang();
-	 }
 	 
 	 //Insert Pulang
 	 @RequestMapping(value = "/insertpulang/",method = RequestMethod.POST,headers="Accept=application/json")
@@ -73,5 +69,19 @@ public class CheckoutController {
 		 pulang.setStatus("disable");
 		 pulangService.SaveOrUpdate(pulang);
 		 return true;
+	 
 	 }
+	 @RequestMapping(value = "/pulangall",method = RequestMethod.GET)
+	 public List<Pulang> pulangList(){
+	     return pulangService.getAllPulang();
+	 }
+	 @RequestMapping(value = "/pulangbyid",method = RequestMethod.GET)
+	 public Pulang pulangbyid(@RequestParam("id")long id){
+	 return pulangService.getById(id);
+	 }
+	 
+	 @RequestMapping(value = "/pulangaktif",method = RequestMethod.GET)
+     public List<Pulang> getPulangActive(){
+         return pulangService.getPulangActive();
+     }
 }

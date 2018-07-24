@@ -23,7 +23,7 @@ public class PengingatController {
 //========================================== CRUD PENGINGAT=================================================
 	
 	 //Select All Pengingat
-	 @RequestMapping(value = "/pengingat")
+	 @RequestMapping(value = "/pengingatall",method = RequestMethod.GET)
 	 public List<Pengingat> pengingatList(){
 	     return pengingatService.getAllPengingat();
 	 }
@@ -62,16 +62,25 @@ public class PengingatController {
 	 
 	 //Delete Pengingat
 	 @RequestMapping(value = "/deletepengingat/",method = RequestMethod.POST,headers="Accept=application/json")
-	    public boolean deletePengingat(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
-		 Pengingat pengingat = pengingatService.getById(id);
-		 pengingatService.deletePengingat(pengingat);
-		 return true;
-	    }
-	@RequestMapping(value = "/disablepengingat/",method = RequestMethod.POST,headers="Accept=application/json")
-	public boolean disablePengingat(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
+	 public boolean deletePengingat(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
+	 Pengingat pengingat = pengingatService.getById(id);		 pengingatService.deletePengingat(pengingat);
+	 return true;
+	 }
+	 @RequestMapping(value = "/disablepengingat/",method = RequestMethod.POST,headers="Accept=application/json")
+	 public boolean disablePengingat(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		Pengingat pengingat = pengingatService.getById(id);
 		pengingat.setStatus("Disable");
 		pengingatService.SaveOrUpdate(pengingat);
 		return true;
-	}
+	 }
+	 
+     @RequestMapping(value = "/pengingatbyid",method = RequestMethod.GET)
+     public Pengingat pengingatbyid(@RequestParam("id")long id){
+     return pengingatService.getById(id);
+     }
+     
+     @RequestMapping(value = "/pengingataktif",method = RequestMethod.GET)
+     public List<Pengingat> getPengingatActive(){
+         return pengingatService.getPengingatActive();
+     }
 }
