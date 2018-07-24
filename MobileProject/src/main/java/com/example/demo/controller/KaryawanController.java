@@ -90,6 +90,16 @@ public class KaryawanController {
         karyawanService.deleteKaryawan(id);
     return true;
     }
+    @RequestMapping(value = "/disablekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
+    public boolean disbelKaryawan(@RequestParam("id")long id,@ModelAttribute("Karyawan") Karyawan k){
+        k = karyawanService.getById(id);
+        DataLogin dl = dataLoginService.getByKaryawan(k);
+        dl.setStatus("Disable");
+        dataLoginService.SaveOrUpdate(dl);
+        k.setStatus("Disable");
+        karyawanService.SaveOrUpdate(k);
+        return true;
+    }
     //=======================================
 }
 
