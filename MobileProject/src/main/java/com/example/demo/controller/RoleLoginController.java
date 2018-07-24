@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.RoleLogin;
 import com.example.demo.service.RoleLoginService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +16,11 @@ public class RoleLoginController {
     @Autowired
     RoleLoginService roleLoginService;
 
+    @RequestMapping(value = "/roleloginall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<RoleLogin> roleloginList(){
+	     return roleLoginService.getAllAdmin();
+	 }
+    
     @RequestMapping(value = "/insertrolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertRoleLogin( @RequestParam("nama_role")String nama_role){
         RoleLogin roleLogin =new RoleLogin();

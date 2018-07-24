@@ -8,12 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.DecimalFormat;
+import java.util.List;
 
 @RestController
 public class VenueController {
     @Autowired
     VenueService venueService;
+    
+    @RequestMapping(value = "/venueall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<Venue> venueList(){
+	     return venueService.getAllVenue();
+	 }
+    
     @RequestMapping(value = "/insertvenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean insertVenue(@RequestParam("nama_venue") String nama_venue, @RequestParam("deskripsi_venue")String deskripsi_venue,
                                @RequestParam("alamat_venue")String alamat_venue, @RequestParam("latitude_venue")Double latitude_venue,

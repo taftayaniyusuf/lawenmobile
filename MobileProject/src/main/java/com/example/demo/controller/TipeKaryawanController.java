@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.TipeKaryawan;
-import com.example.demo.service.TeamServices;
 import com.example.demo.service.TipeKaryawanService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TipeKaryawanController {
     @Autowired
     TipeKaryawanService tipeKaryawanService;
+    
+    @RequestMapping(value = "/tipekaryawanall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<TipeKaryawan> tipekaryawanList(){
+	     return tipeKaryawanService.getAllTipeKaryawan();
+	 }
+    
     @RequestMapping(value = "/inserttipekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertTipeKayawan(@RequestParam("nama_typekaryawan")String nama_typekaryawan){
         TipeKaryawan tipeKaryawan = new TipeKaryawan();

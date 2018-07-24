@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.model.*;
 import com.example.demo.service.*;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,12 @@ public class KaryawanController {
     @Autowired
     DataLoginService dataLoginService;
 
+    
+    @RequestMapping(value = "/karyawannall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<Karyawan> karyawanList(){
+	     return karyawanService.getAllKaryawan();
+	 }
+    
     @RequestMapping(value = "/insertkaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public void insertKaryawan(@ModelAttribute("DataLogin") DataLogin dl,@ModelAttribute("Karayawan")Karyawan k,
                                   @RequestParam("first_name")String first_name,@RequestParam("last_name")String last_name,

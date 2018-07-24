@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Team;
 import com.example.demo.service.TeamServices;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TeamController {
     @Autowired
     TeamServices teamServices;
+    
+    @RequestMapping(value = "/teamall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<Team> teamList(){
+	     return teamServices.getAllTeam();
+	 }
+    
     @RequestMapping(value = "/insertteam",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertteam(@RequestParam("nama_team") String nama_team){
         Team team = new Team();
