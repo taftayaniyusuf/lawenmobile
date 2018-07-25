@@ -51,11 +51,14 @@ public class AkunBankController {
         return akunBankService.getAllAkunBank();
     }
 
+
+
     @RequestMapping(value = "/akunbankbyid",method = RequestMethod.GET)
     public AkunBank akunbankbyid(@RequestParam("id")long id){
+
         return akunBankService.getById(id);
     }
-
+    
     @RequestMapping(value = "/akunbankaktif",method = RequestMethod.GET)
     public List<AkunBank> akunbankbyid(){
         return akunBankService.getAkunBankActive();
