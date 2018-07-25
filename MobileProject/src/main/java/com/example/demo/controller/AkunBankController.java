@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -18,6 +19,7 @@ public class AkunBankController {
     public boolean insertAkunBank(@RequestParam("nama_bank")String nama_bank){
         AkunBank akunBank =  new AkunBank();
         akunBank.setNama_bank(nama_bank);
+        akunBank.setCreateDate(new Date());
         akunBankService.SaveOrUpdate(akunBank);
         return true;
     }
@@ -26,6 +28,7 @@ public class AkunBankController {
         AkunBank akunBank =akunBankService.getById(id);
         akunBank.setId(id);
         akunBank.setNama_bank(nama_bank);
+        akunBank.setUpdateDate(new Date());
         akunBankService.SaveOrUpdate(akunBank);
         return true;
     }
@@ -44,16 +47,20 @@ public class AkunBankController {
     }
     //================================================Get===============================================
     @RequestMapping(value = "/akunbankall",method = RequestMethod.GET)
-    public List<AkunBank> masukList(){
+    public List<AkunBank> akunbankList(){
         return akunBankService.getAllAkunBank();
     }
-    @RequestMapping(value = "/akunbankbyid",method = RequestMethod.POST)
-    public AkunBank masukbyid(@RequestParam("id")long id){
+
+
+
+    @RequestMapping(value = "/akunbankbyid",method = RequestMethod.GET)
+    public AkunBank akunbankbyid(@RequestParam("id")long id){
+
         return akunBankService.getById(id);
     }
     
     @RequestMapping(value = "/akunbankaktif",method = RequestMethod.GET)
-    public List<AkunBank> masukbyid(){
+    public List<AkunBank> akunbankbyid(){
         return akunBankService.getAkunBankActive();
     }
 }
