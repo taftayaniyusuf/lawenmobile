@@ -47,12 +47,11 @@ public class AkunBankController {
     public List<AkunBank> masukList(){
         return akunBankService.getAllAkunBank();
     }
-
     @RequestMapping(value = "/akunbankbyid",method = RequestMethod.POST)
     public AkunBank masukbyid(@RequestParam("id")long id){
         return akunBankService.getById(id);
     }
-
+    
     @RequestMapping(value = "/akunbankaktif",method = RequestMethod.GET)
     public List<AkunBank> masukbyid(){
         return akunBankService.getAkunBankActive();
