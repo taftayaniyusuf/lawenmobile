@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -162,6 +164,17 @@ public class PengajuanDanaController {
 	public boolean draftToSendPengajuan(@RequestParam("id") Long id, @ModelAttribute("pengajuandana") PengajuanDana pd) {
 		pds.getPengajuan(id);
 		return true;
+	}
+	
+	//==============================read===============================================	
+	@RequestMapping(value = "/pengajuandanabyid",method = RequestMethod.GET)	
+	public PengajuanDana pengajuandanabyid(@RequestParam("id")long id){	
+		return pds.getPengajuan(id);	
+	}
+	
+	@RequestMapping(value = "/pengajuandanaactive",method = RequestMethod.GET)	
+	public List<PengajuanDana> pengajuandanaactive(){	
+		return pds.getpengajuandanaactive();	
 	}
 
 }
