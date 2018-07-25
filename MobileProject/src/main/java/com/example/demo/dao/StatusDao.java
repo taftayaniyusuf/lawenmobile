@@ -10,6 +10,13 @@ public interface StatusDao {
 	public Status getStatus(Long id);
 	public Status getDraft();
 	public Status getSent();
+	public Status getApproved();
+	public Status getRejected();
+	public Status getReimbursed();
+	public Status getVerified();
+	public Status getUnverified();
+	public Status getDisbursed();
+	public Status getFinished();
 	public List<Status> getAllStatus();
     public Status getById(long id);
     public void SaveOrUpdate(Status a);
