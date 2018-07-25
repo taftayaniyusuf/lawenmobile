@@ -29,7 +29,7 @@ public class LiburController {
 			                                    
 		){
 			Libur libur = new Libur();
-
+			libur.setCreateDate(new Date());
 			libur.setNama_libur(nama_libur);
 			libur.setTanggal(tanggal);
 			libur.setDeskripsi_libur(deskripsi_libur);
@@ -45,7 +45,7 @@ public class LiburController {
 							               @RequestParam(value = "deskripsi_libur", required = false) String deskripsi_libur
 		    )throws ParseException {
 			 	Libur libur = liburService.getById(id);
-			 	
+			 	libur.setUpdateDate(new Date());
 			 	libur.setNama_libur(nama_libur);
 				libur.setTanggal(tanggal);
 				libur.setDeskripsi_libur(deskripsi_libur);

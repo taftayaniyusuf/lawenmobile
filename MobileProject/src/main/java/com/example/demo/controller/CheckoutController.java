@@ -29,7 +29,7 @@ public class CheckoutController {
 	                                    
 	    ){
 		 	Pulang pulang = new Pulang();
-
+		 	pulang.setCreateDate(new Date());
 		 	pulang.setJam_pulang(jam_pulang);
 		 	pulang.setLatitude_pulang(lattitude_pulang);
 		 	pulang.setLongitude_pulang(longitude_pulang);
@@ -46,7 +46,7 @@ public class CheckoutController {
 								               @RequestParam(value = "status", required = false) Boolean status
 	    )throws ParseException {
 		 	Pulang pulang = pulangService.getById(id);
-
+		 	pulang.setUpdateDate(new Date());
 		 	pulang.setJam_pulang(jam_pulang);
 		 	pulang.setLatitude_pulang(lattitude_pulang);
 		 	pulang.setLongitude_pulang(longitude_pulang);
@@ -70,6 +70,8 @@ public class CheckoutController {
 		 return true;
 	 
 	 }
+	 
+//=============================================GET==============================================
 	 @RequestMapping(value = "/pulangall",method = RequestMethod.GET)
 	 public List<Pulang> pulangList(){
 	     return pulangService.getAllPulang();

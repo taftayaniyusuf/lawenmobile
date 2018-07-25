@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Jabatan;
 import com.example.demo.service.JabatanService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class JabatanController {
     public  boolean insertJabatan(@RequestParam("nama_jabatan") String nama_jabatan){
         Jabatan jabatan = new Jabatan();
         jabatan.setNama_jabatan(nama_jabatan);
+        jabatan.setCreateDate(new Date());
         jabatanService.SaveOrUpdate(jabatan);
         return true;
     }
@@ -27,6 +29,7 @@ public class JabatanController {
         Jabatan jabatan = jabatanService.getById(id);
         jabatan.setId(id);
         jabatan.setNama_jabatan(nama_jabatan);
+        jabatan.setUpdateDate(new Date());
         jabatanService.SaveOrUpdate(jabatan);
         return true;
     }
@@ -43,7 +46,8 @@ public class JabatanController {
         jabatanService.SaveOrUpdate(jabatan);
         return true;
     }
-    ////////////////////////////////////////
+
+//===================================================GET==================================================
     @RequestMapping(value = "/jabatanall",method = RequestMethod.GET,headers = "Accept=application/json")
     public  List<Jabatan> getAllJabatan(){
         return jabatanService.getAllJabatan();

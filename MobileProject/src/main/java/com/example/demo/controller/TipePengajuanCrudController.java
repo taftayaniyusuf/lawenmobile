@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.TipePengajuan;
 import com.example.demo.service.TipePengajuanService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,6 +20,7 @@ public class TipePengajuanCrudController {
     public boolean insertTipePengajuan(@RequestParam("jenis_pengajuan") String jenis_pengajuan){
         TipePengajuan tipePengajuan= new TipePengajuan();
         tipePengajuan.setJenisPengajuan(jenis_pengajuan);
+        tipePengajuan.setCreateDate(new Date());
         tipePengajuanService.SaveOrUpdate(tipePengajuan);
         return true;
     }
@@ -26,6 +28,7 @@ public class TipePengajuanCrudController {
     public boolean updateTipePengajuan(@RequestParam("id")long id,@RequestParam("jenis_pengajuan") String jenis_pengajuan){
         TipePengajuan tipePengajuan= tipePengajuanService.getById(id);
         tipePengajuan.setId(id);
+        tipePengajuan.setUpdateDate(new Date());
         tipePengajuan.setJenisPengajuan(jenis_pengajuan);;
         tipePengajuanService.SaveOrUpdate(tipePengajuan);
         return true;
@@ -43,7 +46,7 @@ public class TipePengajuanCrudController {
         tipePengajuanService.SaveOrUpdate(tipePengajuan);
         return true;
     }
-    //==================================================Read=========================================
+    //==================================================GET=========================================
     @RequestMapping(value = "/tipepengajuanall",method = RequestMethod.GET)
     public List<TipePengajuan> tipePengajuanList(){
         return tipePengajuanService.getAllTipePengajuan();

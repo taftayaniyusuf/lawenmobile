@@ -13,6 +13,7 @@ import com.example.demo.service.*;
 import de.odysseus.el.tree.impl.Parser.ParseException;
 
 import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 @RestController
 public class PengingatController {
@@ -21,12 +22,6 @@ public class PengingatController {
 
 	 
 //========================================== CRUD PENGINGAT=================================================
-	
-	 //Select All Pengingat
-	 @RequestMapping(value = "/pengingatall",method = RequestMethod.GET)
-	 public List<Pengingat> pengingatList(){
-	     return pengingatService.getAllPengingat();
-	 }
 	 
 	 //Insert Pengingat
 	 @RequestMapping(value = "/insertpengingat/",method = RequestMethod.POST,headers="Accept=application/json")
@@ -36,7 +31,7 @@ public class PengingatController {
 	                                    
 	    ){
 	        Pengingat pengingat = new Pengingat();
-
+	        pengingat.setCreateDate(new Date());
 	        pengingat.setNama_pengingat(nama_pengingat);
 	        pengingat.setWaktu_pengingat(waktu_pengingat);
 	        pengingat.setDeskripsi_pengingat(deskripsi_pengingat);
@@ -52,7 +47,7 @@ public class PengingatController {
 						               @RequestParam(value = "deskripsi_pengingat", required = false) String deskripsi_pengingat
 	    )throws ParseException {
 		 	Pengingat pengingat = pengingatService.getById(id);
-		 	
+		 	pengingat.setUpdateDate(new Date());
 	        pengingat.setNama_pengingat(nama_pengingat);
 	        pengingat.setWaktu_pengingat(waktu_pengingat);
 	        pengingat.setDeskripsi_pengingat(deskripsi_pengingat);
@@ -72,6 +67,14 @@ public class PengingatController {
 		pengingat.setStatus("Disable");
 		pengingatService.SaveOrUpdate(pengingat);
 		return true;
+	 }
+	 
+//==================================================GET==========================================
+	 
+	 //Select All Pengingat
+	 @RequestMapping(value = "/pengingatall",method = RequestMethod.GET)
+	 public List<Pengingat> pengingatList(){
+	     return pengingatService.getAllPengingat();
 	 }
 	 
      @RequestMapping(value = "/pengingatbyid",method = RequestMethod.GET)

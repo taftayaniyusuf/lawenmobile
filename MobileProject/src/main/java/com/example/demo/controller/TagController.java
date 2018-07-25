@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,6 +43,7 @@ public class TagController {
 	@RequestMapping(value = "/updatetag", method = RequestMethod.POST)
 	public Tag updateTag(@RequestParam("id") Long id, @RequestParam("namaTag") String namaTag) {
 		Tag t = ts.getTag(id);
+		t.setUpdateDate(new Date());
 		t.setNamaTag(namaTag);
 		ts.saveTag(t);
 		return t;
@@ -61,6 +63,9 @@ public class TagController {
 		ts.SaveOrUpdate(t);
 		return true;
 	}
+	
+	//===========================================GET======================================================	
+
 	 @RequestMapping(value = "/tagall",method = RequestMethod.GET)
      public List<Tag> tagList(){
          return ts.getAllTag();

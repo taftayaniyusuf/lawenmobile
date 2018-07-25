@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.TipeKaryawan;
 import com.example.demo.service.TipeKaryawanService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,24 +17,10 @@ public class TipeKaryawanController {
     @Autowired
     TipeKaryawanService tipeKaryawanService;
     
-    @RequestMapping(value = "/tipekaryawanall",method = RequestMethod.GET,headers="Accept=application/json")
-	 public List<TipeKaryawan> tipekaryawanList(){
-	     return tipeKaryawanService.getAllTipeKaryawan();
-	 }
-    
-    @RequestMapping(value = "/tipekaryawbyid",method = RequestMethod.GET)
-    public TipeKaryawan tipekaryawbyid(@RequestParam("id")long id){
-        return tipeKaryawanService.getById(id);
-    }
-    
-    @RequestMapping(value = "/tipekaryawaktif",method = RequestMethod.GET)
-    public List<TipeKaryawan> tipekaryawbystatus(){
-        return tipeKaryawanService.getTipeKaryawanActive();
-    }
-    
     @RequestMapping(value = "/inserttipekaryawan",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertTipeKayawan(@RequestParam("nama_typekaryawan")String nama_typekaryawan){
         TipeKaryawan tipeKaryawan = new TipeKaryawan();
+        tipeKaryawan.setCreateDate(new Date());
         tipeKaryawan.setNama_typekaryawan(nama_typekaryawan);
         tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
         return true;
@@ -42,6 +29,7 @@ public class TipeKaryawanController {
     public boolean updateTipeKayawan(@RequestParam("id")long id,@RequestParam("nama_typekaryawan")String nama_typekaryawan){
         TipeKaryawan tipeKaryawan = tipeKaryawanService.getById(id);
         tipeKaryawan.setId(id);
+        tipeKaryawan.setUpdateDate(new Date());
         tipeKaryawan.setNama_typekaryawan(nama_typekaryawan);
         tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
         return true;
@@ -59,4 +47,21 @@ public class TipeKaryawanController {
         tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
         return true;
     }
+    
+//==============================================GET===========================================
+    
+    @RequestMapping(value = "/tipekaryawanall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<TipeKaryawan> tipekaryawanList(){
+	     return tipeKaryawanService.getAllTipeKaryawan();
+	 }
+   
+   @RequestMapping(value = "/tipekaryawbyid",method = RequestMethod.GET)
+   public TipeKaryawan tipekaryawbyid(@RequestParam("id")long id){
+       return tipeKaryawanService.getById(id);
+   }
+   
+   @RequestMapping(value = "/tipekaryawaktif",method = RequestMethod.GET)
+   public List<TipeKaryawan> tipekaryawbystatus(){
+       return tipeKaryawanService.getTipeKaryawanActive();
+   }
 }

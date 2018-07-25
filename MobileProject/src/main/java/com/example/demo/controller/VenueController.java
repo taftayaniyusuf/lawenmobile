@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -15,21 +16,7 @@ public class VenueController {
     @Autowired
     VenueService venueService;
     
-    @RequestMapping(value = "/venueall",method = RequestMethod.GET,headers="Accept=application/json")
-	 public List<Venue> venueList(){
-	     return venueService.getAllVenue();
-	 }
-    
-    @RequestMapping(value = "/venuebyid",method = RequestMethod.GET)
-    public Venue venuebyid(@RequestParam("id")long id){
-        return venueService.getById(id);
-    }
-    
-    @RequestMapping(value = "/venueaktif",method = RequestMethod.GET)
-    public List<Venue> venuebystatus(){
-        return venueService.getVenueActive();
-    }
-    
+   
     @RequestMapping(value = "/insertvenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean insertVenue(@RequestParam("nama_venue") String nama_venue, @RequestParam("deskripsi_venue")String deskripsi_venue,
                                @RequestParam("alamat_venue")String alamat_venue, @RequestParam("latitude_venue")Double latitude_venue,
@@ -38,6 +25,7 @@ public class VenueController {
         venue.setNama_venue(nama_venue);
         venue.setDeskripsi_venue(deskripsi_venue);
         venue.setAlamat_venue(alamat_venue);
+        venue.setCreateDate(new Date());
         venue.setLatitude_venue(latitude_venue);
         venue.setLongitude_venue(longitude_venue);
         venue.setRadius_venue(radius_venue);
@@ -56,6 +44,7 @@ public class VenueController {
         venue.setLatitude_venue(latitude_venue);
         venue.setLongitude_venue(longitude_venue);
         venue.setRadius_venue(radius_venue);
+        venue.setUpdateDate(new Date());
         venueService.SaveOrUpdate(venue);
         return true;
     }
@@ -72,4 +61,22 @@ public class VenueController {
         venueService.SaveOrUpdate(venue);
         return true;
     }
+    
+//=============================================GET=============================================
+    
+    @RequestMapping(value = "/venueall",method = RequestMethod.GET,headers="Accept=application/json")
+	 public List<Venue> venueList(){
+	     return venueService.getAllVenue();
+	 }
+   
+   @RequestMapping(value = "/venuebyid",method = RequestMethod.GET)
+   public Venue venuebyid(@RequestParam("id")long id){
+       return venueService.getById(id);
+   }
+   
+   @RequestMapping(value = "/venueaktif",method = RequestMethod.GET)
+   public List<Venue> venuebystatus(){
+       return venueService.getVenueActive();
+   }
+   
 }

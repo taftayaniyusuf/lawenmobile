@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ApprovalController {
 	    public boolean insertApproval(   @RequestParam (value = "tipe_approval", required = false) String tipe_approval                          
 	    ){
 		 	Approval approval = new Approval();
-
+		 	approval.setCreateDate(new Date());
 		 	approval.setTipe_approval(tipe_approval);
 		 	approvalService.SaveOrUpdate(approval);
 	        return true;
@@ -37,7 +38,7 @@ public class ApprovalController {
 	    		 	@RequestParam (value = "tipe_approval", required = false) String tipe_approval
 	    )throws ParseException {
 		 	Approval approval = approvalService.getById(id);
-		 	
+		 	approval.setUpdateDate(new Date());
 		 	approval.setTipe_approval(tipe_approval);
 		 	approvalService.SaveOrUpdate(approval);
 		 	return true;
