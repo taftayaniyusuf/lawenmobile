@@ -46,6 +46,7 @@ public class Venue extends Additional implements Serializable {
     }
 
     public Venue() {
+    	this.setStatus("Active");
     }
 
     public Long getId() {

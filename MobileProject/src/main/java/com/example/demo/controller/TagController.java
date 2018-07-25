@@ -6,11 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,15 +23,18 @@ public class TagController {
 	TagService ts;
 	
 	// Menyimpan tag baru
-	@PostMapping(value = "/inserttag")
-	public Tag saveTag(@ModelAttribute("tag") Tag t) {
-		return ts.saveTag(t);
-	}
+//	@PostMapping(value = "/inserttag")
+//	public Tag saveTag(@ModelAttribute("tag") Tag t) {
+//		return ts.saveTag(t);
+//	}
 	
-	// Mengambil semua tag
-	@GetMapping(value = "/tag")
-	public List<Tag> getAllTag(){
-		return ts.getAllTag();
+	@RequestMapping(value = "/inserttag", method = RequestMethod.POST)
+	public Tag saveTag(@RequestParam("namaTag") String namaTag) {
+		Tag t = new Tag();
+		t.setCreateDate(new Date());
+		t.setNamaTag(namaTag);
+		ts.saveTag(t);
+		return t;
 	}
 	
 	// Update tag
@@ -50,7 +48,7 @@ public class TagController {
 	}
 	
 	// Hapus tag
-	@DeleteMapping(value = "/hapustag")
+	@RequestMapping(value = "/hapustag", method = RequestMethod.POST)
 	public boolean hapusTag(@RequestParam("id") Long id) {
 		Tag t = ts.getTag(id);
 		ts.deleteTag(t);

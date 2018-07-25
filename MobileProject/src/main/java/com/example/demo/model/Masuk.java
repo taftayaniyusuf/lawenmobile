@@ -44,6 +44,7 @@ public class Masuk extends Additional implements Serializable {
 
     public Masuk(){
         this.setStatus("Active");
+        this.setJam_masuk(new Date());
     }
 
     public static long getSerialVersionUID() {

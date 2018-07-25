@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,15 +21,14 @@ public class CheckoutController {
 	 
 	 //Insert Pulang
 	 @RequestMapping(value = "/insertpulang/",method = RequestMethod.POST,headers="Accept=application/json")
-	 public boolean insertPulang(@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Date jam_pulang,
-	                                      @RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
+	 public boolean insertPulang(@RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
 	                                     @RequestParam(value = "longitude_pulang", required = false) Float longitude_pulang,
 	                                     @RequestParam(value = "status", required = false) Boolean status
 	                                    
 	    ){
 		 	Pulang pulang = new Pulang();
 		 	pulang.setCreateDate(new Date());
-		 	pulang.setJam_pulang(jam_pulang);
+		 	pulang.setJam_pulang(new Date());
 		 	pulang.setLatitude_pulang(lattitude_pulang);
 		 	pulang.setLongitude_pulang(longitude_pulang);
 		 	pulang.setStatus_fraud(status);
@@ -40,14 +38,13 @@ public class CheckoutController {
 	 //Update Pulang
 	 @RequestMapping(value = "/updatepulang/",method = RequestMethod.POST,headers="Accept=application/json")
 	 public boolean updatePulang(@RequestParam(value = "id",required = false)  Long id,
-									    		@RequestParam(value = "jam_pulang",required = false) @DateTimeFormat(pattern="HH:mm:ss") Date jam_pulang,
-								                @RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
+									    		@RequestParam (value = "lattitude_pulang", required = false) Float lattitude_pulang,
 								               @RequestParam(value = "longitude_pulang", required = false) Float longitude_pulang,
 								               @RequestParam(value = "status", required = false) Boolean status
 	    )throws ParseException {
 		 	Pulang pulang = pulangService.getById(id);
 		 	pulang.setUpdateDate(new Date());
-		 	pulang.setJam_pulang(jam_pulang);
+		 	pulang.setJam_pulang(new Date());
 		 	pulang.setLatitude_pulang(lattitude_pulang);
 		 	pulang.setLongitude_pulang(longitude_pulang);
 		 	pulang.setStatus_fraud(status);

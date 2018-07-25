@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,31 +21,31 @@ public class CheckinController {
 	 
 	 //Insert Masuk
 	@RequestMapping(value = "/insertmasuk/",method = RequestMethod.POST,headers="Accept=application/json")
-	public boolean insertMasuk(@RequestParam(value = "jam_masuk",required = false) @DateTimeFormat(pattern="HH:mm:ss") Date jam_masuk,
-	                                      @RequestParam (value = "lattitude_masuk", required = false) Float lattitude_masuk,
+	public boolean insertMasuk(          @RequestParam (value = "lattitude_masuk", required = false) Float lattitude_masuk,
 	                                     @RequestParam(value = "longitude_masuk", required = false) Float longitude_masuk,
 	                                     @RequestParam(value = "status", required = false) Boolean status){
 		 Masuk masuk = new Masuk();
-		 masuk.setJam_masuk(jam_masuk);
+		 masuk.setJam_masuk(new Date());
 		 masuk.setLattitude_masuk(lattitude_masuk);
 		 masuk.setLongitude_masuk(longitude_masuk);
 		 masuk.setStatus_fraud(status);
+		 masuk.setCreateDate(new Date());
 		 masukService.SaveOrUpdate(masuk);
 	     return true;
 	}
 	 //Update Masuk
 	@RequestMapping(value = "/updatemasuk/",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean updatePengingat(@RequestParam(value = "id",required = false)  Long id,
-									    		@RequestParam(value = "jam_masuk",required = false) @DateTimeFormat(pattern="HH:mm:ss") Date jam_masuk,
 								                @RequestParam (value = "lattitude_masuk", required = false) Float lattitude_masuk,
 								               @RequestParam(value = "longitude_masuk", required = false) Float longitude_masuk,
 								               @RequestParam(value = "status", required = false) Boolean status
 	    )throws ParseException {
 		Masuk masuk = masukService.getById(id);
-	 	masuk.setJam_masuk(jam_masuk);
+	 	masuk.setJam_masuk(new Date());
 		masuk.setLattitude_masuk(lattitude_masuk);
 	 	masuk.setLongitude_masuk(longitude_masuk);
 	 	masuk.setStatus_fraud(status);
+	 	masuk.setUpdateDate(new Date());
 	 	masukService.SaveOrUpdate(masuk);
 	 	return true;
 	 }
@@ -61,7 +60,7 @@ public class CheckinController {
 	 @RequestMapping(value = "/disablemasuk/",method = RequestMethod.POST,headers="Accept=application/json")
 	 public boolean disableMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		Masuk masuk = masukService.getById(id);
-		masuk.setStatus("status");
+		masuk.setStatus("disable");
 		masukService.SaveOrUpdate(masuk);
 		return true;
 	 }	    

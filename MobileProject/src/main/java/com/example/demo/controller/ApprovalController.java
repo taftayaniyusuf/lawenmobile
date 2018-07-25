@@ -52,6 +52,15 @@ public class ApprovalController {
 		 approvalService.deleteApproval(approval);
 		 return true;
 	    }
+	 
+	 @RequestMapping(value = "/disableapproval/",method = RequestMethod.POST,headers = "Accept=application/json")
+	    public boolean disableApproval(@RequestParam("id")long id){
+		 	Approval approval = approvalService.getById(id);
+		 	approval.setStatus("disable");
+		 	approvalService.SaveOrUpdate(approval);
+	        return true;
+	    }
+	 
 	 //=============================Read=============================================
 	@RequestMapping(value = "/approvalall",method = RequestMethod.GET)
 	public List<Approval> approvalList(){

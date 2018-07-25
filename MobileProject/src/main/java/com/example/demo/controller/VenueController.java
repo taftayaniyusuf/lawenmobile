@@ -29,6 +29,7 @@ public class VenueController {
         venue.setLatitude_venue(latitude_venue);
         venue.setLongitude_venue(longitude_venue);
         venue.setRadius_venue(radius_venue);
+        venue.setStatus("Active");
         venueService.SaveOrUpdate(venue);
         return true;
     }
@@ -57,7 +58,7 @@ public class VenueController {
     @RequestMapping(value = "/disablevenue",method = RequestMethod.POST,headers="Accept=application/json")
     public boolean disableVenue(@RequestParam("id")long id){
         Venue venue= venueService.getById(id);
-        venue.setStatus("Disable");
+        venue.setStatus("disable");
         venueService.SaveOrUpdate(venue);
         return true;
     }
