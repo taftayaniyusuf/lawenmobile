@@ -24,8 +24,8 @@ public class LogService implements LogDao{
 	public Log saveLog(Log l, PengajuanDana pd) {
 		l.setPengajuanDana(pd);
 		l.setTimestamp(new Date());
-		l.setNextStatus(rr.findNextStatusByTipePengajuanAndStatus(pd.getTipePengajuan(), pd.getStatus_pengajuan()).getStatus_now());
-		l.setNextBy(rr.findNextStatusByTipePengajuanAndStatus(pd.getTipePengajuan(), pd.getStatus_pengajuan()).getNextBy().getFullName());
+		l.setNextStatus(rr.findNextStatusByTipePengajuanAndStatusNow(pd.getTipePengajuan(), pd.getStatus_pengajuan()).getNextStatus());
+		l.setNextBy(rr.findNextStatusByTipePengajuanAndStatusNow(pd.getTipePengajuan(), pd.getStatus_pengajuan()).getNextBy().getFullName());
 		l.setUpdateByHistori(pd.getUpdateBy());
 		return lr.save(l);
 	}

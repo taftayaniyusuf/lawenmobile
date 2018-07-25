@@ -56,12 +56,8 @@ public class PengajuanDanaController {
 	@PostMapping(value="/sendpengajuan")
 	public boolean sendPengajuan(@ModelAttribute("pengajuandana") PengajuanDana pd, @ModelAttribute("log") Log l) {
 		pd.setStatus_pengajuan(ss.getSent());
-//		try {
-			pds.savePengajuan(pd);
-//			ls.saveLog(l,pd);
-//		}catch(Exception e) {
-//			return false;
-//		}
+		pds.savePengajuan(pd);
+		ls.saveLog(l,pd);
 		return true;
 	}
 	
