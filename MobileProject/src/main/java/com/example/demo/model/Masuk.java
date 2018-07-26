@@ -36,9 +36,9 @@ public class Masuk extends Additional implements Serializable {
     @Column(name = "jam_masuk")
     private Date jam_masuk;
     @Column(name = "lattitude_masuk")
-    private Float lattitude_masuk;
+    private Double lattitude_masuk;
     @Column(name = "longitude_masuk")
-    private Float longitude_masuk;
+    private Double longitude_masuk;
     @Column(name = "status_fraud")
     private Boolean status_fraud;
 
@@ -98,33 +98,6 @@ public class Masuk extends Additional implements Serializable {
 //        this.absen = absen;
 //    }
 
-    /**
-     * @return the lattitude_masuk
-     */
-    public Float getLattitude_masuk() {
-        return lattitude_masuk;
-    }
-
-    /**
-     * @param lattitude_masuk the lattitude_masuk to set
-     */
-    public void setLattitude_masuk(Float lattitude_masuk) {
-        this.lattitude_masuk = lattitude_masuk;
-    }
-
-    /**
-     * @return the longitude_masuk
-     */
-    public Float getLongitude_masuk() {
-        return longitude_masuk;
-    }
-
-    /**
-     * @param longitude_masuk the longitude_masuk to set
-     */
-    public void setLongitude_masuk(Float longitude_masuk) {
-        this.longitude_masuk = longitude_masuk;
-    }
 
     /**
      * @return the status
@@ -158,5 +131,21 @@ public class Masuk extends Additional implements Serializable {
 
     public void setStatus_fraud(Boolean status_fraud) {
         this.status_fraud = status_fraud;
+    }
+
+    public Double getLattitude_masuk() {
+        return lattitude_masuk;
+    }
+
+    public void setLattitude_masuk(Double lattitude_masuk) {
+        this.lattitude_masuk = lattitude_masuk;
+    }
+
+    public Double getLongitude_masuk() {
+        return longitude_masuk;
+    }
+
+    public void setLongitude_masuk(Double longitude_masuk) {
+        this.longitude_masuk = longitude_masuk;
     }
 }
