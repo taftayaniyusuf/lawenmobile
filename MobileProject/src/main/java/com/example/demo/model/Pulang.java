@@ -43,6 +43,7 @@ public class Pulang extends Additional implements Serializable {
     private Boolean status_fraud;
     public Pulang(){
         this.setStatus("Active");
+        this.setJam_pulang(new Date());
     }
 
     public static long getSerialVersionUID() {
