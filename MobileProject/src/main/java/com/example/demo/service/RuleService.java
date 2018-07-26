@@ -17,7 +17,7 @@ public class RuleService implements RuleDao{
 	
 	@Override
 	public Rule findNextStatus(TipePengajuan tipe, Status status) {
-		return rr.findNextStatusByTipePengajuanAndStatus(tipe, status);
+		return rr.findNextStatusByTipePengajuanAndStatusNow(tipe, status);
 	}
 
 }

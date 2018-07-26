@@ -15,7 +15,7 @@ import com.example.demo.model.*;
 public interface MasukDao {
     public List<Masuk> getAllMasuk();
     public Masuk getById(Long id);
-    public Masuk SaveOrUpdate(Masuk a);
+    public void SaveOrUpdate(Masuk a);
     public void deleteMasuk(Long id);
     public void deleteMasuk(Masuk a);
 }

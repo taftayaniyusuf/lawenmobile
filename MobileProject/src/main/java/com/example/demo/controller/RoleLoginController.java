@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.RoleLogin;
 import com.example.demo.service.RoleLoginService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class RoleLoginController {
     public boolean insertRoleLogin( @RequestParam("nama_role")String nama_role){
         RoleLogin roleLogin =new RoleLogin();
         roleLogin.setNama_role(nama_role);
+        roleLogin.setCreateDate(new Date());
         roleLoginService.SaveOrUpdate(roleLogin);
         return true;
     }
@@ -27,6 +29,7 @@ public class RoleLoginController {
     public boolean updateRoleLogin(@RequestParam("id")long id,@RequestParam("nama_role")String nama_role){
         RoleLogin roleLogin =roleLoginService.getById(id);
         roleLogin.setId(id);
+        roleLogin.setUpdateDate(new Date());
         roleLogin.setNama_role(nama_role);
         roleLoginService.SaveOrUpdate(roleLogin);
         return true;

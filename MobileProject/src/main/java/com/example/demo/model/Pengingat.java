@@ -48,6 +48,7 @@ public class Pengingat extends Additional implements Serializable {
     }
     public Pengingat(){
         this.setStatus("Active");
+        this.setWaktu_pengingat(new Date());
     }
     @Override
     public int hashCode() {

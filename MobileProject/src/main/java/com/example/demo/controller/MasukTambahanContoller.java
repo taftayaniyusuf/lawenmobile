@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class MasukTambahanContoller {
 	                                    
 	    ){
 		 	MasukTambahan masukTambahan = new MasukTambahan();
+		 	masukTambahan.setCreateDate(new Date());
 		 	masukTambahan.setJam_masuk_tambahan(jam_masuk_tambahan);
 		 	masukTambahan.setLatitude_masuk_tambahan(lattitude_masuk_tambahan);
 		 	masukTambahan.setLongitude_masuk_tambahan(longitude_masuk_tambahan);
@@ -49,7 +51,7 @@ public class MasukTambahanContoller {
 				                        @RequestParam(value = "id_absen", required = false) Long id_absen
 	    		)throws ParseException {
 		 	MasukTambahan masukTambahan = masukTambahanService.getById(id);
-		 	
+		 	masukTambahan.setUpdateDate(new Date());
 		 	masukTambahan.setJam_masuk_tambahan(jam_masuk_tambahan);
 		 	masukTambahan.setLatitude_masuk_tambahan(lattitude_masuk_tambahan);
 		 	masukTambahan.setLongitude_masuk_tambahan(longitude_masuk_tambahan);

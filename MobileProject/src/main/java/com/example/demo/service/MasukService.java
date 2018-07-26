@@ -38,9 +38,8 @@ public class MasukService implements MasukDao{
     }
 
     @Override
-    public Masuk SaveOrUpdate(Masuk a) {
+    public void SaveOrUpdate(Masuk a) {
     	masukRepository.save(a);
-        return a;
     }
 
     @Override

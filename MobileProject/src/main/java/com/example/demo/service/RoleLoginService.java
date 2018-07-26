@@ -42,6 +42,6 @@ public class RoleLoginService implements RoleLoginDao {
 
     @Override
     public void deleteRoleLogin(RoleLogin a) {
-        roleLoginRepository.save(a);
+        roleLoginRepository.delete(a);
     }
 }

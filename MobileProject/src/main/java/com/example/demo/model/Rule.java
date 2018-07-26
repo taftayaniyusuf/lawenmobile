@@ -15,7 +15,7 @@ public class Rule extends Additional {
 	TipePengajuan tipePengajuan;
 	@ManyToOne
 	private
-	Status status_now;
+	Status statusNow;
 	@ManyToOne
 	private
 	Status nextStatus;
@@ -43,6 +43,12 @@ public class Rule extends Additional {
 	public void setTipePengajuan(TipePengajuan tipePengajuan) {
 		this.tipePengajuan = tipePengajuan;
 	}
+	public Status getStatusNow() {
+		return statusNow;
+	}
+	public void setStatusNow(Status statusNow) {
+		this.statusNow = statusNow;
+	}
 	public Status getNextStatus() {
 		return nextStatus;
 	}
@@ -50,11 +56,5 @@ public class Rule extends Additional {
 		this.nextStatus = nextStatus;
 	}
 
-	public Status getStatus_now() {
-		return status_now;
-	}
-
-	public void setStatus_now(Status status_now) {
-		this.status_now = status_now;
-	}
+	
 }
