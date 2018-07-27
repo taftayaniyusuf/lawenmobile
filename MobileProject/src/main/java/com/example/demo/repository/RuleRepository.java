@@ -10,6 +10,6 @@ import com.example.demo.model.TipePengajuan;
 @Repository
 public interface RuleRepository extends CrudRepository<Rule, Long>{
 	
-	Rule findNextStatusByTipePengajuanAndStatus(TipePengajuan tipePengajuan, Status status);
+	Rule findNextStatusByTipePengajuanAndStatusNow(TipePengajuan tipePengajuan, Status status);
 
 }

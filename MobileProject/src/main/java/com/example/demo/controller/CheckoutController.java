@@ -28,7 +28,7 @@ public class CheckoutController {
 	    ){
 		 	Pulang pulang = new Pulang();
 		 	pulang.setCreateDate(new Date());
-		 	pulang.setJam_pulang(new Date());
+		 	
 		 	pulang.setLatitude_pulang(lattitude_pulang);
 		 	pulang.setLongitude_pulang(longitude_pulang);
 		 	pulang.setStatus_fraud(status);

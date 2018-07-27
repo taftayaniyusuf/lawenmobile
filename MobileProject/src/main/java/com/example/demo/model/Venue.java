@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -26,6 +28,7 @@ public class Venue extends Additional implements Serializable {
     private Double latitude_venue;
     private Double longitude_venue;
     private Double radius_venue;
+    @JsonIgnore
     @OneToMany(mappedBy = "venue")
     private List<Karyawan> karyawans;
 

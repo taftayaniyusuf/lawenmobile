@@ -5,6 +5,8 @@
  */
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +25,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Pulang extends Additional implements Serializable {
-
+    @JsonIgnore
     @OneToMany(mappedBy = "pulang")
     private List<Absen> absen;
 
@@ -43,6 +45,7 @@ public class Pulang extends Additional implements Serializable {
     private Boolean status_fraud;
     public Pulang(){
         this.setStatus("Active");
+        this.setJam_pulang(new Date());
     }
 
     public static long getSerialVersionUID() {
