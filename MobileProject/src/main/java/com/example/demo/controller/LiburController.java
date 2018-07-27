@@ -63,13 +63,13 @@ public class LiburController {
 	@RequestMapping(value = "/dibsalelibur/",method = RequestMethod.POST,headers="Accept=application/json")
 	public boolean disableLibur(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		Libur libur = liburService.getById(id);
-		libur.setStatus("Disable");
+		libur.setStatus("disable");
 		liburService.SaveOrUpdate(libur);
 		return true;
 	}
 //=============================================GET=====================================================
 	//Select All Libur
-	 @RequestMapping(value = "/liburall")
+	 @RequestMapping(value = "/liburall",method = RequestMethod.GET)
 	 public List<Libur> liburList(){
 	     return liburService.getAllLibur();
 	 }

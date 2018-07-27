@@ -18,7 +18,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "idstatus")
 	private
 	Long id;
-	@Column(name = "nama_status", length = 20, insertable = true, updatable = false)
+	@Column(name = "nama_status", length = 20, insertable = true, updatable = true)
 	private
 	String namaStatus;
 	

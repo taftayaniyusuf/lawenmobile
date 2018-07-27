@@ -70,4 +70,46 @@ public class StatusService implements StatusDao{
 		// TODO Auto-generated method stub
 		sr.delete(a);
 	}
+
+	@Override
+	public Status getApproved() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Status getRejected() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Status getReimbursed() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Status getVerified() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Status getUnverified() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Status getDisbursed() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Status getFinished() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
