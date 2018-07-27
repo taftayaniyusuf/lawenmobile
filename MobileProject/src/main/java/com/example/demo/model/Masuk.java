@@ -5,6 +5,8 @@
  */
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +25,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Masuk extends Additional implements Serializable {
-
+    @JsonIgnore
     @OneToMany(mappedBy = "masuk")
     private List<Absen> absen;
 

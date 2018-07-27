@@ -53,8 +53,8 @@ public class CheckinController {
     public boolean updatePengingat(@RequestParam(value = "id",required = false)  Long id,
 									    		@RequestParam(value = "jam_masuk",required = false) @DateTimeFormat(pattern="HH:mm:dd") Date jam_masuk,
 								                @RequestParam (value = "lattitude_masuk", required = false) Double lattitude_masuk,
-								               @RequestParam(value = "longitude_masuk", required = false) Double longitude_masuk,
-								               @RequestParam(value = "status", required = false) Boolean status
+								               	@RequestParam(value = "longitude_masuk", required = false) Double longitude_masuk,
+								               	@RequestParam(value = "status", required = false) Boolean status
 	    )throws ParseException {
 		Masuk masuk = masukService.getById(id);
 	 	masuk.setJam_masuk(jam_masuk);
@@ -64,16 +64,15 @@ public class CheckinController {
 	 	masukService.SaveOrUpdate(masuk);
 	 	return true;
 	 }
-
-	 //Delete Masuk
-	 @RequestMapping(value = "/deletemasuk/",method = RequestMethod.POST,headers="Accept=application/json")
-	 public boolean deleteMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
+	//Delete Masuk
+	@RequestMapping(value = "/deletemasuk/",method = RequestMethod.POST,headers="Accept=application/json")
+	public boolean deleteMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		Masuk masuk = masukService.getById(id);
 		masukService.deleteMasuk(masuk);
 		return true;
-	 }
-	 @RequestMapping(value = "/disablemasuk/",method = RequestMethod.POST,headers="Accept=application/json")
-	 public boolean disableMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
+	}
+	@RequestMapping(value = "/disablemasuk/",method = RequestMethod.POST,headers="Accept=application/json")
+	public boolean disableMasuk(@RequestParam(value = "id",required = false)  Long id)throws ParseException {
 		Masuk masuk = masukService.getById(id);
 		masuk.setStatus("status");
 		masukService.SaveOrUpdate(masuk);
@@ -81,9 +80,9 @@ public class CheckinController {
 	 }	    
 	 
 //================================================================GET===================================
-		@RequestMapping(value = "/masukall",method = RequestMethod.GET)
-		public List<Masuk> masukList(){
-			return masukService.getAllMasuk();
+	@RequestMapping(value = "/masukall",method = RequestMethod.GET)
+		public List<Absen> masukList(){
+			return absenService.getAllAbsen();
 		}
 		
 	 @RequestMapping(value = "/masukbyid",method = RequestMethod.GET)

@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +16,7 @@ import javax.persistence.*;
  */
 @Entity
 public class DataLogin extends Additional implements Serializable {
+    @JsonIgnore
     @OneToMany(mappedBy = "dataLogin")
     private List<Absen> absens;
     private static final long serialVersionUID = 1L;

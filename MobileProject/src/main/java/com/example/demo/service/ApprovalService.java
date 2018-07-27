@@ -30,19 +30,19 @@ public class ApprovalService implements ApprovalDao{
 	@Override
 	public void SaveOrUpdate(Approval a) {
 		approvalRepository.save(a);
-		
+
 	}
 
 	@Override
 	public void deleteApproval(long id) {
 		approvalRepository.deleteById(id);
-		
+
 	}
 
 	@Override
 	public void deleteApproval(Approval a) {
 		approvalRepository.delete(a);
-		
+
 	}
 	public List<Approval>getapprovalactive(){
 		return approvalRepository.getapprovalactive();

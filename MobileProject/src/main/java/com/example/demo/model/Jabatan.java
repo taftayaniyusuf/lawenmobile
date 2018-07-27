@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -15,7 +17,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Jabatan extends Additional implements Serializable {
-
+    @JsonIgnore
     @OneToMany(mappedBy = "jabatan")
     private List<Karyawan> karyawans;
 

@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 public class RoleLogin extends Additional implements Serializable {
+    @JsonIgnore
     @OneToMany(mappedBy = "roleLogin")
     private List<DataLogin> dataLogins;
 

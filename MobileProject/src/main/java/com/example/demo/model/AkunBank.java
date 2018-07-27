@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -16,6 +18,7 @@ public class AkunBank extends Additional implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nama_bank;
+    @JsonIgnore
     @OneToMany(mappedBy = "akunBank")
     private List<Karyawan> karyawans;
 
