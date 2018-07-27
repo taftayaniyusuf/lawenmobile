@@ -50,7 +50,7 @@ public class ExpenseApprovalService implements ExpenseApprovalDao{
 	}
 
 	@Override
-	public ExpenseApproval getById(ExpenseKategori idA, Approval idE) {
+	public ExpenseApproval getById(Long idA, Long idE) {
 		return expenseApprovalRepository.getByExpenseAndApproval(idA, idE);
 	}
 

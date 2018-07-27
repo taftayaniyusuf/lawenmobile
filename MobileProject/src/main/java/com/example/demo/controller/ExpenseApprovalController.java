@@ -46,8 +46,7 @@ public class ExpenseApprovalController {
 											@RequestParam("idExpense") Long idExpense,
 											@RequestParam("idApproval") Long idApproval,
 											@RequestParam("idKaryawan") Long idKaryawan) {
-		ExpenseApproval ex = expenseApprovalService.getById(expenseKategoriService.getKategori(idExpense),
-															approvalService.getById(idApproval));
+		ExpenseApproval ex = expenseApprovalService.getById(idExpense,idApproval);
 		ex.setIdKaryawan(karyawanService.getById(idKaryawan));
 		ex.setNamaApproval(namaApproval);
 		ex.setRule(rule);
@@ -58,8 +57,7 @@ public class ExpenseApprovalController {
 	@DeleteMapping(value = "/deleteexpenseapproval")
 	public boolean deleteExpenseApproval(@RequestParam("idExpense") Long idExpense,
 											@RequestParam("idApproval") Long idApproval) {
-		ExpenseApproval ex = expenseApprovalService.getById(expenseKategoriService.getKategori(idExpense),
-															approvalService.getById(idApproval));
+		ExpenseApproval ex = expenseApprovalService.getById(idExpense, idApproval);
 		expenseApprovalService.deleteExpenseApproval(ex);
 		return true;
 	}

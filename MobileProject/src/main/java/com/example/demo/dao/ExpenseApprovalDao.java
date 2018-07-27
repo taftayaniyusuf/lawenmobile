@@ -7,7 +7,7 @@ import com.example.demo.model.ExpenseApproval;
 import com.example.demo.model.ExpenseKategori;
 
 public interface ExpenseApprovalDao {
-		public ExpenseApproval getById(ExpenseKategori idA, Approval idE);
+		public ExpenseApproval getById(Long idA, Long idE);
 		public List<ExpenseApproval> getExpenseApprovalByExpense(ExpenseKategori ek);
 	 	public List<ExpenseApproval> getAllExpenseApproval();
 	 	public void SaveOrUpdate(ExpenseApproval a);

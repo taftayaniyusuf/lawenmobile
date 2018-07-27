@@ -14,10 +14,12 @@ import com.example.demo.model.ExpenseKategori;
 @Repository
 public interface ExpenseApprovalRepository extends CrudRepository<ExpenseApproval,Long>{
 
-	@Query(value = "select ea from ExpenseApproval ea where ea.idExpense=:idExpense and ea.status='Active'")
+	@Query(value = "SELECT ea FROM expense_approval ea WHERE ea.idExpense=:idExpense AND ea.status='Active'", nativeQuery= true)
 	List<ExpenseApproval> findByExpense(@Param("idExpense") ExpenseKategori ek);
-	@Query(value = "select ea from ExpenseApproval ea where ea.idExpense=:idExpense and ea.idApproval=:idApproval and ea.status='Active'")
-	ExpenseApproval getByExpenseAndApproval(@Param("idExpense") ExpenseKategori ek, @Param("idApproval") Approval a);
-
+	@Query(value = "SELECT ea FROM expense_approval ea"
+					+ " WHERE ea.idExpense=:idExpense"
+					+ "AND ea.idApproval=:idApproval"
+					+ " AND ea.status='Active'", nativeQuery= true)
+	ExpenseApproval getByExpenseAndApproval(@Param("idExpense") Long ek, @Param("idApproval") Long a);
 
 }
