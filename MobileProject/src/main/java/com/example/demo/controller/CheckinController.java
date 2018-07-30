@@ -44,8 +44,8 @@ public class CheckinController {
 	@Autowired
 	AbsenService absenService;
 	 //Insert Masuk
-	 public final String SaveDirectory= "D:/LawenconBootcamp/GitProjek/MobileProject/MobileProject/uploads/";
-	@RequestMapping(value = "/insertmasuk",method = RequestMethod.POST,headers="Accept=application/json")
+	public final String SaveDirectory= "D:/LawenconBootcamp/GitProjek/MobileProject/MobileProject/uploads/";
+	       @RequestMapping(value = "/insertmasuk",method = RequestMethod.POST,headers="Accept=application/json")
 	public String insertMasuk(@RequestParam (value = "lattitude_masuk", required = false) Double lattitude_masuk,
 							  @RequestParam(value = "longitude_masuk", required = false) Double longitude_masuk,
 							  @RequestParam(value = "status", required = false) Boolean status, @ModelAttribute("Masuk")Masuk masuk,
