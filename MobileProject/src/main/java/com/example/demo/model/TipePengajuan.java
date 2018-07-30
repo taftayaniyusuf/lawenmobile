@@ -18,7 +18,7 @@ public class TipePengajuan extends Additional implements Serializable{
 	@Column(name = "idtipepengajuan")
 	private
 	Long id;
-	@Column(name = "jenis_pengajuan", length = 25, insertable = true, updatable = false)
+	@Column(name = "jenis_pengajuan", length = 25, insertable = true, updatable = true)
 	private
 	String jenisPengajuan;
 	public TipePengajuan(){

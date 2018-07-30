@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ExpenseKategori extends Additional implements Serializable{
@@ -18,6 +19,8 @@ public class ExpenseKategori extends Additional implements Serializable{
 	@Column(name = "idexpense")
 	private
 	Long id;
+	@ManyToOne
+	private TipePengajuan tipePengajuan;
 	@Column(name = "nama_expense", length = 35, insertable = true, updatable = true)
 	private
 	String namaExpense;
@@ -38,8 +41,14 @@ public class ExpenseKategori extends Additional implements Serializable{
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+	public TipePengajuan getIdTipePengajuan() {
+		return tipePengajuan;
+	}
+	public void setTipePengajuan(TipePengajuan tipePengajuan) {
+		this.tipePengajuan = tipePengajuan;
 	}
 	public String getNamaExpense() {
 		return namaExpense;

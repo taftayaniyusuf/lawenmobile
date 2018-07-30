@@ -39,8 +39,18 @@ public class Karyawan extends Additional implements Serializable {
     private Team team;
     @ManyToOne
     private TipeKaryawan tipeKaryawan;
+    @ManyToOne
+    private TimeGroup timeGroup;
 
-    public Karyawan(Long id, String last_name, String first_name, String kode_karyawan, String no_rekening, String nama_rekening) {
+    public TimeGroup getTimeGroup() {
+		return timeGroup;
+	}
+
+	public void setTimeGroup(TimeGroup timeGroup) {
+		this.timeGroup = timeGroup;
+	}
+
+	public Karyawan(Long id, String last_name, String first_name, String kode_karyawan, String no_rekening, String nama_rekening) {
         this.setId(id);
         this.setLast_name(last_name);
         this.setFirst_name(first_name);
