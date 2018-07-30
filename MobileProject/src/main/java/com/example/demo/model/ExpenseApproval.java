@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class ExpenseApproval extends Additional implements Serializable{
@@ -15,14 +17,15 @@ public class ExpenseApproval extends Additional implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	ExpenseApprovalPK id;
+	private ExpenseApprovalPK id;
 	@ManyToOne
 	@JoinColumn(name = "idkaryawan", referencedColumnName = "id")
-	Karyawan idKaryawan;
+	@JsonIgnore
+	private Karyawan idKaryawan;
 	@Column(name = "nama_approval", length = 35, insertable = true, updatable = true)
-	String namaApproval;
+	private String namaApproval;
 	@Column(name = "rule", length = 35, insertable = true, updatable = true)
-	String rule;
+	private String rule;
 	
 	public ExpenseApproval(){
 		this.setStatus("Active");
