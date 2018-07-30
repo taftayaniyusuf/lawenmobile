@@ -38,8 +38,9 @@ public class PulangService implements PulangDao{
     }
 
     @Override
-    public void SaveOrUpdate(Pulang a) {
+    public Pulang SaveOrUpdate(Pulang a) {
     	pulangRepository.save(a);
+        return a;
     }
 
     @Override

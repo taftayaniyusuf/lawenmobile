@@ -43,6 +43,7 @@ public class Absen extends Additional implements Serializable {
     private Date total_jam_kerja;
     @Column(name = "foto_path")
     private String foto_path;
+    private String task_kerja;
     @ManyToOne
     private Masuk masuk;
     @ManyToOne
@@ -199,5 +200,12 @@ public class Absen extends Additional implements Serializable {
 	    public void setDataLogin(DataLogin dataLogin) {
 	        this.dataLogin = dataLogin;
 	    }
-    
+
+    public String getTask_kerja() {
+        return task_kerja;
+    }
+
+    public void setTask_kerja(String task_kerja) {
+        this.task_kerja = task_kerja;
+    }
 }

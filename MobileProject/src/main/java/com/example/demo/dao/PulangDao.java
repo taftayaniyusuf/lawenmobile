@@ -15,7 +15,7 @@ import com.example.demo.model.*;
 public interface PulangDao {
     public List<Pulang> getAllPulang();
     public Pulang getById(Long id);
-    public void SaveOrUpdate(Pulang a);
+    public Pulang SaveOrUpdate(Pulang a);
     public void deletePulang(Long id);
     public void deletePulang(Pulang a);
 }
