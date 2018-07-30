@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class CheckinController {
-	String currentDate = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+	String currentDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 	@Autowired
 	PulangService pulangService;
 	@Autowired
@@ -53,13 +53,15 @@ public class CheckinController {
 							  @ModelAttribute("Pulang")Pulang pulang) throws IOException {
 
 		//====================================menghilankan header=============================
+		 String mix = String.valueOf(Math.random());
+		 String max = mix.replace(".","");
 		 String pathfile = null;
 		 String cleanbase64 = fileStorageService.removeBase64Header(file);
          BASE64Decoder decoder = new BASE64Decoder();
 		 byte[] decodeBytes = decoder.decodeBuffer(cleanbase64);
-		 FileOutputStream fileOutputStream = new FileOutputStream(SaveDirectory +"halo".concat(currentDate)+".png");
+		 FileOutputStream fileOutputStream = new FileOutputStream(SaveDirectory +"halo".concat(max.concat(currentDate))+".png");
 		 fileOutputStream.write(decodeBytes);
-		 String lcal= SaveDirectory+"halo".concat(currentDate)+".png";
+		 String lcal= "halo".concat(max.concat(currentDate))+".png";
 		 masuk.setLattitude_masuk(lattitude_masuk);
 		 masuk.setLongitude_masuk(longitude_masuk);
 		 masuk.setStatus_fraud(status);
