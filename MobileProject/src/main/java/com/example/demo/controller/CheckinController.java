@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Base64;
+
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +55,6 @@ public class CheckinController {
 		//====================================menghilankan header=============================
 		 String mix = String.valueOf(Math.random());
 		 String max = mix.replace(".","");
-		 String pathfile = null;
 		 String cleanbase64 = fileStorageService.removeBase64Header(file);
          BASE64Decoder decoder = new BASE64Decoder();
 		 byte[] decodeBytes = decoder.decodeBuffer(cleanbase64);

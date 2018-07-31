@@ -44,5 +44,9 @@ public class DataLoginService implements DataLoginDao {
     public DataLogin getByKaryawan(Karyawan karyawan){
         return dataLoginRepository.getByKaryawan(karyawan);
     }
+
+    public DataLogin getLogin(String email, String password){
+        return dataLoginRepository.findByPassword(email,password);
+    }
 }
 

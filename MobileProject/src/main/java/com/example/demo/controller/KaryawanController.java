@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.helper.enkriphelper;
 import com.example.demo.model.*;
 import com.example.demo.service.*;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class KaryawanController {
                                   @RequestParam("idjabatan")long idjabatan,@RequestParam("idteam")long idteam,
                                   @RequestParam("idtipekarya")long idtipekarya,@RequestParam("idvenue")long idvenue,
                                   @RequestParam("email")String email,@RequestParam("password")String password,
-                                  @RequestParam("idrolelogin")long idrolelogin){
+                                  @RequestParam("idrolelogin")long idrolelogin) throws NoSuchAlgorithmException {
 
         k.setFirst_name(first_name);
         k.setLast_name(last_name);
@@ -56,7 +58,7 @@ public class KaryawanController {
         k = karyawanService.SaveOrUpdate(k);
         dl.setKaryawan(k);
         dl.setEmail(email);
-        dl.setPassword(password);
+        dl.setPassword(enkriphelper.md5(password) );
         dl.setRoleLogin(roleLoginService.getById(idrolelogin));
         dataLoginService.SaveOrUpdate(dl);
     }
