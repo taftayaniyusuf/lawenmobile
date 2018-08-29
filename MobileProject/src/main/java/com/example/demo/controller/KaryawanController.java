@@ -44,11 +44,11 @@ public class KaryawanController {
                                   @RequestParam("email")String email,@RequestParam("password")String password,
                                   @RequestParam("idrolelogin")long idrolelogin) throws NoSuchAlgorithmException {
 
-        k.setFirst_name(first_name);
-        k.setLast_name(last_name);
-        k.setKode_karyawan(kode_karyawan);
-        k.setNo_rekening(no_rekening);
-        k.setNama_rekening(nama_rekening);
+        k.setFirstName(first_name);
+        k.setLastName(last_name);
+        k.setKodeKaryawan(kode_karyawan);
+        k.setNoRekening(no_rekening);
+        k.setNamaRekening(nama_rekening);
         k.setAkunBank(akunBankService.getById(idakunbank));
         k.setJabatan(jabatanService.getById(idjabatan));
         k.setTeam(teamServices.getById(idteam));
@@ -72,11 +72,11 @@ public class KaryawanController {
                                @RequestParam("email")String email,@RequestParam("password")String password,
                                @RequestParam("idrolelogin")long idrolelogin,@RequestParam("idkaryawan")long idkaryawan){
         Karyawan karyawan = karyawanService.getById(idkaryawan);
-        karyawan.setFirst_name(first_name);
-        karyawan.setLast_name(last_name);
-        karyawan.setKode_karyawan(kode_karyawan);
-        karyawan.setNo_rekening(no_rekening);
-        karyawan.setNama_rekening(nama_rekening);
+        karyawan.setFirstName(first_name);
+        karyawan.setLastName(last_name);
+        karyawan.setKodeKaryawan(kode_karyawan);
+        karyawan.setNoRekening(no_rekening);
+        karyawan.setNamaRekening(nama_rekening);
         karyawan.setAkunBank(akunBankService.getById(idakunbank));
         karyawan.setJabatan(jabatanService.getById(idjabatan));
         karyawan.setTeam(teamServices.getById(idteam));

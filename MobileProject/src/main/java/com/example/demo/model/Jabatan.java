@@ -5,11 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -25,7 +21,8 @@ public class Jabatan extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nama_jabatan;
+    @Column(name = "nama_jabatan")
+    private String namaJabatan;
 
     public Long getId() {
         return id;
@@ -83,19 +80,18 @@ public class Jabatan extends Additional implements Serializable {
         return serialVersionUID;
     }
 
-    /**
-     * @return the nama_jabatan
-     */
-    public String getNama_jabatan() {
-        return nama_jabatan;
+    public String getNamaJabatan() {
+        return namaJabatan;
+    }
+
+    public void setNamaJabatan(String namaJabatan) {
+        this.namaJabatan = namaJabatan;
     }
 
     /**
-     * @param nama_jabatan the nama_jabatan to set
+     * @return the nama_jabatan
      */
-    public void setNama_jabatan(String nama_jabatan) {
-        this.nama_jabatan = nama_jabatan;
-    }
+
 
 }
 

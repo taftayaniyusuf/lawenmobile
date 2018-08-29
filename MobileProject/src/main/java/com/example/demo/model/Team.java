@@ -5,11 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -25,7 +21,8 @@ public class Team extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nama_team;
+    @Column(name = "nama_team")
+    private String namateam;
     public Team(){
         this.setStatus("Active");
     }
@@ -83,13 +80,14 @@ public class Team extends Additional implements Serializable {
         return serialVersionUID;
     }
 
-    public String getNama_team() {
-        return nama_team;
+    public String getNamateam() {
+        return namateam;
     }
 
-    public void setNama_team(String nama_team) {
-        this.nama_team = nama_team;
+    public void setNamateam(String namateam) {
+        this.namateam = namateam;
     }
+
 
     /**
      * @return the nama_teamS

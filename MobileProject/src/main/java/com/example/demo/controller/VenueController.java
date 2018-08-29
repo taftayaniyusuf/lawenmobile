@@ -22,13 +22,13 @@ public class VenueController {
                                @RequestParam("alamat_venue")String alamat_venue, @RequestParam("latitude_venue")Double latitude_venue,
                                @RequestParam("longitude_venue")Double longitude_venue, @RequestParam("radius_venue")Double radius_venue){
         Venue venue= new Venue();
-        venue.setNama_venue(nama_venue);
-        venue.setDeskripsi_venue(deskripsi_venue);
-        venue.setAlamat_venue(alamat_venue);
+        venue.setNamaVenue(nama_venue);
+        venue.setDeskripsiVenue(deskripsi_venue);
+        venue.setAlamatVenue(alamat_venue);
         venue.setCreateDate(new Date());
-        venue.setLatitude_venue(latitude_venue);
-        venue.setLongitude_venue(longitude_venue);
-        venue.setRadius_venue(radius_venue);
+        venue.setLatitudeVenue(latitude_venue);
+        venue.setLongitudeVenue(longitude_venue);
+        venue.setRadiusVenue(radius_venue);
         venue.setStatus("Active");
         venueService.SaveOrUpdate(venue);
         return true;
@@ -39,12 +39,12 @@ public class VenueController {
                                @RequestParam("longitude_venue")Double longitude_venue, @RequestParam("radius_venue")Double radius_venue){
         Venue venue= venueService.getById(id);
         venue.setId(id);
-        venue.setNama_venue(nama_venue);
-        venue.setDeskripsi_venue(deskripsi_venue);
-        venue.setAlamat_venue(alamat_venue);
-        venue.setLatitude_venue(latitude_venue);
-        venue.setLongitude_venue(longitude_venue);
-        venue.setRadius_venue(radius_venue);
+        venue.setNamaVenue(nama_venue);
+        venue.setDeskripsiVenue(deskripsi_venue);
+        venue.setAlamatVenue(alamat_venue);
+        venue.setLatitudeVenue(latitude_venue);
+        venue.setLongitudeVenue(longitude_venue);
+        venue.setRadiusVenue(radius_venue);
         venue.setUpdateDate(new Date());
         venueService.SaveOrUpdate(venue);
         return true;

@@ -21,7 +21,7 @@ public class TeamController {
     public boolean insertteam(@RequestParam("nama_team") String nama_team){
         Team team = new Team();
         team.setCreateDate(new Date());
-        team.setNama_team(nama_team);
+        team.setNamateam(nama_team);
         teamServices.SaveOrUpdate(team);
         return true;
     }
@@ -30,7 +30,7 @@ public class TeamController {
         Team team = teamServices.getById(id);
         team.setId(id);
         team.setUpdateDate(new Date());
-        team.setNama_team(nama_team);
+        team.setNamateam(nama_team);
         teamServices.SaveOrUpdate(team);
         return true;
     }

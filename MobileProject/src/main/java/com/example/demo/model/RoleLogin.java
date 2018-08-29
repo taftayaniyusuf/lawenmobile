@@ -22,7 +22,8 @@ public class RoleLogin extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nama_role;
+    @Column(name = "nama_role")
+    private String namaRole;
 
     public RoleLogin(){
         this.setStatus("Active");
@@ -71,16 +72,6 @@ public class RoleLogin extends Additional implements Serializable {
     /**
      * @return the nama_role
      */
-    public String getNama_role() {
-        return nama_role;
-    }
-
-    /**
-     * @param nama_role the nama_role to set
-     */
-    public void setNama_role(String nama_role) {
-        this.nama_role = nama_role;
-    }
 
     public List<DataLogin> getDataLogins() {
         return dataLogins;
@@ -88,6 +79,14 @@ public class RoleLogin extends Additional implements Serializable {
 
     public void setDataLogins(List<DataLogin> dataLogins) {
         this.dataLogins = dataLogins;
+    }
+
+    public String getNamaRole() {
+        return namaRole;
+    }
+
+    public void setNamaRole(String namaRole) {
+        this.namaRole = namaRole;
     }
 
     /**

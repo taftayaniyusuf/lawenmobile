@@ -3,12 +3,7 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  *
@@ -21,12 +16,18 @@ public class Karyawan extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String last_name;
-    private String first_name;
-    private String kode_karyawan;
-    private String no_rekening;
-    private String nama_rekening;
-    private Date join_date;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "kode_karyawan")
+    private String kodeKaryawan;
+    @Column(name = "noe_rekening")
+    private String noRekening;
+    @Column(name = "nama_rekening")
+    private String namaRekening;
+    @Column(name = "join_date")
+    private Date joinDate;
     @ManyToOne
     private Venue venue;
     @OneToOne(mappedBy = "karyawan")
@@ -52,19 +53,19 @@ public class Karyawan extends Additional implements Serializable {
 
 	public Karyawan(Long id, String last_name, String first_name, String kode_karyawan, String no_rekening, String nama_rekening) {
         this.setId(id);
-        this.setLast_name(last_name);
-        this.setFirst_name(first_name);
-        this.setKode_karyawan(kode_karyawan);
-        this.setNo_rekening(no_rekening);
-        this.setNama_rekening(nama_rekening);
+        this.setLastName(last_name);
+        this.setFirstName(first_name);
+        this.setKodeKaryawan(kode_karyawan);
+        this.setNoRekening(no_rekening);
+        this.setNamaRekening(nama_rekening);
         this.setStatus("Active");
     }
 
     public Karyawan(Long id, String last_name, String first_name, String kode_karyawan) {
         this.setId(id);
-        this.setLast_name(last_name);
-        this.setFirst_name(first_name);
-        this.setKode_karyawan(kode_karyawan);
+        this.setLastName(last_name);
+        this.setFirstName(first_name);
+        this.setKodeKaryawan(kode_karyawan);
     }
 
     @Override
@@ -74,14 +75,14 @@ public class Karyawan extends Additional implements Serializable {
 
     public Karyawan(Long id, String last_name) {
         this.setId(id);
-        this.setLast_name(last_name);
+        this.setLastName(last_name);
     }
 
     public Karyawan() {
     }
     
     public String getFullName() {
-		return this.getFirst_name()+" "+this.getLast_name();
+		return this.getFirstName()+" "+this.getLastName();
 	}
     
     public Long getId() {
@@ -127,72 +128,6 @@ public class Karyawan extends Additional implements Serializable {
     /**
      * @return the last_name
      */
-    public String getLast_name() {
-        return last_name;
-    }
-
-    /**
-     * @param last_name the last_name to set
-     */
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    /**
-     * @return the first_name
-     */
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    /**
-     * @param first_name the first_name to set
-     */
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    /**
-     * @return the kode_karyawan
-     */
-    public String getKode_karyawan() {
-        return kode_karyawan;
-    }
-
-    /**
-     * @param kode_karyawan the kode_karyawan to set
-     */
-    public void setKode_karyawan(String kode_karyawan) {
-        this.kode_karyawan = kode_karyawan;
-    }
-
-    /**
-     * @return the no_rekening
-     */
-    public String getNo_rekening() {
-        return no_rekening;
-    }
-
-    /**
-     * @param no_rekening the no_rekening to set
-     */
-    public void setNo_rekening(String no_rekening) {
-        this.no_rekening = no_rekening;
-    }
-
-    /**
-     * @return the nama_rekening
-     */
-    public String getNama_rekening() {
-        return nama_rekening;
-    }
-
-    /**
-     * @param nama_rekening the nama_rekening to set
-     */
-    public void setNama_rekening(String nama_rekening) {
-        this.nama_rekening = nama_rekening;
-    }
 
     /**
      * @return the venue
@@ -278,11 +213,52 @@ public class Karyawan extends Additional implements Serializable {
         this.tipeKaryawan = tipeKaryawan;
     }
 
-    public Date getJoin_date() {
-        return join_date;
+
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setJoin_date(Date join_date) {
-        this.join_date = join_date;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getKodeKaryawan() {
+        return kodeKaryawan;
+    }
+
+    public void setKodeKaryawan(String kodeKaryawan) {
+        this.kodeKaryawan = kodeKaryawan;
+    }
+
+    public String getNoRekening() {
+        return noRekening;
+    }
+
+    public void setNoRekening(String noRekening) {
+        this.noRekening = noRekening;
+    }
+
+    public String getNamaRekening() {
+        return namaRekening;
+    }
+
+    public void setNamaRekening(String namaRekening) {
+        this.namaRekening = namaRekening;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
     }
 }

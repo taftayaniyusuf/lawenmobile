@@ -19,7 +19,7 @@ public class JabatanController {
     @RequestMapping(value = "/insertjabatan",method = RequestMethod.POST,headers = "Accept=application/json")
     public  boolean insertJabatan(@RequestParam("nama_jabatan") String nama_jabatan){
         Jabatan jabatan = new Jabatan();
-        jabatan.setNama_jabatan(nama_jabatan);
+        jabatan.setNamaJabatan(nama_jabatan);
         jabatan.setCreateDate(new Date());
         jabatanService.SaveOrUpdate(jabatan);
         return true;
@@ -28,7 +28,7 @@ public class JabatanController {
     public  boolean updateJabatan(@RequestParam("id")long id,@RequestParam("nama_jabatan") String nama_jabatan){
         Jabatan jabatan = jabatanService.getById(id);
         jabatan.setId(id);
-        jabatan.setNama_jabatan(nama_jabatan);
+        jabatan.setNamaJabatan(nama_jabatan);
         jabatan.setUpdateDate(new Date());
         jabatanService.SaveOrUpdate(jabatan);
         return true;

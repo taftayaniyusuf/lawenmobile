@@ -5,11 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -22,12 +18,18 @@ public class Venue extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nama_venue;
-    private String deskripsi_venue;
-    private String alamat_venue;
-    private Double latitude_venue;
-    private Double longitude_venue;
-    private Double radius_venue;
+    @Column(name = "nama_venue")
+    private String namaVenue;
+    @Column(name = "deskripsi_venue" )
+    private String deskripsiVenue;
+    @Column(name = "alamat_venue")
+    private String alamatVenue;
+    @Column(name = "latitude_venue")
+    private Double latitudeVenue;
+    @Column(name = "longitude_venue")
+    private Double longitudeVenue;
+    @Column(name = "radius_venue")
+    private Double radiusVenue;
     @JsonIgnore
     @OneToMany(mappedBy = "venue")
     private List<Karyawan> karyawans;
@@ -35,17 +37,13 @@ public class Venue extends Additional implements Serializable {
 
     public Venue(Long id, String nama_venue, String deskripsi_venue, String alamat_venue,DecimalFormat latitude_venue) {
         this.setId(id);
-        this.setNama_venue(nama_venue);
-        this.setDeskripsi_venue(deskripsi_venue);
-        this.setAlamat_venue(alamat_venue);
+
         this.setStatus("Active");
     }
 
     public Venue(Long id, String nama_venue, String deskripsi_venue, String alamat_venue) {
         this.setId(id);
-        this.setNama_venue(nama_venue);
-        this.setDeskripsi_venue(deskripsi_venue);
-        this.setAlamat_venue(alamat_venue);
+
     }
 
     public Venue() {
@@ -95,44 +93,6 @@ public class Venue extends Additional implements Serializable {
     /**
      * @return the nama_venue
      */
-    public String getNama_venue() {
-        return nama_venue;
-    }
-
-    /**
-     * @param nama_venue the nama_venue to set
-     */
-    public void setNama_venue(String nama_venue) {
-        this.nama_venue = nama_venue;
-    }
-
-    /**
-     * @return the deskripsi_venue
-     */
-    public String getDeskripsi_venue() {
-        return deskripsi_venue;
-    }
-
-    /**
-     * @param deskripsi_venue the deskripsi_venue to set
-     */
-    public void setDeskripsi_venue(String deskripsi_venue) {
-        this.deskripsi_venue = deskripsi_venue;
-    }
-
-    /**
-     * @return the alamat_venue
-     */
-    public String getAlamat_venue() {
-        return alamat_venue;
-    }
-
-    /**
-     * @param alamat_venue the alamat_venue to set
-     */
-    public void setAlamat_venue(String alamat_venue) {
-        this.alamat_venue = alamat_venue;
-    }
 
 
     /**
@@ -150,27 +110,51 @@ public class Venue extends Additional implements Serializable {
     }
 
 
-    public Double getLatitude_venue() {
-        return latitude_venue;
+    public String getNamaVenue() {
+        return namaVenue;
     }
 
-    public void setLatitude_venue(Double latitude_venue) {
-        this.latitude_venue = latitude_venue;
+    public void setNamaVenue(String namaVenue) {
+        this.namaVenue = namaVenue;
     }
 
-    public Double getLongitude_venue() {
-        return longitude_venue;
+    public String getDeskripsiVenue() {
+        return deskripsiVenue;
     }
 
-    public void setLongitude_venue(Double longitude_venue) {
-        this.longitude_venue = longitude_venue;
+    public void setDeskripsiVenue(String deskripsiVenue) {
+        this.deskripsiVenue = deskripsiVenue;
     }
 
-    public Double getRadius_venue() {
-        return radius_venue;
+    public String getAlamatVenue() {
+        return alamatVenue;
     }
 
-    public void setRadius_venue(Double radius_venue) {
-        this.radius_venue = radius_venue;
+    public void setAlamatVenue(String alamatVenue) {
+        this.alamatVenue = alamatVenue;
+    }
+
+    public Double getLatitudeVenue() {
+        return latitudeVenue;
+    }
+
+    public void setLatitudeVenue(Double latitudeVenue) {
+        this.latitudeVenue = latitudeVenue;
+    }
+
+    public Double getLongitudeVenue() {
+        return longitudeVenue;
+    }
+
+    public void setLongitudeVenue(Double longitudeVenue) {
+        this.longitudeVenue = longitudeVenue;
+    }
+
+    public Double getRadiusVenue() {
+        return radiusVenue;
+    }
+
+    public void setRadiusVenue(Double radiusVenue) {
+        this.radiusVenue = radiusVenue;
     }
 }

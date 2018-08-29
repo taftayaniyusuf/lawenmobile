@@ -18,7 +18,7 @@ public class AkunBankController {
     @RequestMapping(value = "/insertakunbank",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertAkunBank(@RequestParam("nama_bank")String nama_bank){
         AkunBank akunBank =  new AkunBank();
-        akunBank.setNama_bank(nama_bank);
+        akunBank.setNamaBank(nama_bank);
         akunBank.setCreateDate(new Date());
         akunBankService.SaveOrUpdate(akunBank);
         return true;
@@ -27,7 +27,7 @@ public class AkunBankController {
     public boolean updateAkunBank(@RequestParam("id")long id,@RequestParam("nama_bank")String nama_bank){
         AkunBank akunBank =akunBankService.getById(id);
         akunBank.setId(id);
-        akunBank.setNama_bank(nama_bank);
+        akunBank.setNamaBank(nama_bank);
         akunBank.setUpdateDate(new Date());
         akunBankService.SaveOrUpdate(akunBank);
         return true;

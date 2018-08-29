@@ -36,17 +36,17 @@ public class Masuk extends Additional implements Serializable {
     private Long id;
     @Temporal(TemporalType.TIME)
     @Column(name = "jam_masuk")
-    private Date jam_masuk;
+    private Date jamMasuk;
     @Column(name = "lattitude_masuk")
-    private Double lattitude_masuk;
+    private Double lattitudeMasuk;
     @Column(name = "longitude_masuk")
-    private Double longitude_masuk;
+    private Double longitudeMasuk;
     @Column(name = "status_fraud")
-    private Boolean status_fraud;
+    private Boolean statusFraud;
 
     public Masuk(){
         this.setStatus("Active");
-        this.setJam_masuk(new Date());
+        this.setJamMasuk(new Date());
     }
 
     public static long getSerialVersionUID() {
@@ -86,6 +86,46 @@ public class Masuk extends Additional implements Serializable {
         return "model.Masuk[ id=" + getId() + " ]";
     }
 
+    public List<Absen> getAbsen() {
+        return absen;
+    }
+
+    public void setAbsen(List<Absen> absen) {
+        this.absen = absen;
+    }
+
+    public Date getJamMasuk() {
+        return jamMasuk;
+    }
+
+    public void setJamMasuk(Date jamMasuk) {
+        this.jamMasuk = jamMasuk;
+    }
+
+    public Double getLattitudeMasuk() {
+        return lattitudeMasuk;
+    }
+
+    public void setLattitudeMasuk(Double lattitudeMasuk) {
+        this.lattitudeMasuk = lattitudeMasuk;
+    }
+
+    public Double getLongitudeMasuk() {
+        return longitudeMasuk;
+    }
+
+    public void setLongitudeMasuk(Double longitudeMasuk) {
+        this.longitudeMasuk = longitudeMasuk;
+    }
+
+    public Boolean getStatusFraud() {
+        return statusFraud;
+    }
+
+    public void setStatusFraud(Boolean statusFraud) {
+        this.statusFraud = statusFraud;
+    }
+
 //    /**
 //     * @return the absen
 //     */
@@ -108,46 +148,5 @@ public class Masuk extends Additional implements Serializable {
     /**
      * @return the jam_masuk
      */
-    public Date getJam_masuk() {
-        return jam_masuk;
-    }
 
-    /**
-     * @param jam_masuk the jam_masuk to set
-     */
-    public void setJam_masuk(Date jam_masuk) {
-        this.jam_masuk = jam_masuk;
-    }
-
-    public List<Absen> getAbsen() {
-        return absen;
-    }
-
-    public void setAbsen(List<Absen> absen) {
-        this.absen = absen;
-    }
-
-    public Boolean getStatus_fraud() {
-        return status_fraud;
-    }
-
-    public void setStatus_fraud(Boolean status_fraud) {
-        this.status_fraud = status_fraud;
-    }
-
-    public Double getLattitude_masuk() {
-        return lattitude_masuk;
-    }
-
-    public void setLattitude_masuk(Double lattitude_masuk) {
-        this.lattitude_masuk = lattitude_masuk;
-    }
-
-    public Double getLongitude_masuk() {
-        return longitude_masuk;
-    }
-
-    public void setLongitude_masuk(Double longitude_masuk) {
-        this.longitude_masuk = longitude_masuk;
-    }
 }

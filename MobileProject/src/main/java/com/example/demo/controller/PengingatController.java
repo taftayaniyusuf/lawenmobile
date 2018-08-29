@@ -32,9 +32,9 @@ public class PengingatController {
 	    ){
 	        Pengingat pengingat = new Pengingat();
 	        pengingat.setCreateDate(new Date());
-	        pengingat.setNama_pengingat(nama_pengingat);
-//	        pengingat.setWaktu_pengingat(waktu_pengingat);
-	        pengingat.setDeskripsi_pengingat(deskripsi_pengingat);
+	        pengingat.setNamaPengingat(nama_pengingat);
+//	        pengingat.setWaktuPengingat(waktu_pengingat);
+	        pengingat.setDeskripsiPengingat(deskripsi_pengingat);
 	        pengingatService.SaveOrUpdate(pengingat);
 	        return true;
 	    }
@@ -48,9 +48,9 @@ public class PengingatController {
 	    )throws ParseException {
 		 	Pengingat pengingat = pengingatService.getById(id);
 		 	pengingat.setUpdateDate(new Date());
-	        pengingat.setNama_pengingat(nama_pengingat);
-//	        pengingat.setWaktu_pengingat(waktu_pengingat);
-	        pengingat.setDeskripsi_pengingat(deskripsi_pengingat);
+	        pengingat.setNamaPengingat(nama_pengingat);
+//	        pengingat.setWaktuPengingat(waktu_pengingat);
+	        pengingat.setDeskripsiPengingat(deskripsi_pengingat);
 	        pengingatService.SaveOrUpdate(pengingat);
 	        return true;
 	    }

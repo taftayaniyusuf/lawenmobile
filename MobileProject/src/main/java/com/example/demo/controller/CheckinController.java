@@ -61,9 +61,9 @@ public class CheckinController {
 		 FileOutputStream fileOutputStream = new FileOutputStream(SaveDirectory +"halo".concat(max.concat(currentDate))+".png");
 		 fileOutputStream.write(decodeBytes);
 		 String lcal= "halo".concat(max.concat(currentDate))+".png";
-		 masuk.setLattitude_masuk(lattitude_masuk);
-		 masuk.setLongitude_masuk(longitude_masuk);
-		 masuk.setStatus_fraud(status);
+		 masuk.setLattitudeMasuk(lattitude_masuk);
+		 masuk.setLongitudeMasuk(longitude_masuk);
+		 masuk.setStatusFraud(status);
 		 masuk = masukService.SaveOrUpdate(masuk);
 		 pulang.setCreateBy("halloo");
 		 pulang = pulangService.SaveOrUpdate(pulang);
@@ -86,10 +86,10 @@ public class CheckinController {
 								               	@RequestParam(value = "status", required = false) Boolean status
 	    )throws ParseException {
 		Masuk masuk = masukService.getById(id);
-	 	masuk.setJam_masuk(jam_masuk);
-		masuk.setLattitude_masuk(lattitude_masuk);
-	 	masuk.setLongitude_masuk(longitude_masuk);
-	 	masuk.setStatus_fraud(status);
+	 	masuk.setJamMasuk(jam_masuk);
+		masuk.setLattitudeMasuk(lattitude_masuk);
+	 	masuk.setLongitudeMasuk(longitude_masuk);
+	 	masuk.setStatusFraud(status);
 	 	masukService.SaveOrUpdate(masuk);
 	 	return true;
 	 }

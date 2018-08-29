@@ -28,12 +28,12 @@ public class Pengingat extends Additional implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "nama_pengingat")
-    private String nama_pengingat;
+    private String namaPengingat;
     @Temporal(TemporalType.TIME)
     @Column(name = "waktu_pengingat")
-    private Date waktu_pengingat;
+    private Date waktuPengingat;
     @Column(name = "deskripsi_pengingat")
-    private String deskripsi_pengingat;
+    private String deskripsiPengingat;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -48,7 +48,7 @@ public class Pengingat extends Additional implements Serializable {
     }
     public Pengingat(){
         this.setStatus("Active");
-        this.setWaktu_pengingat(new Date());
+        this.setWaktuPengingat(new Date());
     }
     @Override
     public int hashCode() {
@@ -75,46 +75,28 @@ public class Pengingat extends Additional implements Serializable {
         return "model.Pengingat[ id=" + getId() + " ]";
     }
 
-    /**
-     * @return the nama_pengingat
-     */
-    public String getNama_pengingat() {
-        return nama_pengingat;
+
+    public String getNamaPengingat() {
+        return namaPengingat;
     }
 
-    /**
-     * @param nama_pengingat the nama_pengingat to set
-     */
-    public void setNama_pengingat(String nama_pengingat) {
-        this.nama_pengingat = nama_pengingat;
+    public void setNamaPengingat(String namaPengingat) {
+        this.namaPengingat = namaPengingat;
     }
 
-    /**
-     * @return the waktu_pengingat
-     */
-    public Date getWaktu_pengingat() {
-        return waktu_pengingat;
+    public Date getWaktuPengingat() {
+        return waktuPengingat;
     }
 
-    /**
-     * @param waktu_pengingat the waktu_pengingat to set
-     */
-    public void setWaktu_pengingat(Date waktu_pengingat) {
-        this.waktu_pengingat = waktu_pengingat;
+    public void setWaktuPengingat(Date waktuPengingat) {
+        this.waktuPengingat = waktuPengingat;
     }
 
-    /**
-     * @return the deskripsi_pengingat
-     */
-    public String getDeskripsi_pengingat() {
-        return deskripsi_pengingat;
+    public String getDeskripsiPengingat() {
+        return deskripsiPengingat;
     }
 
-    /**
-     * @param deskripsi_pengingat the deskripsi_pengingat to set
-     */
-    public void setDeskripsi_pengingat(String deskripsi_pengingat) {
-        this.deskripsi_pengingat = deskripsi_pengingat;
+    public void setDeskripsiPengingat(String deskripsiPengingat) {
+        this.deskripsiPengingat = deskripsiPengingat;
     }
-    
 }

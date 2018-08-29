@@ -17,7 +17,8 @@ public class AkunBank extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nama_bank;
+    @Column(name = "nama_bank")
+    private String namaBank;
     @JsonIgnore
     @OneToMany(mappedBy = "akunBank")
     private List<Karyawan> karyawans;
@@ -69,16 +70,7 @@ public class AkunBank extends Additional implements Serializable {
     /**
      * @return the nama_bank
      */
-    public String getNama_bank() {
-        return nama_bank;
-    }
 
-    /**
-     * @param nama_bank the nama_bank to set
-     */
-    public void setNama_bank(String nama_bank) {
-        this.nama_bank = nama_bank;
-    }
 
     public List<Karyawan> getKaryawans() {
         return karyawans;
@@ -86,6 +78,14 @@ public class AkunBank extends Additional implements Serializable {
 
     public void setKaryawans(List<Karyawan> karyawans) {
         this.karyawans = karyawans;
+    }
+
+    public String getNamaBank() {
+        return namaBank;
+    }
+
+    public void setNamaBank(String namaBank) {
+        this.namaBank = namaBank;
     }
 
     /**

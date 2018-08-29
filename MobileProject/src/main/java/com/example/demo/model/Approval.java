@@ -1,10 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
@@ -17,7 +14,8 @@ public class Approval extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String tipe_approval;
+    @Column(name = "tipe_approval")
+    private String tipeApproval;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -58,18 +56,17 @@ public class Approval extends Additional implements Serializable {
         return "model.Approval[ id=" + getId() + " ]";
     }
 
-    /**
-     * @return the tipe_approval
-     */
-    public String getTipe_approval() {
-        return tipe_approval;
+    public String getTipeApproval() {
+        return tipeApproval;
+    }
+
+    public void setTipeApproval(String tipeApproval) {
+        this.tipeApproval = tipeApproval;
     }
 
     /**
-     * @param tipe_approval the tipe_approval to set
+     * @return the tipe_approval
      */
-    public void setTipe_approval(String tipe_approval) {
-        this.tipe_approval = tipe_approval;
-    }
+
     
 }

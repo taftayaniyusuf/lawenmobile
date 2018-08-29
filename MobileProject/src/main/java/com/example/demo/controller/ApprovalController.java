@@ -28,7 +28,7 @@ public class ApprovalController {
 	    ){
 		 	Approval approval = new Approval();
 		 	approval.setCreateDate(new Date());
-		 	approval.setTipe_approval(tipe_approval);
+		 	approval.setTipeApproval(tipe_approval);
 		 	approvalService.SaveOrUpdate(approval);
 	        return true;
 	    }
@@ -39,7 +39,7 @@ public class ApprovalController {
 	    )throws ParseException {
 		 	Approval approval = approvalService.getById(id);
 		 	approval.setUpdateDate(new Date());
-		 	approval.setTipe_approval(tipe_approval);
+		 	approval.setTipeApproval(tipe_approval);
 		 	approvalService.SaveOrUpdate(approval);
 		 	return true;
 	    }

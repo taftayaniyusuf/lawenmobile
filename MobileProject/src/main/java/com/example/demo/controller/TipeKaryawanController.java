@@ -21,7 +21,7 @@ public class TipeKaryawanController {
     public boolean insertTipeKayawan(@RequestParam("nama_tipekaryawan")String nama_typekaryawan){
         TipeKaryawan tipeKaryawan = new TipeKaryawan();
         tipeKaryawan.setCreateDate(new Date());
-        tipeKaryawan.setNama_typekaryawan(nama_typekaryawan);
+        tipeKaryawan.setNamaTypeKaryawan(nama_typekaryawan);
         tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
         return true;
     }
@@ -30,7 +30,7 @@ public class TipeKaryawanController {
         TipeKaryawan tipeKaryawan = tipeKaryawanService.getById(id);
         tipeKaryawan.setId(id);
         tipeKaryawan.setUpdateDate(new Date());
-        tipeKaryawan.setNama_typekaryawan(nama_typekaryawan);
+        tipeKaryawan.setNamaTypeKaryawan(nama_typekaryawan);
         tipeKaryawanService.SaveOrUpdate(tipeKaryawan);
         return true;
     }

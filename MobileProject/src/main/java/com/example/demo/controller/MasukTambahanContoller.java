@@ -35,9 +35,9 @@ public class MasukTambahanContoller {
 	    ){
 		 	MasukTambahan masukTambahan = new MasukTambahan();
 		 	masukTambahan.setCreateDate(new Date());
-		 	masukTambahan.setJam_masuk_tambahan(jam_masuk_tambahan);
-		 	masukTambahan.setLatitude_masuk_tambahan(lattitude_masuk_tambahan);
-		 	masukTambahan.setLongitude_masuk_tambahan(longitude_masuk_tambahan);
+		 	masukTambahan.setJamMasukTambahan(jam_masuk_tambahan);
+		 	masukTambahan.setLatitudeMasukTambahan(lattitude_masuk_tambahan);
+		 	masukTambahan.setLongitudeMasukTambahan(longitude_masuk_tambahan);
 		 	masukTambahan.setAbsen(absenService.getById(id_absen));
 		 	masukTambahanService.SaveOrUpdate(masukTambahan);
 	        return true;
@@ -52,9 +52,9 @@ public class MasukTambahanContoller {
 	    		)throws ParseException {
 		 	MasukTambahan masukTambahan = masukTambahanService.getById(id);
 		 	masukTambahan.setUpdateDate(new Date());
-		 	masukTambahan.setJam_masuk_tambahan(jam_masuk_tambahan);
-		 	masukTambahan.setLatitude_masuk_tambahan(lattitude_masuk_tambahan);
-		 	masukTambahan.setLongitude_masuk_tambahan(longitude_masuk_tambahan);
+		 	masukTambahan.setJamMasukTambahan(jam_masuk_tambahan);
+		 	masukTambahan.setLatitudeMasukTambahan(lattitude_masuk_tambahan);
+		 	masukTambahan.setLongitudeMasukTambahan(longitude_masuk_tambahan);
 		 	masukTambahan.setAbsen(absenService.getById(id_absen));
 		 	masukTambahanService.SaveOrUpdate(masukTambahan);
 		 	return true;

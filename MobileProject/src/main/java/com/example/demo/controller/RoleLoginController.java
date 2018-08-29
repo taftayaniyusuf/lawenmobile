@@ -20,7 +20,7 @@ public class RoleLoginController {
     @RequestMapping(value = "/insertrolelogin",method = RequestMethod.POST,headers = "Accept=application/json")
     public boolean insertRoleLogin( @RequestParam("nama_role")String nama_role){
         RoleLogin roleLogin =new RoleLogin();
-        roleLogin.setNama_role(nama_role);
+        roleLogin.setNamaRole(nama_role);
         roleLogin.setCreateDate(new Date());
         roleLoginService.SaveOrUpdate(roleLogin);
         return true;
@@ -30,7 +30,7 @@ public class RoleLoginController {
         RoleLogin roleLogin =roleLoginService.getById(id);
         roleLogin.setId(id);
         roleLogin.setUpdateDate(new Date());
-        roleLogin.setNama_role(nama_role);
+        roleLogin.setNamaRole(nama_role);
         roleLoginService.SaveOrUpdate(roleLogin);
         return true;
     }

@@ -30,9 +30,9 @@ public class LiburController {
 		){
 			Libur libur = new Libur();
 			libur.setCreateDate(new Date());
-			libur.setNama_libur(nama_libur);
+			libur.setNamaLibur(nama_libur);
 			libur.setTanggal(tanggal);
-			libur.setDeskripsi_libur(deskripsi_libur);
+			libur.setDeskripsiLibur(deskripsi_libur);
 			liburService.SaveOrUpdate(libur);
 			return true;
 		}
@@ -46,9 +46,9 @@ public class LiburController {
 		    )throws ParseException {
 			 	Libur libur = liburService.getById(id);
 			 	libur.setUpdateDate(new Date());
-			 	libur.setNama_libur(nama_libur);
+			 	libur.setNamaLibur(nama_libur);
 				libur.setTanggal(tanggal);
-				libur.setDeskripsi_libur(deskripsi_libur);
+				libur.setDeskripsiLibur(deskripsi_libur);
 				liburService.SaveOrUpdate(libur);
 		        return true;
 		    }

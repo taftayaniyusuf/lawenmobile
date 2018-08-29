@@ -26,11 +26,11 @@ public class Libur extends Additional implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
     @Column(name = "nama_libur")
-    private String nama_libur;
+    private String namaLibur;
     @Column(name = "tanggal")
     private Date tanggal;
     @Column(name = "deskripsi_libur")
-    private String deskripsi_libur;
+    private String deskripsiLibur;
 
     public  Libur(){
         this.setStatus("Active");
@@ -76,16 +76,7 @@ public class Libur extends Additional implements Serializable {
     /**
      * @return the nama_libur
      */
-    public String getNama_libur() {
-        return nama_libur;
-    }
 
-    /**
-     * @param nama_libur the nama_libur to set
-     */
-    public void setNama_libur(String nama_libur) {
-        this.nama_libur = nama_libur;
-    }
 
     /**
      * @return the tanggal
@@ -101,18 +92,25 @@ public class Libur extends Additional implements Serializable {
         this.tanggal = tanggal;
     }
 
-    /**
-     * @return the deskripsi_libur
-     */
-    public String getDeskripsi_libur() {
-        return deskripsi_libur;
+    public String getNamaLibur() {
+        return namaLibur;
+    }
+
+    public void setNamaLibur(String namaLibur) {
+        this.namaLibur = namaLibur;
+    }
+
+    public String getDeskripsiLibur() {
+        return deskripsiLibur;
+    }
+
+    public void setDeskripsiLibur(String deskripsiLibur) {
+        this.deskripsiLibur = deskripsiLibur;
     }
 
     /**
-     * @param deskripsi_libur the deskripsi_libur to set
+     * @return the deskripsi_libur
      */
-    public void setDeskripsi_libur(String deskripsi_libur) {
-        this.deskripsi_libur = deskripsi_libur;
-    }
+
     
 }

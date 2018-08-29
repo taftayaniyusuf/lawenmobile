@@ -5,11 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -25,7 +21,8 @@ public class TipeKaryawan extends Additional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nama_typekaryawan;
+    @Column(name = "nama_typekaryawan")
+    private String namaTypeKaryawan;
     public TipeKaryawan(){
         this.setStatus("Active");
     }
@@ -83,18 +80,17 @@ public class TipeKaryawan extends Additional implements Serializable {
         return serialVersionUID;
     }
 
-    /**
-     * @return the nama_typekaryawan
-     */
-    public String getNama_typekaryawan() {
-        return nama_typekaryawan;
+    public String getNamaTypeKaryawan() {
+        return namaTypeKaryawan;
+    }
+
+    public void setNamaTypeKaryawan(String namaTypeKaryawan) {
+        this.namaTypeKaryawan = namaTypeKaryawan;
     }
 
     /**
-     * @param nama_typekaryawan the nama_typekaryawan to set
+     * @return the nama_typekaryawan
      */
-    public void setNama_typekaryawan(String nama_typekaryawan) {
-        this.nama_typekaryawan = nama_typekaryawan;
-    }
+
 
 }
